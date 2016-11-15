@@ -1,0 +1,15 @@
+\select@language {swedish}
+\contentsline {section}{\numberline {1}Funktioner}{1}{section.1}
+\contentsline {section}{\numberline {2}Scenarier}{4}{section.2}
+\contentsline {section}{\numberline {3}Krav}{6}{section.3}
+\contentsline {subsection}{\numberline {3.1}Konto}{6}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Landningssida}{7}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Navigation}{7}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Mass\IeC {\"o}rer}{8}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Tj\IeC {\"a}nster}{8}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.6}Om oss}{9}{subsection.3.6}
+\contentsline {subsection}{\numberline {3.7}Min profil}{9}{subsection.3.7}
+\contentsline {subsection}{\numberline {3.8}Bokningar}{10}{subsection.3.8}
+\contentsline {subsection}{\numberline {3.9}Generellt}{10}{subsection.3.9}
+\contentsline {section}{\numberline {4}Databasdiagram}{11}{section.4}
+\contentsline {section}{\numberline {5}Wireframe}{12}{section.5}

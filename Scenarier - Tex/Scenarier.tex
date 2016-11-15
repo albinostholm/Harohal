@@ -1,0 +1,120 @@
+% ----------------------------------------------------------
+% Paket och definitioner
+\documentclass[11pt, titlepage, oneside, a4paper]{article}	% Dokumentspecifikation
+\usepackage[swedish]{babel}									% Språk
+\usepackage[T1]{fontenc}									% Teckenkodning för output
+\usepackage[utf8]{inputenc}									% Teckenkodning för input
+\usepackage{amssymb, graphicx, fancyhdr}					% Symboler och grafik
+\usepackage{amsmath}										% Matematiska uttryck
+\usepackage{amsthm,algorithm,algorithmic,yhmath,enumitem,lscape} % Algoritmer
+\usepackage{float}											% Placeringar av grafik mm.
+\usepackage{hyperref, url}									% Webbadresser och referenser
+\usepackage{listings}										% Lista källkod
+\lstset{
+	frame=single,
+	title=\lstname,
+	numbers=left,
+	basicstyle=\tiny
+}															% Formatering för listning av källkod
+
+\def\school{Erik Dahlbergsgymnasiet, Jönköping}				% Skolans namn
+\def\class{T4}												% FYLL I DIN KLASS
+\def\programme{Teknikprogrammet, \class}					% Program
+\def\documenttype{Laborationsrapport}						% Typ av dokument
+\def\course{Webbutveckling\\ Webbserverprogramering\\Datalagring}	% FYLL I KURS ELLER OMRÅDE
+\def\title{Harohal - Scenarier}											% FYLL I UPPG. NAMN
+\def\student{Harohal \& co}										% FYLL I DITT NAMN
+\def\email{-}												% FYLL I DIN E-POST
+\def\graders{Rickard Karlsson}								% FYLL I NAMN PÅ LÄRARE
+
+\setlength{\parindent}{0pt}									% Ta bort indentering
+\setlength{\parskip}{10pt}									% Lägg till mellanrum vid nytt stycke
+
+% ----------------------------------------------------------
+% Dokumentstart
+\begin{document}
+
+% ----------------------------------------------------------
+% Framsida
+\begin{titlepage}
+	\thispagestyle{empty}
+	\begin{normalsize}
+		\begin{tabular}{@{}p{\textwidth}@{}}
+			\textbf{\school \hfill \today} \\
+			\textbf{\programme \hfill \documenttype} \\
+		\end{tabular}
+	\end{normalsize}
+	\vspace{25mm}
+	\begin{center}
+		\huge{\textbf{\course}}\\
+		\vspace{10mm}
+		\LARGE{\title} \\
+		\vspace{15mm}
+        \LARGE{version 1.0} \\
+        \vspace{10mm}
+		\begin{large}
+			\begin{tabular}{ll}
+				\textbf{Namn} & \student \\
+				\textbf{E-post} & \email \\
+                
+			\end{tabular}
+		\end{large}
+		\vfill
+        \vfill
+		\large{\textbf{Bedömning}}\\
+		\mbox{\large{\graders}}
+	\end{center}
+\end{titlepage}
+    
+% Sidhuvud
+\lhead{\footnotesize\student, \today}
+\rhead{\nouppercase{\footnotesize\leftmark}}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.2pt} 
+
+\newpage
+
+\section*{Scenarier}
+\textbf {En person besöker hemsidan }
+
+När personen besöker sidan på nytt så ska den komma till en Välkommen sida. På denna sida så står det nyheter och man blir introducerad till navigationsfunktionen.  Det finns inget naturligt element i navigationen som dirigerar användaren till denna sida igen och användaren får själv välja vad den vill besöka näst.
+
+\textbf {En person loggar in}
+
+En person navigerar från valfri sida till navigationselementet ”Logga in”. En person som redan har ett konto kan ange sina uppgifter för att sedan logga in och bli dirigerad till landningssidan, uppgifterna måste givetvis vara stämma överens med de som den uppgav när den registrerade sig. Valet att registrera sig finns som en knapp. Det finns även ett val att återställa sitt lösenord, även detta val kommer med en knapp. När man klickar på knappen så kommer blir man dirigerad till en sida där man får skriv in sin mail. Detta skickar ett mail till personens konto med en länk som återställer lösenordet och den får välja ett nytt lösenord.
+
+\textbf {En Person registrerar sig}
+
+En person går in på hemsidan för första gången i sitt liv. Han klickar på “skapa konto”. Han kommer till en skärm där han får fylla i kontaktuppgifter och lösenord. Han får sedan ett mail där han får bekräfta sitt konto.
+
+\textbf {En Person beställer tid}
+
+Personen fortsätter sedan sin resa efter att skapat kontot(se ovan) och klickar sig in på boka tid fliken. Där ser han ett tidsschema över de lediga tiderna och väljer själv när det passar honom utefter de lediga tiderna som visas. Han väljer också vilken typ av massage han vill ha och bekräftar sedan bokningen.
+
+\textbf {En Person beställer flera tider}
+
+En person har nu bokat en tid för en massage, men önskar boka en ytterligare massage. Efter att personen fyllt i en bokning och tryckt på “boka”-knappen läggs personens bokning till i en lista av bokningar, och personen kan helt enkelt upprepa bokningsprocessen tills personen är nöjd, och kan sedan klicka på slutför och gå vidare till bekräftelsesidan för eventuell betalning.
+
+\newpage
+\textbf {En person vill avboka sin tid}
+
+Om en person av någon anledning önskar ta bort sin bokade tid klickar personen sig vidare till ”Min profil. Där finns en lista för alla personens kommande bokningar, och för varje bokad tid kan personen markera bokningen med ”markera”-checkrutan, sedan trycka på knappen ”Avboka markerade”. Då kommer en pop-up ruta som frågar om du önskar avboka valda bokningar. Trycker personen ”Ja” kommer bokningen tas bort. Vill personen avboka ett flertal bokningar trycker personen in alla bokningar hen önskar ta bort, och trycker på ”Avboka markerade”, då kommer en pop-up som frågar om du önskar ta bort följande bokningar, och om hen konfirmerar sitt val kommer bokningarna tas bort
+
+\textbf {En person vill ändra sina kontoinställningar}
+
+Personen går in på sina kontosida/mina sidor/profil. någonstans på sidan så finns det ett kugghjul där man kan ändra kontoinställningar, exempelvis ändra mail, lösenord, adress och nummer.
+
+\textbf {En person tar bort sitt konto }
+
+Om en person önskar ta bort sitt konto klickar sig personen till sidan “Din profil”, där det längst ner på sidan finns en knapp “Ta bort detta konto”. Efter att klickat på knappen så måste personen bekräfta med lösenord, och efter det är gjort det så skickas ett bekräftelse mail och i den finns en länk som faktiskt tar bort kontot. I databasen tas kontot egentligen inte bort, utan kundnummer etc. sparas för att man ska kunna bokföra och hålla koll på gamla bokningar.
+
+
+
+\bibliography{references} 
+\bibliographystyle{unsrt}
+\addcontentsline{toc}{section}{Referenser}
+
+\newpage
+\appendix
+
+\end{document}

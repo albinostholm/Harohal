@@ -1,0 +1,1 @@
+="INSERT INTO <TABLE>(<Row>, <Row>) VALUES("& <Cell> &", "& <Cell> &")"

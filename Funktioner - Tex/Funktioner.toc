@@ -1,0 +1,3 @@
+\select@language {swedish}
+\contentsline {section}{\numberline {1}Funktioner}{1}{section.1}
+\contentsline {section}{Referenser}{3}{section.1}

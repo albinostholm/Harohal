@@ -1,0 +1,245 @@
+% ----------------------------------------------------------
+% Paket och definitioner
+\documentclass[11pt, titlepage, oneside, a4paper]{article}	% Dokumentspecifikation
+\usepackage[swedish]{babel}									% Språk
+\usepackage[T1]{fontenc}									% Teckenkodning för output
+\usepackage[utf8]{inputenc}									% Teckenkodning för input
+\usepackage{amssymb, graphicx, fancyhdr}					% Symboler och grafik
+\usepackage{amsmath}										% Matematiska uttryck
+\usepackage{amsthm,algorithm,algorithmic,yhmath,enumitem,lscape} % Algoritmer
+\usepackage{float}											% Placeringar av grafik mm.
+\usepackage{hyperref, url}									% Webbadresser och referenser
+\usepackage{listings}										% Lista källkod
+\lstset{
+	frame=single,
+	title=\lstname,
+	numbers=left,
+	basicstyle=\tiny
+}															% Formatering för listning av källkod
+
+\def\school{Erik Dahlbergsgymnasiet, Jönköping}				% Skolans namn
+\def\class{T4}												% FYLL I DIN KLASS
+\def\programme{Teknikprogrammet, \class}					% Program
+\def\documenttype{Laborationsrapport}						% Typ av dokument
+\def\course{Webbutveckling\\ Webbserverprogramering\\Datalagring}	% FYLL I KURS ELLER OMRÅDE
+\def\title{Harohal - Krav}											% FYLL I UPPG. NAMN
+\def\student{Harohal \& co}										% FYLL I DITT NAMN
+\def\email{-}												% FYLL I DIN E-POST
+\def\graders{Rickard Karlsson}								% FYLL I NAMN PÅ LÄRARE
+
+\setlength{\parindent}{0pt}									% Ta bort indentering
+\setlength{\parskip}{10pt}									% Lägg till mellanrum vid nytt stycke
+
+% ----------------------------------------------------------
+% Dokumentstart
+\begin{document}
+
+% ----------------------------------------------------------
+% Framsida
+\begin{titlepage}
+	\thispagestyle{empty}
+	\begin{normalsize}
+		\begin{tabular}{@{}p{\textwidth}@{}}
+			\textbf{\school \hfill \today} \\
+			\textbf{\programme \hfill \documenttype} \\
+		\end{tabular}
+	\end{normalsize}
+	\vspace{25mm}
+	\begin{center}
+		\huge{\textbf{\course}}\\
+		\vspace{10mm}
+		\LARGE{\title} \\
+		\vspace{15mm}
+        \LARGE{version 1.0} \\
+        \vspace{10mm}
+		\begin{large}
+			\begin{tabular}{ll}
+				\textbf{Namn} & \student \\
+				\textbf{E-post} & \email \\
+                
+			\end{tabular}
+		\end{large}
+		\vfill
+        \vfill
+		\large{\textbf{Bedömning}}\\
+		\mbox{\large{\graders}}
+	\end{center}
+\end{titlepage}
+    
+% Sidhuvud
+\lhead{\footnotesize\student, \today}
+\rhead{\nouppercase{\footnotesize\leftmark}}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.2pt}
+
+% ----------------------------------------------------------
+% Innehållsförteckning.
+\pagenumbering{roman}
+\tableofcontents
+
+\newpage
+
+% Sidnumrering med arabiska siffror.
+\pagenumbering{arabic}
+    
+% ----------------------------------------------------------
+% Dokumentets innehåll    
+
+
+\newpage
+
+\section{Krav}
+\subsection{Konto}
+	\subsubsection*{Registrering}
+	\begin{itemize}
+		\item Det ska finnas fält som ska kunna ta information som input.
+		\item Informationen ska anges av den blivande användaren.
+		\item Vissa fält får inte lämnas oidentifierade.
+		\item Denna information ska sedan.
+		\item Efter att informationen är angiven så skickas ett bekräftelsemail.
+		\item Försöker en användare logga in utan att ha bekräfta får användaren ett meddelande på skärmen som säger att användaren måste bekräfta sitt konto, samt en knapp för att skicka ett nytt 	bekräftelsemail.
+	\end{itemize}
+	\subsubsection*{Logga in}
+	\begin{itemize}
+		\item Det som krävs för inloggning är användarnamn och lösenord. Dessa skall vara angivna och måste vara korrekt. 
+		\item Om de är korrekt så skall man föras vidare till landningssidan.
+		\item Annars så kommer ett felmeddelande upp och man får försöka igen.
+		\item Antalet försök är obestämt.
+		\item Alternativet ”Glömt lösenord?” ska finnas och användaren ska då bli dirigerad till en sida där den får ange mail. 
+		\item Det kommer i sin tur leda till att man får en länk på sin mail som dirigerar användaren till ännu en sida där användaren får ange sitt nya lösenord två gånger(måste stämma överens).
+		\item Användaren blir sedan dirigerad till ”Logga in” och måste ange sina nya uppgifter för att logga in.
+	\end{itemize} 
+
+\newpage
+	\subsubsection*{Byta lösenord}
+	\begin{itemize}
+		\item Två fält som båda tar lösenord som input
+		\item Lösenorden måste stämma överens, annars felmeddelande
+		\item Stämmer allt skickas ett mail till din mail
+		\item Mailet innehåller en GUID som låter dig välja ett nytt lösenord
+	\end{itemize} 
+
+	\subsubsection*{Glömt lösenord}
+	\begin{itemize}
+		\item Ett fält som tar din mail som input
+		\item Stämmer allt skickas ett mail till din mail
+		\item Mailet innehåller en GUID som låter dig välja ett nytt lösenord
+	\end{itemize} 
+
+\subsection{Landningssida}
+	\begin{itemize}
+		\item På landningssidan ska det finnas nyheter och annonser.
+		\item Nyheter presenteras i form av sektioner och varje sektion täcker cirka 2/3 av sidans bredd.
+		\item Annonserna presenteras också i sektioner och varje sektion täcker den resterade 1/3 av sidans bredd.
+		\item Sektionernas höjdjusteras efter innehållets storlek.
+	\end{itemize} 
+
+\subsection{Navigation}
+	\begin{itemize}
+		\item Det finns ett navigeringsfält som har länkar till varje sida som finns nedan. 
+		\item Detta kommer att vara statiskt på hemsidan och kommer alltid finnas tillgängligt.
+	\end{itemize} 
+
+
+\newpage
+\subsection{Massörer}
+	\subsubsection*{Massörer: Användare}
+	\begin{itemize}
+		\item Ska innehålla informationen om de olika anställda i form av sektioner.
+		\item Sektionerna kommer vara sig lika i aspekter och bredd och täcka cirka 2/3 av sidans bredd, men kan komma att variera i höjd beroende på innehållets storlek.
+		\item Man ska ha möjligheten att checka en sektion.
+		\item Det finns en knappt som heter "Till boka", och de checkade massörerna följer med till bokasidan. 
+		\item Det ska finnas en info box som kommer att finnas till höger om alla sektioner. Denna box ska vara statisk och innehålla generell information om massörerna, vilka krav som förväntas m.m. 
+	\end{itemize}
+	
+	\subsubsection*{Massörer: Admin}
+	\begin{itemize}
+		\item Edit box sektioner.
+		\item Edit box box.
+		\item Ska kunna redigera innehåll i element och box.
+		\item Ska kunna redigera tider.
+	\end{itemize} 
+
+\subsection{Tjänster}
+	\subsubsection*{Tjänster: Användare}
+	\begin{itemize}
+		\item Kommer att ha samma upplägg som ”Massörer” fast annorlunda innehåll.
+		\item Där fokuseras det mer på vilken massör som utför tjänsten, tider och priser. 
+		\item Man kan även checka för en tjänst som sedan kommer att följa med till ”boka”. 
+	\end{itemize}
+	
+	\subsubsection*{Tjänster: Admin}
+	\begin{itemize}
+		\item Edit box sektioner.
+		\item Edit checkbox box.
+		\item Kunna redigera innehåll och element.
+	\end{itemize}
+
+\subsection{Om oss}
+	\subsubsection*{Om Oss: Användare}
+	\begin{itemize}
+		\item Finnas info om oss.
+		\item Hur man kontaktar oss.
+		\item Vägbeskrivning (Google maps).
+	\end{itemize} 
+	
+	\subsubsection*{Om oss: Admin}
+	\begin{itemize}
+		\item Redigera information.
+		\item Redigera kontakt info.
+		\item Redigera/uppdatera vägbeskrivning.
+	\end{itemize}
+
+\subsection{Min profil}
+	\subsubsection*{Min Profil: Användare}
+	\begin{itemize}
+		\item Informationsbox.
+		\item Kontaktinformation.
+		\item Redigera kontaktinformation.
+		\item Lagra och visa genomförda beställningar.
+		\item Visa kommande beställningar.
+		\item Kunna avboka kommande beställningar.
+		\item Knapp för att byta lösenord som omdirigerar dig till byta lösenordssidan
+	\end{itemize} 
+	\subsubsection*{Min profil: Admin}
+	\begin{itemize}
+		\item Näst intill identisk till Min Profil.
+		\item Tids och datumbaserat schema.
+		\item Tillgång till alla anställdas scheman.
+		\item kunna redigera scheman.
+	\end{itemize}
+	\subsubsection*{Min profil: Anställd}
+	\begin{itemize}
+		\item Näst intill identisk till Min Profil.
+		\item Tids och datumbaserat schema.
+	\end{itemize}
+	
+\subsection{Bokningar}
+	\subsubsection*{Bokningar: Användare}
+	\begin{itemize}
+		\item Kunna boka en beställning med valfri tid, massör och tjänst.
+		\item Kunna boka flera tider i samma veva.
+		\item Kunna betala direkt på hemsidan, på plats eller via räkning.
+	\end{itemize}
+	\subsubsection*{Bokningar: Admin}
+	\begin{itemize}
+		\item Kunna visa alla kommande bokningar för alla kunder och massörer.
+		\item Ändra och ta bort bokningar.
+	\end{itemize}
+	
+\subsection{Generellt}
+\begin{itemize}
+	\item Landningssidan ska vara det som visas när man besöker hemsidan.
+	\item Snygg, bekväm och lugn design.
+	\item Responsiv.
+	\item Justeras utefter användarplattform(pc, smartphone, padda etc.)
+\end{itemize}
+
+\bibliography{references} 
+\bibliographystyle{unsrt}
+\addcontentsline{toc}{section}{Referenser}
+
+\newpage
+\appendix
+
+\end{document}

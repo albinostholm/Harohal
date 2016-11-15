@@ -1,0 +1,262 @@
+% ----------------------------------------------------------
+% Paket och definitioner
+\documentclass[11pt, titlepage, oneside, a4paper]{article}	% Dokumentspecifikation
+\usepackage[swedish]{babel}									% Språk
+\usepackage[T1]{fontenc}									% Teckenkodning för output
+\usepackage[utf8]{inputenc}									% Teckenkodning för input
+\usepackage{amssymb, graphicx, fancyhdr}					% Symboler och grafik
+\usepackage{amsmath}										% Matematiska uttryck
+\usepackage{amsthm,algorithm,algorithmic,yhmath,enumitem,lscape} % Algoritmer
+\usepackage{float}											% Placeringar av grafik mm.
+\usepackage{hyperref, url}									% Webbadresser och referenser
+\usepackage{listings}										% Lista källkod
+\lstset{
+	frame=single,
+	title=\lstname,
+	numbers=left,
+	basicstyle=\tiny
+}															% Formatering för listning av källkod
+
+\def\school{Erik Dahlbergsgymnasiet, Jönköping}				% Skolans namn
+\def\class{T4}												% FYLL I DIN KLASS
+\def\programme{Teknikprogrammet, \class}					% Program
+\def\documenttype{Laborationsrapport}						% Typ av dokument
+\def\course{Webbutveckling\\ Webbserverprogramering\\Datalagring}	% FYLL I KURS ELLER OMRÅDE
+\def\title{Harohal - Funktioner}											% FYLL I UPPG. NAMN
+\def\student{Harohal \& co}										% FYLL I DITT NAMN
+\def\email{-}												% FYLL I DIN E-POST
+\def\graders{Rickard Karlsson}								% FYLL I NAMN PÅ LÄRARE
+
+\setlength{\parindent}{0pt}									% Ta bort indentering
+\setlength{\parskip}{10pt}									% Lägg till mellanrum vid nytt stycke
+
+% ----------------------------------------------------------
+% Dokumentstart
+\begin{document}
+
+% ----------------------------------------------------------
+% Framsida
+\begin{titlepage}
+	\thispagestyle{empty}
+	\begin{normalsize}
+		\begin{tabular}{@{}p{\textwidth}@{}}
+			\textbf{\school \hfill \today} \\
+			\textbf{\programme \hfill \documenttype} \\
+		\end{tabular}
+	\end{normalsize}
+	\vspace{25mm}
+	\begin{center}
+		\huge{\textbf{\course}}\\
+		\vspace{10mm}
+		\LARGE{\title} \\
+		\vspace{15mm}
+        \LARGE{version 1.0} \\
+        \vspace{10mm}
+		\begin{large}
+			\begin{tabular}{ll}
+				\textbf{Namn} & \student \\
+				\textbf{E-post} & \email \\
+                
+			\end{tabular}
+		\end{large}
+		\vfill
+        \vfill
+		\large{\textbf{Bedömning}}\\
+		\mbox{\large{\graders}}
+	\end{center}
+\end{titlepage}
+    
+% Sidhuvud
+\lhead{\footnotesize\student, \today}
+\rhead{\nouppercase{\footnotesize\leftmark}}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.2pt} 
+
+\newpage
+
+\section*{Funktioner}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Lägg till Annons                        \\ \hline
+Beskrivning   & Lägga till en ny Annons på startsidan \\ \hline
+Indata        & namn, beskrivning, länk, bild         \\ \hline
+Utdata        & annonsID                              \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Ta bort Annons                        \\ \hline
+Beskrivning   & Ta bort en Annons på startsidan \\ \hline
+Indata        & annonsID         \\ \hline
+Utdata        & Aktiv = falsk                              \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Ändra Annons                       \\ \hline
+Beskrivning   & Ändra beskrivning och titel av en annons \\ \hline
+Indata        & annonsID, namn, beskrivning, datum, bild, länk   \\ \hline
+Utdata        & Lyckad redigering                             \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Skapa konto                     \\ \hline
+Beskrivning   & Skapar ett nytt konto \\ \hline
+Indata        & Förnamn, efternamn, mail, personnummer, lösenord, telefon   \\ \hline
+Utdata        & personID              \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Logga in                     \\ \hline
+Beskrivning   & Logga in på webbsidan \\ \hline
+Indata        & Lösenord, användarnamn   \\ \hline
+Utdata        & personID              \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Byta lösenord                    \\ \hline
+Beskrivning   & Byta lösenord på webbsidan \\ \hline
+Indata        & Gammalt lösenord, Nytt lösenord   \\ \hline
+Utdata        & True/False              \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Verifiera konto                    \\ \hline
+Beskrivning   & Verifierar ditt konto från email  \\ \hline
+Indata        & GUID   \\ \hline
+Utdata        & bekräftatEmail = sant, mail, förnamn, efternamn    \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Ny nyhet                    \\ \hline
+Beskrivning   & För att lägga till nyhet \\ \hline
+Indata        & nyhetsdatum, nyhetsbeskrivning, publiceradatum, titel \\ \hline
+Utdata        & True/false, nyhets ID              \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Ta bort nyhet                   \\ \hline
+Beskrivning   & Ta bort en nyhet ifrån sida \\ \hline
+Indata        & nyhetsdatum, nyhetsbeskrivning, publiceradatum, titel \\ \hline
+Utdata        & Publicerad = falsk            \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Ändra nyhet                   \\ \hline
+Beskrivning   & Ändra beskrivning och titel av en nyhet \\ \hline
+Indata        & nyhetsdatum, nyhetsbeskrivning, publiceradatum, titel, nyhetsID \\ \hline
+Utdata        & True/False            \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Boka                  \\ \hline
+Beskrivning   & Bokar en massage med en massör under en viss tid \\ \hline
+Indata        & anställdID, tjänstID, startTid, slutTid pris, \\ \hline
+Utdata        & True/false, ev.Ny rad på ordrar med unikt orderID, ev.stadie = aktiv            \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Avboka obetald order                  \\ \hline
+Beskrivning   & Avbokning för en bokning som är obetald \\ \hline
+Indata        & OrderID \\ \hline
+Utdata        & True/False, ev.Lyckad borttagning     \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Avboka betald order                  \\ \hline
+Beskrivning   & Avbokning för en bokning som är betald \\ \hline
+Indata        & OrderID \\ \hline
+Utdata        & True/False, ev.Lyckad borttagning, särskild administrativ återbetalning  \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Hämta anställdinfo                  \\ \hline
+Beskrivning   & Hämtar information kring en viss anställd \\ \hline
+Indata        & anställdID \\ \hline
+Utdata        & Namn, beskrivning, bild, behandlarMän/Kvinnor  \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Lägg till anställd                 \\ \hline
+Beskrivning   & Lägger till en ny anställd i systemet \\ \hline
+Indata        & namn, beskrivning, tjänstID, behandlarMän/Kvinnor, bild \\ \hline
+Utdata        & anställdID  \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Ta bort anställd                 \\ \hline
+Beskrivning   & Inaktiverar en anställd i systemet \\ \hline
+Indata        & anställdID   \\ \hline
+Utdata        & Aktiv = falsk  \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Hämta schema                 \\ \hline
+Beskrivning   & Hämtar en anställds schema för en specifik vecka \\ \hline
+Indata        & anställdID, vecka, år \\ \hline
+Utdata        & anställdID, starttid, sluttid, datum  \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Ta bort schema                 \\ \hline
+Beskrivning   & Tar bort en anställdstid för ett pass \\ \hline
+Indata        & anställdID, starttid, vecka, år \\ \hline
+Utdata        & True/False, ev lyckad borttagning  \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Kopira schematid                 \\ \hline
+Beskrivning   & Kopierar schema ifrån en annan veckas schema \\ \hline
+Indata        & Sluttider, starttider, vecka, nyvecka \\ \hline
+Utdata        & True/False, ev nytt schema  \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Ny tjänst              \\ \hline
+Beskrivning   & Lägger till en ny tjänst i systemet \\ \hline
+Indata        & namn, beskrivning, tid, pris, bild \\ \hline
+Utdata        & tjänstID  \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Ta bort tjänst              \\ \hline
+Beskrivning   & Flagga tjänst som inaktiv \\ \hline
+Indata        & tjänstID  \\ \hline
+Utdata        & Aktiv = falsk  \\ \hline
+\end{tabular}
+
+\begin{tabular}{ll}
+\hline
+Funktionsnamn & Ändra tjänst              \\ \hline
+Beskrivning   & Ändrar informationen om tjänst \\ \hline
+Indata        & tjänstID, namn, beskrivning, bild, pris, tid,   \\ \hline
+Utdata        & True/False, Lyckad ändring  \\ \hline
+\end{tabular}
+
+\bibliography{references} 
+\bibliographystyle{unsrt}
+\addcontentsline{toc}{section}{Referenser}
+
+\newpage
+\appendix
+
+\end{document}
