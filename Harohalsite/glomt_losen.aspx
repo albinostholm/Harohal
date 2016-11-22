@@ -18,10 +18,7 @@
                 <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="Login.aspx"></asp:MenuItem>
             </Items>
         </asp:Menu>
-        
+            <asp:ChangePassword ID="ChangePassword1" runat="server"></asp:ChangePassword>
     </form>
-    <p>Ett mail kommer skickas till denna mail</p>
-    <p><input id="Text1" type="text" /></p>
-    <input id="Button1" type="button" value="Skicka återställningslänk" />
 </body>
 </html>

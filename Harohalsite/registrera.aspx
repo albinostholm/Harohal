@@ -19,24 +19,14 @@
             </Items>
         </asp:Menu>
         
+        <asp:CreateUserWizard ID="CreateUserWizard1" runat="server">
+            <WizardSteps>
+                <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
+                </asp:CreateUserWizardStep>
+                <asp:CompleteWizardStep ID="CompleteWizardStep1" runat="server">
+                </asp:CompleteWizardStep>
+            </WizardSteps>
+        </asp:CreateUserWizard>
     </form>
-    <p>Email</p>
-    <p><input id="Text1" type="text" /></p>
-    <p>Förnamn och mellannamn</p>
-    <p><input id="Text2" type="text" /></p>
-    <p>Efternamn</p>
-    <p><input id="Text3" type="text" /></p>
-    <p>Personnummer(10 siffror)</p>
-    <p><input id="Text4" type="text" /></p>
-    <p>Lösenord</p>
-    <p><input id="Text5" type="text" /></p>
-    <p>Lösenord igen</p>
-    <p><input id="Text6" type="text" /></p>
-
-    <p>Har läst avtal? inte vi heller</p>
-    <asp:CheckBox ID="CheckBox" runat="server" />
-    <p>Jag vill inte kanske ha nyhetsbrev på torsdagar var tredje vecka när solen är i moln</p>
-    <asp:CheckBox ID="CheckBox2" runat="server" /><br/>
-    <input id="Button1" type="button" value="Registrera" />
 </body>
 </html>

@@ -18,12 +18,7 @@
                 <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="Login.aspx"></asp:MenuItem>
             </Items>
         </asp:Menu>
-        <h2>Du återställer för xxDragonsSlayer97xX</h2>
-    <p>Lösen</p>
-    <p><input id="Text5" type="text" /></p>
-    <p>Upprepa lösen</p>
-    <p><input id="Text6" type="text" /></p>
-        <asp:Button ID="Button1" runat="server" Text="Byt lösen" />
+        <asp:PasswordRecovery ID="PasswordRecovery1" runat="server"></asp:PasswordRecovery>
     </form>
 </body>
 </html>

@@ -21,9 +21,9 @@
 
         <asp:Login ID="Login1" runat="server" Height="157px" OnAuthenticate="Login1_Authenticate" Width="302px">
         </asp:Login>
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Registrera" NavigateUrl="registrera.aspx" />
-        <asp:Button ID="Button2" runat="server" OnClick="Button1_Click" Text="Glömt lösenord" NavigateUrl="glomt_losen.aspx" />
-        <asp:Button ID="Button3" runat="server" OnClick="Button1_Click" Text="Min Profil Test luilullululluullulu" NavigateUrl="min_profil.aspx" />
+        <asp:LinkButton ID="btnRegister" runat="server" OnClick="btnRegister_Click" Text="Registrera" NavigateUrl="registrera.aspx" />
+        <asp:LinkButton ID="btnGlomt" runat="server" OnClick="btnGlomt_Click" Text="Glömt lösenord" NavigateUrl="glomt_losen.aspx" />
+        <asp:LinkButton ID="btnMinProfil" runat="server" OnClick="btnMinProfi_Click" Text="Min Profil Test luilullululluullulu" NavigateUrl="min_profil.aspx" />
     </form>
 </body>
 </html>
