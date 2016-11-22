@@ -11,4 +11,14 @@ public partial class login : System.Web.UI.Page
     {
 
     }
+
+    protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
+    {
+
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+
+    }
 }
