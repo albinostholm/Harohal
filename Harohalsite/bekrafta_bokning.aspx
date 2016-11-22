@@ -11,10 +11,10 @@
         <header></header>
     <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
             <Items>
-                <asp:MenuItem Text="Boka" Value="Boka"></asp:MenuItem>
-                <asp:MenuItem Text="Massörer" Value="Massörer"></asp:MenuItem>
-                <asp:MenuItem Text="Tjänster" Value="Tjänster"></asp:MenuItem>
-                <asp:MenuItem Text="Om Oss" Value="Om Oss"></asp:MenuItem>
+                <asp:MenuItem Text="Boka" Value="Boka" NavigateUrl="boka.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Massörer" Value="Massörer" NavigateUrl="massorer.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Tjänster" Value="Tjänster" NavigateUrl="tjanster.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Om Oss" Value="Om Oss" NavigateUrl="om_oss.aspx"></asp:MenuItem>
                 <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="Login.aspx"></asp:MenuItem>
             </Items>
         </asp:Menu> 
@@ -28,7 +28,7 @@
 
         <asp:Repeater ID="Repeater1" runat="server">
             <ItemTemplate>
-            <div style="border: 1px solid black;display:inline-block; margin-right:35%;">
+            <div style="border: 1px solid black;display:inline-block; width:25%; float:left; clear:left;">
                 <img src="massörellerngtvetintevaderiktänktesig.bildjävel" alt="massörellerngtvetintevaderiktänktesig.bildjävel" />
                 <h2>Bokningar</h2>
                 <ul style="list-style:none;">

@@ -12,11 +12,11 @@
                   <header></header>
         <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
             <Items>
-                <asp:MenuItem Text="Boka" Value="Boka"></asp:MenuItem>
-                <asp:MenuItem Text="Massörer" Value="Massörer"></asp:MenuItem>
-                <asp:MenuItem Text="Tjänster" Value="Tjänster"></asp:MenuItem>
-                <asp:MenuItem Text="Om Oss" Value="Om Oss"></asp:MenuItem>
-                <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="~/Login.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Boka" Value="Boka" NavigateUrl="boka.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Massörer" Value="Massörer" NavigateUrl="massorer.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Tjänster" Value="Tjänster" NavigateUrl="tjanster.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Om Oss" Value="Om Oss" NavigateUrl="om_oss.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="Login.aspx"></asp:MenuItem>
             </Items>
         </asp:Menu>                                  
                 <div style="display:block; float:left; padding:1em; border:1px solid black; margin-bottom:1.5%; ">

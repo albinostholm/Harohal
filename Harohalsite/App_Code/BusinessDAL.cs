@@ -17,7 +17,7 @@ public class BusinessDAL
     {
         massor ma = new massor();
         //Create a connection
-        SqlConnnection conn = new SqlConnnection(connStr) ;
+        SqlConnection conn = new SqlConnection(connStr);
 
         //The procedure I want to call
         SqlCommand cmd = new SqlCommand("usp_GetAnstalldInfo", conn);
@@ -54,7 +54,7 @@ public class BusinessDAL
         finally
         {
             cmd.Dispose();
-            conn.Clone();
+            conn.Close();
             conn.Dispose();
         }
     }

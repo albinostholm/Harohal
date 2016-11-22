@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="massorer.aspx.cs" Inherits="massorer" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="tjanster.aspx.cs" Inherits="index" %>
 
 <!DOCTYPE html>
 
@@ -7,8 +7,8 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server"> 
-
+    <form id="form1" runat="server">
+    <div>
         <header></header>
         <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
             <Items>
@@ -36,14 +36,14 @@
                         Here is Annons man XDDDD
                     </div>
                 </div>
-               
-        <asp:Repeater ID="Repeater1" runat="server">           
-          <ItemTemplate>
-            <section>                                   
+         <asp:Repeater ID="Repeater1" runat="server">           
+          <ItemTemplate>             
+            <section> 
+                                                  
                 <div style="display:block; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">
+                    <asp:CheckBox ID="CheckBox1" runat="server" style="float:right;" />
                     <img src="image/xd.png" alt="MassörNamn" style="float:left; width:150px; height:150px; margin-top:58px;">
                     <h1 style="margin-top:30px; margin-left:160px;">Namn</h1>
-                    <asp:CheckBox ID="CheckBox1" runat="server" style="float:right;" />
                     <hr style="width:auto; margin-left:auto;">
                     <p style="float:right; text-align:left; margin-left:1%;">Lorem ipsum dolor sit amet, in qui semper quaestio, ex malorum petentium torquatos vim. An vivendum antiopam praesent vim, vix sumo iudicabit at, et mea assum quaeque scaevola. Et mea quod odio evertitur, qui no adhuc petentium, his no malorum perpetua euripidis. Qui id dicat numquam delectus, quod omnis adipiscing ea mei. Imperdiet comprehensam ex eum. Ius case quaerendum adversarium eu, cum te minimum insolens, postea quodsi usu et.
 
@@ -62,34 +62,14 @@
                         <li>Behandlar</li>
                         <li>Behundlar</li>
                     </ul>
-                </div>
+                </div>                 
            </section>
           </ItemTemplate>
-        </asp:Repeater>    
-        
-                <asp:Repeater ID="rptMassor" runat="server">           
-                    <ItemTemplate>                                  
-                        <div style="height:100%; width:60%; border-style:solid; border-color:black;">
-                            <img src="image/xd.png" alt="MassörNamn" style="float:left; width:150px; height:150px; margin-top:58px;">
-
-                            <h1 id="namn" style="margin-top:0px; margin-left:160px;"></h1>
-
-                            <p id="description" style="float:right; text-align:left; margin-left:1%;"></p>
-                              
-                            <ul style="list-style:none; float:left; text-align:left;">
-                                <li>Ålder: </li>
-                                <li>Behandlar Män: </li>
-                                <li>Behandlar Kvinnor: </li>
-                            </ul>
-                        </div> 
-                    </ItemTemplate>
-                </asp:Repeater>          
-            </form>
-
-       
+        </asp:Repeater>
 
 
-
-        
-    </body>
+    </div>
+    </form>
+</body>
 </html>
+

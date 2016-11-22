@@ -8,15 +8,14 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
                   <header></header>
         <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
             <Items>
-                <asp:MenuItem Text="Boka" Value="Boka"></asp:MenuItem>
-                <asp:MenuItem Text="Massörer" Value="Massörer"></asp:MenuItem>
-                <asp:MenuItem Text="Tjänster" Value="Tjänster"></asp:MenuItem>
-                <asp:MenuItem Text="Om Oss" Value="Om Oss"></asp:MenuItem>
-                <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="~/Login.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Boka" Value="Boka" NavigateUrl="boka.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Massörer" Value="Massörer" NavigateUrl="massorer.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Tjänster" Value="Tjänster" NavigateUrl="tjanster.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Om Oss" Value="Om Oss" NavigateUrl="om_oss.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="Login.aspx"></asp:MenuItem>
             </Items>
         </asp:Menu>
         
@@ -37,7 +36,7 @@
     <p>Har läst avtal? inte vi heller</p>
     <asp:CheckBox ID="CheckBox" runat="server" />
     <p>Jag vill inte kanske ha nyhetsbrev på torsdagar var tredje vecka när solen är i moln</p>
-    <asp:CheckBox ID="CheckBox2" runat="server" /><br>
+    <asp:CheckBox ID="CheckBox2" runat="server" /><br/>
     <input id="Button1" type="button" value="Registrera" />
 </body>
 </html>
