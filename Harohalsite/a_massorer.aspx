@@ -20,7 +20,7 @@
             </Items>
         </asp:Menu>
          <div style="background-color:yellow; float:right;height:auto; width:30%; padding:30px; margin-right:1%; margin-left:4%; border:1px solid black;">
-             <h2>Om våra massörer</h2>
+             <h2>Om våra massörer <asp:Button ID="Button1" runat="server" Text="Edit" style="margin-left:300%;" /> </h2>
                     <div style="border:1px solid black;">
                         Here is Annons man XDDDD
 
@@ -32,7 +32,7 @@
                       
                 </div>
                
-        <asp:Repeater ID="Repeater1" runat="server">           
+        <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">           
           <ItemTemplate>
             <section>                                   
                 <div style="display:block; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">
