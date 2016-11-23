@@ -8,7 +8,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-            <header></header>
+    <header></header>
     <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
             <Items>
                 <asp:MenuItem Text="Boka" Value="Boka" NavigateUrl="boka.aspx"></asp:MenuItem>
@@ -28,7 +28,6 @@
               </div>
                 </ItemTemplate>
         </asp:Repeater>
-        <br />
         <asp:Repeater runat="server" ID="repTjanst">
             <ItemTemplate>
               <div style="width:10%; border:1px solid black; float:left;">

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="boka.aspx.cs" Inherits="boka" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="a_boka.aspx.cs" Inherits="a_boka" %>
 
 <!DOCTYPE html>
 
@@ -8,7 +8,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-            <header></header>
+    
+    <header></header>
     <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
             <Items>
                 <asp:MenuItem Text="Boka" Value="Boka" NavigateUrl="boka.aspx"></asp:MenuItem>
@@ -19,29 +20,27 @@
             </Items>
         </asp:Menu>
 
-        <asp:Repeater runat="server" ID="repMassor">
-            <ItemTemplate>
-              <div style="width:10%; border:1px solid black; float:left;">
-                  <h2>Massörer</h2>
-                    <p>massage beskrivning</p>
-                  <asp:CheckBox ID="CheckBox1" runat="server" />
-              </div>
+        <input id="Text1" type="text" />
+        <div style="float:left;width:20%; height:50%;">
+            <asp:Repeater runat="server" ID="repMassor">
+                <ItemTemplate>
+                    <div style="width:auto; height:30%; border:1px solid black;"></div>
                 </ItemTemplate>
-        </asp:Repeater>
-        <br />
-        <asp:Repeater runat="server" ID="repTjanst">
-            <ItemTemplate>
-              <div style="width:10%; border:1px solid black; float:left;">
-                  <h2>Massörer</h2>
-                    <p>Tjänst beskrivning</p>
-                  <asp:CheckBox ID="CheckBox1" runat="server" />
-              </div>
+            </asp:Repeater>
+        </div>
+
+            <div style="float:left;width:40%; height:auto; margin-left:2%; border:1em solid black;">
+            <asp:Repeater runat="server" ID="Repeater1">
+                <ItemTemplate>
+                    <div style="width:auto; height:30%; "></div>
                 </ItemTemplate>
-        </asp:Repeater>
-        <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
-        //valda bokningar typ xd
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
-        <asp:Button ID="Button1" runat="server" Text="Boka" NavigateUrl="bekrafta_bokning.aspx" OnClick="Button1_Click" />
+            </asp:Repeater>
+        </div>
+        <asp:Button ID="Button1" runat="server" Text="Button" style="clear:left;float:left; margin-left:938px;" />
+
+        <div style="float:left; margin-left:5%; width:30%;">
+            <p>insert some random shit here I dont really know buut it should be used to edit the box to the left</p>
+        </div>
     </form>
 </body>
 </html>
