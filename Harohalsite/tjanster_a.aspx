@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
     <div>
         <header></header>
-        <asp:Menu ID="Menu" runat="server" orientation="Horizontal" OnMenuItemClick="Menu_MenuItemClick">
+        <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
             <Items>
                 <asp:MenuItem Text="Boka" Value="Boka" NavigateUrl="boka.aspx"></asp:MenuItem>
                 <asp:MenuItem Text="Massörer" Value="Massörer" NavigateUrl="massorer.aspx"></asp:MenuItem>
@@ -20,22 +20,23 @@
             </Items>
         </asp:Menu>
          <div style="background-color:yellow; float:right;height:auto; width:30%; padding:30px; margin-right:1%; margin-left:4%; border:1px solid black;">
-             <h2>Allmän info blabla</h2>
                     <div style="border:1px solid black;">
-                        Lorem ipsum dolor sit amet, in qui semper quaestio, ex malorum petentiumkj ksjksidkw9i iisijdwkijdsipaksiipaa torquatos vim. An vivendum antiopam praesent vim, vix sumo iudicabit at, et mea assum quaeque scaevola. Et mea quod odio evertitur, qui no adhuc petentium, his no malorum perpetua euripidis. Qui id dicat numquam delectus, quod omnis adipiscing ea mei. Imperdiet comprehensam ex eum. Ius case quaerendum adversarium eu, cum te minimum insolens, postea quodsi usu et.
-
-                                Cetero senserit inciderint ad eos. Soluta pertinacia voluptaria vis eu, dico unum mnesarchum cu usu, ne debitis invenire quaerendum est. Cu omittantur intellegebat sea, nec an quem meliore definitiones. No eos placerat torquatos assueverit. Hinc debet graece ei quo.
-
-                                Agam erat congue ne mel. Argumentum intellegebat sed cu, vel justo efficiendi ex. Patrioque rationibus sed in, dicit repudiandae eum et, maiorum placerat dissentiunt eam id. Est agam blandit in, cum copiosae accusamus efficiendi an. Graeco utamur molestiae mei ex, at stet omittam suscipit eos.
-
-                                Sonet suscipit vulputate eum in. Cu mea malis euripidis. Eos ea option nusquam omittam, an dolor labitur denique his. In moderatius mediocritatem duo, has no accusam necessitatibus, sed ne soleat intellegat expetendis.
-
-                                Percipit delicata cu sea, eu mel meis falli pertinax. Malis phaedrum in nec, id sed malis aperiri, ut per feugiat appareat. No aeque facilisi nam. Mei te ullum tacimates voluptatibus, solet labore molestie ex mei, sit ea dictas fastidii. Diam libris pertinacia sea et, et natum solum detracto eum. Et harum impetus scriptorem sit, no graeco dolorum mandamus ius. Partem quaeque ne vim, qui et copiosae recteque euripidis.
-
+                        Here is Annons man XDDDD
                     </div>
-                      
+                      <div style="border:1px solid black;">
+                        Here is Annons man XDDDD
+                    </div>
+                      <div style="border:1px solid black;">
+                        Here is Annons man XDDDD
+                    </div>
+                      <div style="border:1px solid black;">
+                        Here is Annons man XDDDD
+                    </div>
+                      <div style="border:1px solid black;">
+                        Here is Annons man XDDDD
+                    </div>
                 </div>
-         <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">           
+         <asp:Repeater ID="Repeater1" runat="server">           
           <ItemTemplate>             
             <section> 
                                                   
@@ -55,11 +56,11 @@
                                 Percipit delicata cu sea, eu mel meis falli pertinax. Malis phaedrum in nec, id sed malis aperiri, ut per feugiat appareat. No aeque facilisi nam. Mei te ullum tacimates voluptatibus, solet labore molestie ex mei, sit ea dictas fastidii. Diam libris pertinacia sea et, et natum solum detracto eum. Et harum impetus scriptorem sit, no graeco dolorum mandamus ius. Partem quaeque ne vim, qui et copiosae recteque euripidis.
 
                     </p>
-                   
-                    <ul style="list-style:none; float:left; text-align:left; ">
-                        <li>Namn</li>
-                        <li>Tid</li>
-                        <li>Pris</li>
+                    
+                    <ul style="list-style:none; float:left; text-align:left;">
+                        <li>Ålder</li>
+                        <li>Behandlar</li>
+                        <li>Behundlar</li>
                     </ul>
                 </div>                 
            </section>

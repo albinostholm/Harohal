@@ -28,8 +28,6 @@
                     </ul>
 
                 </div>
-              <asp:Button ID="Button1" runat="server" Text="Byt lösenord" style="float:left; clear:left;"/>
-              <asp:Button ID="Button2" runat="server" Text="Byt liv" style="float:left; clear:left;"/>
                   <div style="background-color:yellow; float:left;height:auto; width:auto; padding:30px; margin-right:1%; margin-left:4%; border:1px solid black;">
                   <h2>Kommande beställningar</h2>
                     <div style="border:1px solid black;">
@@ -68,6 +66,8 @@
                 </div>
                   
                   <asp:Button ID="Button3" runat="server" Text="Avboka markerade" />
+                                <asp:Button ID="Button1" runat="server" Text="Byt lösenord" style="float:left; clear:left;"/>
+              <asp:Button ID="Button2" runat="server" Text="Byt liv" style="float:left; clear:left;"/>
 
     </div>
     </form>

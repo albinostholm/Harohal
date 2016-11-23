@@ -19,7 +19,9 @@
             </Items>
         </asp:Menu> 
 
-        <asp:Login ID="Login1" runat="server" Height="157px" OnAuthenticate="Login1_Authenticate" Width="302px">
+        <asp:Login ID="Login1" runat="server" Height="157px" OnAuthenticate="Login1_Authenticate" Width="302px" PasswordRequiredErrorMessage="Lösenord krävs för att logga in." UserNameRequiredErrorMessage="Användarnamn behövs för att logga in.">
+            <HyperLinkStyle BorderStyle="Solid" />
+            <FailureTextStyle BackColor="#CC66FF" BorderColor="Red" />
         </asp:Login>
         <asp:LinkButton ID="btnRegister" runat="server" OnClick="btnRegister_Click" Text="Registrera" NavigateUrl="registrera.aspx" />
         <asp:LinkButton ID="btnGlomt" runat="server" OnClick="btnGlomt_Click" Text="Glömt lösenord" NavigateUrl="glomt_losen.aspx" />

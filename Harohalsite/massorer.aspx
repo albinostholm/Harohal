@@ -66,24 +66,7 @@
            </section>
           </ItemTemplate>
         </asp:Repeater>    
-        
-                <asp:Repeater ID="rptMassor" runat="server">           
-                    <ItemTemplate>                                  
-                        <div style="height:100%; width:60%; border-style:solid; border-color:black;">
-                            <img src="image/xd.png" alt="MassörNamn" style="float:left; width:150px; height:150px; margin-top:58px;">
-
-                            <h1 id="namn" style="margin-top:0px; margin-left:160px;"></h1>
-
-                            <p id="description" style="float:right; text-align:left; margin-left:1%;"></p>
-                              
-                            <ul style="list-style:none; float:left; text-align:left;">
-                                <li>Ålder: </li>
-                                <li>Behandlar Män: </li>
-                                <li>Behandlar Kvinnor: </li>
-                            </ul>
-                        </div> 
-                    </ItemTemplate>
-                </asp:Repeater>          
+         
             </form>
 
        

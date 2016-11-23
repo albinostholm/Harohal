@@ -21,8 +21,8 @@
                 <section>
             <div style="float:right;">
                 <p>InsertWireFrameHereoteooteoteote<br />kostnad:INSERTKOSTNADHERE???????</p>
-                <asp:Button ID="Button1" runat="server" Text="Bekräfta bokning" />
-                <asp:Button ID="Button2" runat="server" Text="Avbryt" />
+                <asp:Button ID="Button1" runat="server" Text="Bekräfta bokning" OnClick="Button1_Click" />
+                <asp:Button ID="Button2" runat="server" Text="Avbryt" OnClick="Button2_Click" />
             </div>
         </section>
 
