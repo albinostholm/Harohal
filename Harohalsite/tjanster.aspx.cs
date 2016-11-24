@@ -11,4 +11,14 @@ public partial class index : System.Web.UI.Page
     {
 
     }
+
+    protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+
+    }
+
+    protected void Menu_MenuItemClick(object sender, MenuEventArgs e)
+    {
+
+    }
 }

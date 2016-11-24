@@ -11,4 +11,26 @@ public partial class login : System.Web.UI.Page
     {
 
     }
+
+    protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
+    {
+
+    }
+
+
+
+    protected void btnRegister_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("registrera.aspx");
+    }
+
+    protected void btnMinProfi_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("min_profil.aspx");
+    }
+
+    protected void btnGlomt_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("glomt_losen.aspx");
+    }
 }

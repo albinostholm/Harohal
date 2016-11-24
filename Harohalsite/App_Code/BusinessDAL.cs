@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System.Data;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -7,11 +8,13 @@ using System.Data.SqlClient;
 /// </summary>
 public class BusinessDAL
 {
+    string connStr = ConfigurationManager.ConnectionStrings["HaroHalConnectionString"].ToString();
+
     public BusinessDAL()
     {
     }
 
-    string connStr = ConfigurationManager.ConnectionStrings["HaroHalConnectionString"].ToString();
+    
 
     public DataTable getMassorInfo()
     {
