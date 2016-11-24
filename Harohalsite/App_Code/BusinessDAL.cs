@@ -11,41 +11,29 @@ public class BusinessDAL
     {
     }
 
-    string connStr = ConfigurationManager.ConnectionStrings["HarohalConnectionString"].ToString();
+    string connStr = ConfigurationManager.ConnectionStrings["HaroHalConnectionString"].ToString();
 
-    public massor GetMassorInfo(string id)
+    public DataTable getMassorInfo()
     {
-        massor ma = new massor();
+        DataTable dt = new DataTable();
+        
         //Create a connection
-        SqlConnnection conn = new SqlConnnection(connStr) ;
+        SqlConnection conn = new SqlConnection(connStr);
 
         //The procedure I want to call
-        SqlCommand cmd = new SqlCommand("usp_GetAnstalldInfo", conn);
+        SqlCommand cmd = new SqlCommand("usp_anstallda", conn);
 
         //Command type I want to execute
         cmd.CommandType = CommandType.StoredProcedure;
 
         try
         {
-            //Open connection
+            //cmd.Parameters.AddWithValue("@", 1);
+
             conn.Open();
+            dt.Load(cmd.ExecuteReader());
 
-            //Insert Parameters
-            cmd.Parameters.AddWithValue("@anstalldID", id);
-
-            SqlDataReader reader;
-            reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-                ma.Name = reader["namn"].ToString();
-                ma.Description = reader["beskrivning"].ToString();
-                ma.Age = reader["alder"].ToString();
-                ma.TreatsMen = reader["behandlarMan"].ToString();
-                ma.TreatsWomen = reader["behandlarKvinna"].ToString();
-            }
-
-            return ma;
+            return dt;
         }
         catch
         {
@@ -54,7 +42,7 @@ public class BusinessDAL
         finally
         {
             cmd.Dispose();
-            conn.Clone();
+            conn.Close();
             conn.Dispose();
         }
     }
