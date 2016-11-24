@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="massorer.aspx.cs" Inherits="massorer" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="a_massorer.aspx.cs" Inherits="massorer" %>
 
 <!DOCTYPE html>
 
@@ -32,7 +32,7 @@
                       
                 </div>
                
-        <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">           
+        <asp:Repeater ID="Repeater1" runat="server">           
           <ItemTemplate>
             <section>                                   
                 <div style="display:block; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">

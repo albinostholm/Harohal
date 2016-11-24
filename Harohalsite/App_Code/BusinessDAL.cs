@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿using System.Data;
+using System.Data;
 using System.Configuration;
 using System.Data.SqlClient;
 

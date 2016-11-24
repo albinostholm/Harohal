@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="hem.aspx.cs" Inherits="hem" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="a_hem.aspx.cs" Inherits="a_hem" %>
 
 <!DOCTYPE html>
 
@@ -20,7 +20,7 @@
             </Items>
         </asp:Menu>
 
-       <asp:Repeater ID="Repeater2" runat="server" OnItemCommand="Repeater2_ItemCommand"> 
+       <asp:Repeater ID="Repeater2" runat="server"> 
         <ItemTemplate>
             <div style="background-color:yellow; clear:right;float:right;height:auto; width:30%; padding:30px; border:1px solid black;">
               <h2>Om våra massörer <asp:Button ID="Button1" runat="server" Text="Edit" style="margin-left:220%;" /> </h2>
@@ -37,7 +37,7 @@
                     </ItemTemplate>
                 </asp:Repeater>
 
-          <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">           
+          <asp:Repeater ID="Repeater1" runat="server">           
             <ItemTemplate>
                 <section>                                   
                     <div style="display:inline; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">

@@ -32,7 +32,7 @@
                       
                 </div>
                
-        <asp:Repeater ID="Repeater1" runat="server">           
+        <asp:Repeater ID="repMassor" runat="server">           
           <ItemTemplate>
             <section>                                   
                 <div style="display:block; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">
@@ -51,7 +51,6 @@
                                 Percipit delicata cu sea, eu mel meis falli pertinax. Malis phaedrum in nec, id sed malis aperiri, ut per feugiat appareat. No aeque facilisi nam. Mei te ullum tacimates voluptatibus, solet labore molestie ex mei, sit ea dictas fastidii. Diam libris pertinacia sea et, et natum solum detracto eum. Et harum impetus scriptorem sit, no graeco dolorum mandamus ius. Partem quaeque ne vim, qui et copiosae recteque euripidis.
 
                         <br />
-                        <asp:Button ID="Button2" runat="server" Text="Edit" style="float:right;" />
                     </p>
                     
                     
