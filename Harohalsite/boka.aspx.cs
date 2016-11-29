@@ -52,5 +52,6 @@ public partial class boka : System.Web.UI.Page
     protected void btnBekrafta(object sender, EventArgs e)
     {
         Response.Redirect("bekrafta_bokning.aspx");
+        
     }
 }
