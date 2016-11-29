@@ -56,9 +56,10 @@ public partial class boka : System.Web.UI.Page
         foreach(RepeaterItem item in repTjanster.Items)
         {
             CheckBox cbx = (CheckBox)item.FindControl("cbxTjanst");
+            HiddenField hf = (HiddenField)item.FindControl("hfTjanst");
             if (cbx.Checked == true)
             {
-                i = int.Parse(cbx.Text);
+                i = int.Parse(hf.Value);               
             }          
         }
         return i;
@@ -70,9 +71,10 @@ public partial class boka : System.Web.UI.Page
         foreach (RepeaterItem item in repMassor.Items)
         {
             CheckBox cbx = (CheckBox)item.FindControl("cbxMassor");
+            HiddenField hf = (HiddenField)item.FindControl("hfMassor");
             if (cbx.Checked == true)
             {
-                i = cbx.Text;
+                i = hf.Value;
                 
             }
         }

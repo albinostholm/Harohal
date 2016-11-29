@@ -24,7 +24,8 @@
                 <div style="width:10%; border:1px solid black; float:left;">
                     <h2><%# Eval("namn") %></h2>
                     <p><%# Eval("beskrivning") %></p>
-                    <asp:CheckBox runat="server" ID="cbxMassor"  text='<%# Eval("anstalldID") %>'/>
+                    <asp:CheckBox runat="server" ID="cbxMassor"/>
+                    <asp:HiddenField ID="hfMassor" runat="server" Value='<%# Eval("anstalldID") %>' />
                 </div>
             </ItemTemplate>
         </asp:Repeater>
@@ -35,7 +36,8 @@
                 <div style="width:10%; border:1px solid black; float:left;">
                     <h2><%# Eval("namn") %></h2>
                     <p><%# Eval("beskrivning") %></p>
-                    <asp:CheckBox runat="server" ID="cbxTjanst" text='<%# Eval("tjanstID") %>'/>
+                    <asp:CheckBox runat="server" ID="cbxTjanst"/>
+                    <asp:HiddenField ID="hfTjanst" runat="server" Value='<%# Eval("tjanstID") %>' />
                 </div>
             </ItemTemplate>
         </asp:Repeater>
