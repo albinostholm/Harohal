@@ -18,29 +18,31 @@
             <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="Login.aspx"></asp:MenuItem>
         </Items>
     </asp:Menu>
+    <div>
+        <asp:Repeater runat="server" ID="repMassor">
+            <ItemTemplate>
+                <div style="width:10%; border:1px solid black; float:left;">
+                    <h2><%# Eval("namn") %></h2>
+                    <p><%# Eval("beskrivning") %></p>
+                    <asp:CheckBox ID="cbxMassor" runat="server"/>
+                </div>
+            </ItemTemplate>
+        </asp:Repeater>
+    </div>
+    <div>
+        <asp:Repeater runat="server" ID="repTjanster">
+            <ItemTemplate>
+                <div style="width:10%; border:1px solid black; float:left;">
+                    <h2><%# Eval("namn") %></h2>
+                    <p><%# Eval("beskrivning") %></p>
+                    <asp:CheckBox ID="cbxTjanst" runat="server"/>
+                </div>
+            </ItemTemplate>
+        </asp:Repeater>
+    </div>
 
-    <asp:Repeater runat="server" ID="repMassor">
-        <ItemTemplate>
-            <div style="width:10%; border:1px solid black; float:left;">
-                <h2>Massörer</h2>
-                <p>massage beskrivning</p>
-                <asp:CheckBox ID="CheckBox1" runat="server"/>
-            </div>
-        </ItemTemplate>
-    </asp:Repeater>
-    <asp:Repeater runat="server" ID="repTjanst">
-        <ItemTemplate>
-            <div style="width:10%; border:1px solid black; float:left;">
-                <h2>Massörer</h2>
-                <p>Tjänst beskrivning</p>
-                <asp:CheckBox ID="CheckBox1" runat="server"/>
-            </div>
-        </ItemTemplate>
-    </asp:Repeater>
     <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
-    //valda bokningar typ xd
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
-    <asp:Button ID="Button1" runat="server" Text="Boka" NavigateUrl="bekrafta_bokning.aspx" OnClick="Button1_Click"/>
+    <asp:Button ID="Button1" runat="server" Text="Boka"  OnClick="btnBekrafta"/>
 </form>
 </body>
 </html>
