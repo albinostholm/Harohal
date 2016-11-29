@@ -8,12 +8,12 @@ using System.Web;
 /// </summary>
 public class order
 {
-    int tjanstID { get; set; }
-    string anstalldID { get; set; }
-    string personID { get; set; }
-    DateTime startTid { get; set; }
-    DateTime slutTid { get; set; }
-    int orderStatusID { get; set; }
+    public int tjanstID { get; set; }
+    public string anstalldID { get; set; }
+    public string personID { get; set; }
+    public DateTime startTid { get; set; }
+    public DateTime slutTid { get; set; }
+    public int orderStatusID { get; set; }
     public order()
     {
 

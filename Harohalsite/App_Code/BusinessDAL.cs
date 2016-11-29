@@ -13,6 +13,41 @@ public class BusinessDAL
     {
     }
 
+    public void newOrder(order newO)
+    {
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_newOrder", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+            cmd.Parameters.AddWithValue("@tjanstID", newO.tjanstID);
+            cmd.Parameters.AddWithValue("@anstalldID", newO.anstalldID.ToUpper());         
+            cmd.Parameters.AddWithValue("@personID", newO.personID);
+            cmd.Parameters.AddWithValue("@startTid", newO.startTid);
+            cmd.Parameters.AddWithValue("@slutTid", newO.slutTid);
+            cmd.Parameters.AddWithValue("@orderStatusID", newO.orderStatusID);
+            cmd.Parameters.AddWithValue("@CreatedBy", newO.anstalldID.ToUpper());
+            cmd.ExecuteScalar();
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
+
     public DataTable getMassorInfo()
     {
         DataTable dt = new DataTable();
