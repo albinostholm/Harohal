@@ -8,6 +8,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
             <header></header>
     <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
             <Items>
