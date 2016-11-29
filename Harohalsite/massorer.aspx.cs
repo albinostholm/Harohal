@@ -13,6 +13,7 @@ public partial class massorer : System.Web.UI.Page
         if (!IsPostBack)
         {
             FillMassor();
+            GetOneArtikel();
         }
     }
 
@@ -20,6 +21,15 @@ public partial class massorer : System.Web.UI.Page
     {
         repMassor.DataSource = massorList();
         repMassor.DataBind();
+    }
+
+    private void GetOneArtikel()
+    {
+        BusinessDAL bDAL = new BusinessDAL();
+        artikel art = new artikel();
+        art = bDAL.getArtikelInfo(2);
+        lblRubrik.Text = art.rubrik;
+        litBeskrivning.Text = art.beskrivning;
     }
 
     private DataTable massorList()

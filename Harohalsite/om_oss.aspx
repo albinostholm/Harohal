@@ -21,16 +21,16 @@
         </asp:Menu>
         <section>
             <div style="float:left; width: 60%; height: 150px;">
-                <p>pgq0jiojigqegqeojig Våra lokaler ligger här eksde Hit kan ni hitta vi buss. ji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig 
-                    oji oji gqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig 
-                    oji oji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig 
-                    oji oji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig
-                    oji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig oji 
-                    gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig oji oji gqegqepgq0jiojigqegqeojig
+                
+                    <h2><asp:Label ID="lblRubrik" runat="server" Text="Label"></asp:Label></h2>
+                        <div style="border:1px solid black;">
+                            <asp:Literal ID="litBeskrivning" runat="server"></asp:Literal>
+                        </div>            
+                    
                     <br /> <br />
-                    <p style="font-size:14px">Telefon: 112, Fax: 300, Adress: KukLuxLan </p>
+                    Telefon: 112, Fax: 300, Adress: KukLuxLan
                     <img src="NÅNTINGNÅNTING.png" alt="GOOGLEMAPS" style="height: 175px; width: 375px; float:left; margin-left:10px;"/>
-                </p>
+                
             </div>
         </section>
         <div style="float:right;">

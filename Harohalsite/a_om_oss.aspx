@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="om_oss.aspx.cs" Inherits="om_oss" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="a_om_oss.aspx.cs" Inherits="om_oss" %>
 
 <!DOCTYPE html>
 
@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
 
         <header></header>
-        <asp:Menu ID="Menu" runat="server" orientation="Horizontal" OnMenuItemClick="Menu_MenuItemClick">
+        <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
             <Items>
                 <asp:MenuItem Text="Boka" Value="Boka" NavigateUrl="boka.aspx"></asp:MenuItem>
                 <asp:MenuItem Text="Massörer" Value="Massörer" NavigateUrl="massorer.aspx"></asp:MenuItem>
