@@ -7,42 +7,33 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+<form id="form1" runat="server">
+    <header></header>
+    <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
+        <Items>
+            <asp:MenuItem Text="Boka" Value="Boka" NavigateUrl="boka.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Massörer" Value="Massörer" NavigateUrl="massorer.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Tjänster" Value="Tjänster" NavigateUrl="tjanster.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Om Oss" Value="Om Oss" NavigateUrl="om_oss.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="Login.aspx"></asp:MenuItem>
+        </Items>
+    </asp:Menu>
+    <section>
+        <div style="float:left; width: 60%; height: 150px;">
 
-        <header></header>
-        <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
-            <Items>
-                <asp:MenuItem Text="Boka" Value="Boka" NavigateUrl="boka.aspx"></asp:MenuItem>
-                <asp:MenuItem Text="Massörer" Value="Massörer" NavigateUrl="massorer.aspx"></asp:MenuItem>
-                <asp:MenuItem Text="Tjänster" Value="Tjänster" NavigateUrl="tjanster.aspx"></asp:MenuItem>
-                <asp:MenuItem Text="Om Oss" Value="Om Oss" NavigateUrl="om_oss.aspx"></asp:MenuItem>
-                <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="Login.aspx"></asp:MenuItem>
-            </Items>
-        </asp:Menu>
-        <section>
-            <div style="float:left; width: 60%; height: 150px;">
-                
-                    <h2><asp:Label ID="lblRubrik" runat="server" Text="Label"></asp:Label></h2>
-                        <div style="border:1px solid black;">
-                            <asp:Literal ID="litBeskrivning" runat="server"></asp:Literal>
-                        </div>            
-                    
-                    <br /> <br />
-                    Telefon: 112, Fax: 300, Adress: KukLuxLan
-                    <img src="NÅNTINGNÅNTING.png" alt="GOOGLEMAPS" style="height: 175px; width: 375px; float:left; margin-left:10px;"/>
-                
+            <h2>
+                <asp:Label ID="lblRubrik" runat="server" Text="Label"></asp:Label>
+            </h2>
+            <div style="border:1px solid black;">
+                <asp:Literal ID="litBeskrivning" runat="server"></asp:Literal>
             </div>
-        </section>
-        <div style="float:right;">
-        <asp:Repeater runat="server"> 
-            <ItemTemplate>
-              <img src="inseiiqeqjetqe.png" alt="qgqepogeqpokgeqpoke"/>
-                </ItemTemplate>
-        </asp:Repeater>  
 
-    </div>
-    </form>
-    <p>
-        
+            <br/> <br/>
+            Telefon: 112, Fax: 300, Adress: KukLuxLan
+            <img src="NÅNTINGNÅNTING.png" alt="GOOGLEMAPS"
+                 style="height: 175px; width: 375px; float:left; margin-left:10px;"/>
+        </div>
+    </section>
+</form>
 </body>
 </html>
