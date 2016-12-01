@@ -14,6 +14,7 @@ public partial class boka : System.Web.UI.Page
         {
             FillMassor();
             FillTjanster();
+            FillCalender();
         }
     }
 
@@ -48,6 +49,30 @@ public partial class boka : System.Web.UI.Page
         
        
         return dt;
+    }
+
+    private DataTable calenderEvents(DateTime start)
+    {
+        HiddenField hf = new HiddenField();
+        BusinessDAL bDal = new BusinessDAL();
+        DataTable dt = new DataTable();
+
+        foreach (RepeaterItem item in repMassor.Items)
+        {        
+            HiddenField hf2 = (HiddenField)item.FindControl("hfMassor");
+            hf.Value = hf2.Value;     
+        }
+
+        dt = bDal.getSchedule(start, hf.Value);
+
+        return dt;
+    }
+
+    private void FillCalender()
+    {
+        DayPilotCalendar1.StartDate = DateTime.Now;
+        DayPilotCalendar1.DataSource = calenderEvents(DateTime.Now);
+        DayPilotCalendar1.DataBind();
     }
 
     private int tjanstID()
@@ -96,4 +121,5 @@ public partial class boka : System.Web.UI.Page
         bDal.newOrder(newOrder);
         Response.Redirect("bekrafta_bokning.aspx");
     }
+
 }

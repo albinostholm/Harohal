@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="boka.aspx.cs" Inherits="boka" %>
 
+<%@ Register Assembly="DayPilot" Namespace="DayPilot.Web.Ui" TagPrefix="DayPilot" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -43,7 +45,10 @@
         </asp:Repeater>
     </div>
 
-    <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+    <DayPilot:DayPilotCalendar ID="DayPilotCalendar1" runat="server" Days="6" DataStartField="startTid" DataEndField="slutTid"
+     DataTextField="namn" 
+     DataValueField="schemaID"  style="top: 130px; left: -136px" />
+
     <asp:Button ID="Button1" runat="server" Text="Boka"  OnClick="btnBekrafta"/>
 </form>
 </body>
