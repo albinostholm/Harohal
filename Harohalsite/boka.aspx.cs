@@ -1,20 +1,30 @@
 ﻿using System;
 using System.Data;
 using System.Web.UI;
+using System.Globalization;
 
 public partial class boka : Page
 {
-    int week = 49;
+    static CultureInfo ci = new CultureInfo("sv-SE");
+    static Calendar cal = ci.Calendar;
+    int week = cal.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday) - 1;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
             FillMassor();
             FillTjanster();        
-            FillCalender();                
-        }  
+            FillCalender();
+            weekButtons();
+        }
     }
 
+    private void weekButtons()
+    {
+        deWeek.Text = "Vecka: " + Convert.ToString(week - 1);
+        inWeek.Text = "Vecka: " + Convert.ToString(week + 1);
+        lblWeek.Text = "Vecka: " + Convert.ToString(week);
+    }
     private void FillMassor()
     {
         repMassor.DataSource = massorList();
@@ -83,7 +93,7 @@ public partial class boka : Page
 
         string[] splitTime = input.Split(':');
 
-        DateTime starttime = DateTimeExtensions.FirstDateOfWeekISO8601(2016, 49);
+        DateTime starttime = DateTimeExtensions.FirstDateOfWeekISO8601(2016, week);
 
         if (day.ToLower() == "tuesday")
         {
@@ -131,5 +141,15 @@ public partial class boka : Page
         DayPilotCalendar1.StartDate = DateTimeExtensions.FirstDateOfWeekISO8601(2016, week);
         DayPilotCalendar1.DataSource = calenderEvents(DayPilotCalendar1.StartDate, week + 1);
         DayPilotCalendar1.DataBind();
+    }
+
+    protected void deWeek_Click(object sender, EventArgs e)
+    {
+        week = week - 1;
+    }
+
+    protected void inWeek_Click(object sender, EventArgs e)
+    {
+        week = week + 1;
     }
 }

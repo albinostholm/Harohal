@@ -19,12 +19,7 @@
             <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="Login.aspx"></asp:MenuItem>
         </Items>
     </asp:Menu>
-
-<<<<<<< HEAD
-        <asp:Login ID="Login1" runat="server" Height="157px" OnAuthenticate="Login1_Authenticate"
-=======
     <asp:Login ID="Login1" runat="server" Height="157px" onauthenticate="Login1_Authenticate"
->>>>>>> b8f645cd906b9d78bc5ccc75b6ff544ecadc9e16
                Width="302px" PasswordRequiredErrorMessage="Lösenord krävs för att logga in."
                UserNameRequiredErrorMessage="Användarnamn krävs för att logga in.">
         <HyperLinkStyle BorderStyle="Solid"/>

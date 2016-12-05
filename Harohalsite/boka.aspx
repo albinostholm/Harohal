@@ -68,6 +68,12 @@
     <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
     </div>
 
+    <div style="clear: left; position: center">
+        <asp:Button ID="deWeek" runat="server" Text="Button" OnClick="deWeek_Click" Enabled="true"/>
+        <asp:Label ID="lblWeek" runat="server" Text="Label"></asp:Label>
+        <asp:Button ID="inWeek" runat="server" Text="Button" OnClick="inWeek_Click" Enabled="true" />
+    </div>
+
     <div style="float:left; clear:left">
         <DayPilot:DayPilotCalendar ID="DayPilotCalendar1" runat="server" Days="6" 
          DataStartField="startTid" 
