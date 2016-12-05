@@ -48,7 +48,7 @@ public class BusinessDAL
             conn.Dispose();
         }
     }
-    public DataTable getSchedule(DateTime start, string anstalldID)
+    public DataTable getSchedule(int veckoNR, string anstalldID)
     {
         DataTable dt = new DataTable();
 
@@ -57,17 +57,21 @@ public class BusinessDAL
 
         //The procedure I want to call
         SqlCommand cmd = new SqlCommand("usp_anstalld_schema", conn);
+        SqlCommand cmd2 = new SqlCommand("usp_orders", conn);
 
         //Command type I want to execute
         cmd.CommandType = CommandType.StoredProcedure;
+        cmd2.CommandType = CommandType.StoredProcedure;
 
         try
         {
             conn.Open();
+            cmd2.Parameters.AddWithValue("@anstalldID", anstalldID);
+            cmd2.Parameters.AddWithValue("@vecka", veckoNR);
             cmd.Parameters.AddWithValue("@anstalldID", anstalldID);
-            cmd.Parameters.AddWithValue("@startTid", start);
-            cmd.Parameters.AddWithValue("@slutTid", start.AddDays(6));
+            cmd.Parameters.AddWithValue("@vecka", veckoNR);
             dt.Load(cmd.ExecuteReader());
+            dt.Load(cmd2.ExecuteReader());
             return dt;
         }
         catch
@@ -76,6 +80,7 @@ public class BusinessDAL
         }
         finally
         {
+            cmd2.Dispose();
             cmd.Dispose();
             conn.Close();
             conn.Dispose();

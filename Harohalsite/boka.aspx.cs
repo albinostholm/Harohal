@@ -1,125 +1,135 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
-public partial class boka : System.Web.UI.Page
+public partial class boka : Page
 {
+    int week = 49;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
             FillMassor();
-            FillTjanster();
-            FillCalender();
-        }
+            FillTjanster();        
+            FillCalender();                
+        }  
     }
 
     private void FillMassor()
     {
         repMassor.DataSource = massorList();
         repMassor.DataBind();
+        ddlMassor.DataSource = massorList();
+        ddlMassor.DataTextField = "namn";
+        ddlMassor.DataValueField = "anstalldID";
+        ddlMassor.DataBind();
     }
 
     private void FillTjanster()
     {
         repTjanster.DataSource = tjanstList();
         repTjanster.DataBind();
+        ddlTjanst.DataSource = tjanstList();
+        ddlTjanst.DataTextField = "namn";
+        ddlTjanst.DataValueField = "tid";
+        ddlTjanst.DataMember = "tjanstID";
+        ddlTjanst.DataBind();
     }
 
     private DataTable tjanstList()
     {
         BusinessDAL bDal = new BusinessDAL();
-        DataTable dt = new DataTable();
-
-        dt = bDal.getTjanstInfo();
-
-        return dt;
+        return bDal.getTjanstInfo();
     }
 
     private DataTable massorList()
     {
         BusinessDAL bDal = new BusinessDAL();
-        DataTable dt = new DataTable();
-
-        dt = bDal.getMassorInfo();
-        
-       
-        return dt;
+        return bDal.getMassorInfo();
     }
 
-    private DataTable calenderEvents(DateTime start)
+    private DataTable calenderEvents(DateTime start, int week)
     {
-        HiddenField hf = new HiddenField();
         BusinessDAL bDal = new BusinessDAL();
         DataTable dt = new DataTable();
-
-        foreach (RepeaterItem item in repMassor.Items)
-        {        
-            HiddenField hf2 = (HiddenField)item.FindControl("hfMassor");
-            hf.Value = hf2.Value;     
-        }
-
-        dt = bDal.getSchedule(start, hf.Value);
+        
+        dt = bDal.getSchedule(week, anstalldID());
 
         return dt;
     }
 
     private void FillCalender()
     {
-        DayPilotCalendar1.StartDate = DateTime.Now;
-        DayPilotCalendar1.DataSource = calenderEvents(DateTime.Now);
+        
+        DayPilotCalendar1.StartDate = DateTimeExtensions.FirstDateOfWeekISO8601(2016, week);
+        DayPilotCalendar1.DataSource = calenderEvents(DayPilotCalendar1.StartDate, week + 1);
         DayPilotCalendar1.DataBind();
     }
 
-    private int tjanstID()
-    {
-        int i = 1;
-        foreach(RepeaterItem item in repTjanster.Items)
-        {
-            CheckBox cbx = (CheckBox)item.FindControl("cbxTjanst");
-            HiddenField hf = (HiddenField)item.FindControl("hfTjanst");
-            if (cbx.Checked == true)
-            {
-                i = int.Parse(hf.Value);               
-            }          
-        }
-        return i;
-    }
+    private DateTime tjanstTid() { return DateTime.Parse(ddlTjanst.DataMember); }
 
-    private string anstalldID()
-    {
-        string i = "kappa";
-        foreach (RepeaterItem item in repMassor.Items)
-        {
-            CheckBox cbx = (CheckBox)item.FindControl("cbxMassor");
-            HiddenField hf = (HiddenField)item.FindControl("hfMassor");
-            if (cbx.Checked == true)
-            {
-                i = hf.Value;
-                
-            }
-        }
-        return i;
-    }
+    private int tjanstID() { return int.Parse(ddlTjanst.DataValueField); }
+
+    private string anstalldID() { return ddlMassor.SelectedValue; }
 
     protected void btnBekrafta(object sender, EventArgs e)
     {
         BusinessDAL bDal = new BusinessDAL();
         order newOrder = new order();
 
+        string day = ddlDay.SelectedValue;
+
+        string input = TextBox1.Text.ToString();
+
+        string[] splitTime = input.Split(':');
+
+        DateTime starttime = DateTimeExtensions.FirstDateOfWeekISO8601(2016, 49);
+
+        if (day.ToLower() == "tuesday")
+        {
+            starttime = starttime.AddDays(1);
+        }
+
+        else if (day.ToLower() == "wednesday")
+        {
+            starttime = starttime.AddDays(2);
+        }
+
+        else if (day.ToLower() == "thursday")
+        {
+            starttime = starttime.AddDays(3);
+        }
+
+        else if (day.ToLower() == "friday")
+        {
+            starttime = starttime.AddDays(4);
+        }
+
+        else if (day.ToLower() == "saturday")
+        {
+            starttime = starttime.AddDays(5);
+        }
+
+        starttime = starttime.AddHours(int.Parse(splitTime[0]));
+        starttime = starttime.AddMinutes(int.Parse(splitTime[1]));
+
         newOrder.orderStatusID = 10;
         newOrder.anstalldID = anstalldID();
-        newOrder.personID = "9E0C52CD-9F2C-432C-A6C1-D2475B5315D3";
+        newOrder.personID = "095C51B3-C019-49F4-B80F-E4CEEADA3504";
         newOrder.tjanstID = tjanstID();
-        newOrder.slutTid = DateTime.Today;
-        newOrder.startTid = DateTime.Now;
+
+        newOrder.startTid = starttime;
+        newOrder.slutTid = starttime.AddMinutes(tjanstTid().Minute);
+        
 
         bDal.newOrder(newOrder);
         Response.Redirect("bekrafta_bokning.aspx");
     }
 
+    protected void ddlMassor_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        DayPilotCalendar1.StartDate = DateTimeExtensions.FirstDateOfWeekISO8601(2016, week);
+        DayPilotCalendar1.DataSource = calenderEvents(DayPilotCalendar1.StartDate, week + 1);
+        DayPilotCalendar1.DataBind();
+    }
 }

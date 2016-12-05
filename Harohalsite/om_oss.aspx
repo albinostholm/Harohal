@@ -29,7 +29,7 @@
             </div>
 
             <br/> <br/>
-            Telefon: 112, Fax: 300, Adress: KukLuxLan
+            Telefon: 112, Fax: 300, Adress: Dankvägen 42
             <img src="NÅNTINGNÅNTING.png" alt="GOOGLEMAPS"
                  style="height: 175px; width: 375px; float:left; margin-left:10px;"/>
         </div>
