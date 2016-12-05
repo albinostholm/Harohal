@@ -1,6 +1,7 @@
 using System.Data;
 using System.Configuration;
 using System.Data.SqlClient;
+using System;
 
 /// <summary>
 /// Summary description for BusinessDAL
@@ -78,6 +79,40 @@ public class BusinessDAL
             conn.Close();
             conn.Dispose();
         }
+    }
+    public DataTable getSchedule(DateTime start, string anstalldID)
+    {
+        DataTable dt = new DataTable();
+
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_anstalld_schema", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+            cmd.Parameters.AddWithValue("@anstalldID", anstalldID);
+            cmd.Parameters.AddWithValue("@startTid", start);
+            cmd.Parameters.AddWithValue("@slutTid", start.AddDays(6));
+            dt.Load(cmd.ExecuteReader());
+            return dt;
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+        
     }
 
     public DataTable getMassorInfo()
