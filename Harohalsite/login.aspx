@@ -19,9 +19,9 @@
     </Items>
 </asp:Menu>
 
-    <asp:Login ID="Login1" runat="server" Height="157px" OnAuthenticate="Login1_Authenticate"
+    <asp:Login ID="Login1" runat="server" Height="157px" onauthenticate="Login1_Authenticate"
                Width="302px" PasswordRequiredErrorMessage="Lösenord krävs för att logga in."
-               UserNameRequiredErrorMessage="Användarnamn behövs för att logga in.">
+               UserNameRequiredErrorMessage="Användarnamn krävs för att logga in.">
         <HyperLinkStyle BorderStyle="Solid"/>
         <FailureTextStyle BackColor="#DBDBDB" BorderColor="Red"/>
     </asp:Login>
