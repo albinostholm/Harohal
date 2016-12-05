@@ -14,6 +14,38 @@ public class BusinessDAL
     {
     }
 
+    public string LogIn(anvandare a)
+    {
+        // Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+        // Name of the Procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_Login", conn);
+        // Type of commad I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+        try
+        {
+            // Open the connection to the database
+            conn.Open();
+            // Insert the Parameter to the procedure
+            cmd.Parameters.AddWithValue("@losenord", a.Password);
+            cmd.Parameters.AddWithValue("@username", a.Epost);
+            // Execute the procedure and return an Integer
+             return cmd.ExecuteScalar().ToString();
+        }
+        catch
+        {
+            // If error
+            throw;
+        }
+        finally
+        {
+            // Close and dispose all connections to the databse
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
+
     public void newOrder(order newO)
     {
         //Create a connection
