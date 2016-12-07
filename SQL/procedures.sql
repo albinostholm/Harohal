@@ -3,7 +3,7 @@ GO
 
 /****** Object:  StoredProcedure [dbo].[usp_nyheter]    Script Date: 2016-11-18 13:22:57 ******/
 
-/***NYHETER, h‰mtar nyhetsid, rubrik,beskrivning och om nyheten ‰r publicerade eller inte och n‰r. Proceduren h‰mtar bara publicerade nyheter   ***/
+/***NYHETER, h√§mtar nyhetsid, rubrik,beskrivning och om nyheten √§r publicerade eller inte och n√§r. Proceduren h√§mtar bara publicerade nyheter   ***/
 SET ANSI_NULLS ON
 GO
 
@@ -11,7 +11,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE Procedure [dbo].[usp_nyheter]
-ASÂ
+AS√•
 SELECT top 5 
              [nyhetsID]
 			,[rubrik]
@@ -30,7 +30,7 @@ GO
 
 /****** Object:  StoredProcedure [dbo].[usp_artikel]    Script Date: 2016-11-18 13:24:30 ******/
 
-/***ARTIKEL, h‰mtar rubrik och beskrivning, Proceduren h‰mtar artikel efter angiven parameter(artikelID)  ***/
+/***ARTIKEL, h√§mtar rubrik och beskrivning, Proceduren h√§mtar artikel efter angiven parameter(artikelID)  ***/
 SET ANSI_NULLS ON
 GO
 
@@ -38,7 +38,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE Procedure [dbo].[usp_artikel] @artikelID int
-ASÂ
+AS√•
 SELECT  
              [rubrik]
 			,[beskrivning]
@@ -55,7 +55,7 @@ USE [harohal]
 GO
 
 /****** Object:  StoredProcedure [dbo].[usp_anstallda]    Script Date: 2016-11-18 13:27:23 ******/
-/***ARTIKEL, h‰mtar rubrik och beskrivning, Proceduren h‰mtar artikel efter angiven parameter(artikelID)  ***/
+/***ARTIKEL, h√§mtar rubrik och beskrivning, Proceduren h√§mtar artikel efter angiven parameter(artikelID)  ***/
 SET ANSI_NULLS ON
 GO
 
@@ -63,7 +63,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE Procedure [dbo].[usp_anstallda]
-ASÂ
+AS√•
 SELECT  
              [namn]
 			,[beskrivning]
@@ -83,7 +83,7 @@ USE [harohal]
 GO
 
 /****** Object:  StoredProcedure [dbo].[usp_annonsorer]    Script Date: 2016-11-18 13:44:49 ******/
-/*** Annonsˆrer. h‰mtar namn beskrivning och l‰nk till sidan. Proceduren h‰mtar annonsˆr efter angiven parameter(annonsorID)  ***/
+/*** Annons√∂rer. h√§mtar namn beskrivning och l√§nk till sidan. Proceduren h√§mtar annons√∂r efter angiven parameter(annonsorID)  ***/
 SET ANSI_NULLS ON
 GO
 
@@ -91,7 +91,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE Procedure [dbo].[usp_annonsorer] @annonsorID int
-ASÂ
+AS√•
 SELECT  
              [namn]
 			,[beskrivning]
@@ -110,7 +110,7 @@ USE [harohal]
 GO
 
 /****** Object:  StoredProcedure [dbo].[usp_tjanster]    Script Date: 2016-11-18 13:47:29 ******/
-/*** tj‰nster. h‰mtar namn beskrivning och pris pÂ alla tillg‰ngliga tj‰nster.   ***/
+/*** tj√§nster. h√§mtar namn beskrivning och pris p√• alla tillg√§ngliga tj√§nster.   ***/
 SET ANSI_NULLS ON
 GO
 
@@ -118,7 +118,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE Procedure [dbo].[usp_tjanster]
-ASÂ
+AS√•
 SELECT  
              [namn]
 			,[beskrivning]
@@ -135,6 +135,46 @@ FROM tjanster
 GO
 
 
+USE [harohal]
+GO
+/****** Object:  StoredProcedure [dbo].[usp_login]    Script Date: 2016-12-06 11:14:09 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+/*
+=======================================================================
+Procedure Name..........: dbo.usp_login
+Parameters..............: username, password
+Return Value............: userID
+Database................: T4
+Server..................: Harohal
+Date....................: 2016-12-01
+By......................: Linus Beckman, Erik Sandberg
+Used On.................: Webbokning
+Components..............: 
+Changed Date, By........: -null-
+Change..................: -null-
+=======================================================================
+Description.............: Gets input from the user and compares it with 
+........................: the existing data, if it exists then return userid
+=======================================================================
+*/
+
+ALTER Procedure [dbo].[usp_login] @losenord nvarchar(64), @username nvarchar(100)
+AS
+
+BEGIN
+	DECLARE @PersonId varchar(36) = ''
+
+	SELECT @PersonId = personid					
+	FROM personer
+	WHERE @losenord = losenord 
+	AND mail = @username;
+
+	SELECT @PersonId AS PersonId					
+
+END
 
 
 
@@ -143,5 +183,64 @@ GO
 
 
 
+USE [harohal]
+GO
+/****** Object:  StoredProcedure [dbo].[usp_createUser]    Script Date: 2016-12-06 11:14:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+--Author: Linus Beckman
+--Created 2016-12-06 08:50:56
+--Looks if the user already exists in the database, if it does then dont create, otherwise create.
+ALTER PROCEDURE [dbo].[usp_createUser]
+    @ForNamn        NVARCHAR(100), 
+    @EfterNamn      NVARCHAR(100), 
+    @mail			NVARCHAR(100), 
+    @Personnr       CHAR(13), 
+    @losenord       NVARCHAR(64),  
+	@Nyhetsbrev		bit,
+	@TarFaktura		bit
+
+	AS 
+
+	DECLARE 
+	@varCountNbr int
+
+    BEGIN
+        SELECT @varCountNbr = COUNT(1)
+        FROM Personer
+        WHERE  @mail = mail
+		OR @Personnr = personnr
+
+        IF  @varCountNbr = 0
+		BEGIN
+			INSERT INTO [dbo].[personer]
+           ([fornamn]
+           ,[efternamn]
+           ,[personnr]
+           ,[mail]
+           ,[losenord]
+           ,[nyhetsbrev]
+           ,[tarFaktura]
+           ,[anstalld]
+		   ,[registreringsDatum]
+		   ,[maxSkuld]
+		   ,[CreatedBy])
+     VALUES
+           (@ForNamn
+           ,@efternamn
+           ,@personnr
+           ,@mail
+           ,@losenord
+           ,@nyhetsbrev
+           ,@tarFaktura
+           ,0
+		   ,GETDATE()
+		   ,null
+		   ,CAST('B14BC077-F1DF-457C-9F7E-7CB9E0BC1CF9' AS UNIQUEIDENTIFIER))
+		END
+    END;
 
 
