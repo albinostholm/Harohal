@@ -18,7 +18,6 @@
             <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="Login.aspx"></asp:MenuItem>
         </Items>
     </asp:Menu>
-    <asp:ChangePassword ID="ChangePassword1" runat="server" Height="154px" Width="410px"></asp:ChangePassword>
 </form>
 </body>
 </html>

@@ -46,6 +46,92 @@ public class BusinessDAL
         }
     }
 
+    public string CreateUser(anvandare a)
+    {
+        // Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+        // Name of the Procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_createUser", conn);
+        // Type of commad I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+        try
+        {
+            // Open the connection to the database
+            conn.Open();
+            // Insert the Parameter to the procedure
+            cmd.Parameters.AddWithValue("@ForNamn", a.FirstName);
+            cmd.Parameters.AddWithValue("@EfterNamn", a.LastName);
+            cmd.Parameters.AddWithValue("@mail", a.Epost);
+            cmd.Parameters.AddWithValue("@Personnr", a.ssn);
+            cmd.Parameters.AddWithValue("@losenord", a.Password);
+            cmd.Parameters.AddWithValue("@Nyhetsbrev", 0);
+            cmd.Parameters.AddWithValue("@tarFaktura", 0);
+            // Execute the procedure and return an integer
+            return cmd.ExecuteScalar().ToString();
+        }
+        catch
+        {
+            // If error
+            throw;
+        }
+        finally
+        {
+            // Close and dispose all connections to the databse
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
+
+    public anvandare getUserData(string userID)
+    {
+
+        anvandare user = new anvandare();
+
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_getUserData", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+
+            cmd.Parameters.AddWithValue("@userID", userID);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                user.FirstName = reader["fornamn"].ToString();
+                user.LastName = reader["efternamn"].ToString();
+                user.ssn = reader["personnr"].ToString();
+                user.Epost = reader["mail"].ToString();
+                user.newsletter = reader["nyhetsbrev"].ToString();
+
+            }
+
+            return user;
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
+
+    //private void ExecuteInsert(string fname, string fam_name, string password, string gender, string age, string address)
+
+
     public void newOrder(order newO)
     {
         //Create a connection
