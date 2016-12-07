@@ -1,29 +1,40 @@
 ﻿using System;
 using System.Data;
 using System.Web.UI;
-using System.Globalization;
 
 public partial class boka : Page
-{
-    static CultureInfo ci = new CultureInfo("sv-SE");
-    static Calendar cal = ci.Calendar;
-    int week = cal.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday) - 1;
+{  
     protected void Page_Load(object sender, EventArgs e)
     {
+       
         if (!IsPostBack)
         {
+            week.Value = DayPilot.Utils.Week.WeekNrISO8601(DateTime.Now).ToString();
             FillMassor();
             FillTjanster();        
             FillCalender();
             weekButtons();
         }
+
+        if (IsPostBack)
+        {
+            weekButtons();
+            FillCalender();
+        }
     }
 
     private void weekButtons()
     {
-        deWeek.Text = "Vecka: " + Convert.ToString(week - 1);
-        inWeek.Text = "Vecka: " + Convert.ToString(week + 1);
-        lblWeek.Text = "Vecka: " + Convert.ToString(week);
+        
+        deWeek.Text = "Vecka: " + (int.Parse(week.Value) - 1).ToString();
+        inWeek.Text = "Vecka: " + (int.Parse(week.Value) + 1).ToString();
+        lblWeek.Text = "Vecka: " + week.Value;
+
+        if (int.Parse(week.Value) < 1)
+            deWeek.Text = "Vecka: " + 52.ToString();
+
+        if (int.Parse(week.Value) > 52)
+            deWeek.Text = "Vecka: " + 1.ToString();
     }
     private void FillMassor()
     {
@@ -40,9 +51,8 @@ public partial class boka : Page
         repTjanster.DataSource = tjanstList();
         repTjanster.DataBind();
         ddlTjanst.DataSource = tjanstList();
-        ddlTjanst.DataTextField = "namn";
-        ddlTjanst.DataValueField = "tid";
-        ddlTjanst.DataMember = "tjanstID";
+        ddlTjanst.DataValueField = "tjanstID";
+        ddlTjanst.DataTextField = "namn";   
         ddlTjanst.DataBind();
     }
 
@@ -71,14 +81,22 @@ public partial class boka : Page
     private void FillCalender()
     {
         
-        DayPilotCalendar1.StartDate = DateTimeExtensions.FirstDateOfWeekISO8601(2016, week);
-        DayPilotCalendar1.DataSource = calenderEvents(DayPilotCalendar1.StartDate, week + 1);
+        DayPilotCalendar1.StartDate = DateTimeExtensions.FirstDateOfWeekISO8601(2016, int.Parse(week.Value));
+        DayPilotCalendar1.DataSource = calenderEvents(DayPilotCalendar1.StartDate, int.Parse(week.Value) + 1);
         DayPilotCalendar1.DataBind();
     }
 
-    private DateTime tjanstTid() { return DateTime.Parse(ddlTjanst.DataMember); }
+    private int tjanstID() {
+        int id = int.Parse(ddlTjanst.SelectedValue);
+        return id;
+    }
 
-    private int tjanstID() { return int.Parse(ddlTjanst.DataValueField); }
+    private int tjanstTid() {
+        BusinessDAL bDal = new BusinessDAL();
+        int tid = bDal.getTjanstTid(tjanstID());
+
+        return tid;
+    }
 
     private string anstalldID() { return ddlMassor.SelectedValue; }
 
@@ -93,7 +111,7 @@ public partial class boka : Page
 
         string[] splitTime = input.Split(':');
 
-        DateTime starttime = DateTimeExtensions.FirstDateOfWeekISO8601(2016, week);
+        DateTime starttime = DateTimeExtensions.FirstDateOfWeekISO8601(2016, int.Parse(week.Value));
 
         if (day.ToLower() == "tuesday")
         {
@@ -129,27 +147,34 @@ public partial class boka : Page
         newOrder.tjanstID = tjanstID();
 
         newOrder.startTid = starttime;
-        newOrder.slutTid = starttime.AddMinutes(tjanstTid().Minute);
+        newOrder.slutTid = starttime.AddMinutes(tjanstTid());
         
 
-        bDal.newOrder(newOrder);
-        Response.Redirect("bekrafta_bokning.aspx");
+        if (bDal.newOrder(newOrder) == 1)
+        {
+            Response.Redirect("bekrafta_bokning.aspx");
+        }
+
     }
 
     protected void ddlMassor_SelectedIndexChanged(object sender, EventArgs e)
     {
-        DayPilotCalendar1.StartDate = DateTimeExtensions.FirstDateOfWeekISO8601(2016, week);
-        DayPilotCalendar1.DataSource = calenderEvents(DayPilotCalendar1.StartDate, week + 1);
+        DayPilotCalendar1.StartDate = DateTimeExtensions.FirstDateOfWeekISO8601(2016, int.Parse(week.Value));
+        DayPilotCalendar1.DataSource = calenderEvents(DayPilotCalendar1.StartDate, int.Parse(week.Value) + 1);
         DayPilotCalendar1.DataBind();
     }
 
     protected void deWeek_Click(object sender, EventArgs e)
     {
-        week = week - 1;
+        week.Value = (int.Parse(week.Value) - 1).ToString();
+        if (int.Parse(week.Value) < 1)
+            week.Value = 52.ToString();
     }
 
     protected void inWeek_Click(object sender, EventArgs e)
     {
-        week = week + 1;
+        week.Value = (int.Parse(week.Value) + 1).ToString();
+        if (int.Parse(week.Value) > 52)
+            week.Value = 0.ToString();
     }
 }

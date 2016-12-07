@@ -30,7 +30,7 @@ public class BusinessDAL
             cmd.Parameters.AddWithValue("@losenord", a.Password);
             cmd.Parameters.AddWithValue("@username", a.Epost);
             // Execute the procedure and return an Integer
-             return cmd.ExecuteScalar().ToString();
+            return cmd.ExecuteScalar().ToString();
         }
         catch
         {
@@ -46,7 +46,7 @@ public class BusinessDAL
         }
     }
 
-    public void newOrder(order newO)
+    public int newOrder(order newO)
     {
         //Create a connection
         SqlConnection conn = new SqlConnection(connStr);
@@ -67,7 +67,8 @@ public class BusinessDAL
             cmd.Parameters.AddWithValue("@slutTid", newO.slutTid);
             cmd.Parameters.AddWithValue("@orderStatusID", newO.orderStatusID);
             cmd.Parameters.AddWithValue("@CreatedBy", newO.anstalldID.ToUpper());
-            cmd.ExecuteScalar();
+
+            return Convert.ToInt16(cmd.ExecuteScalar());     
         }
         catch
         {
@@ -119,7 +120,45 @@ public class BusinessDAL
         }
         
     }
+    public int getTjanstTid(int id)
+    {
+        int tid = 0;
 
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_getTjanstTid", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+
+            cmd.Parameters.AddWithValue("@tjanstID", id);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                tid = int.Parse(reader["tid"].ToString());
+            }
+
+            return tid;
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
     public DataTable getMassorInfo()
     {
         DataTable dt = new DataTable();

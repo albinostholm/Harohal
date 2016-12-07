@@ -23,7 +23,7 @@
             </Items>
         </asp:Menu>
     </div>
-
+    <asp:HiddenField runat="server" ID="week"/>
     <div style="clear:left">
         <asp:Repeater runat="server" ID="repMassor">
             <ItemTemplate>
@@ -36,7 +36,9 @@
         </asp:Repeater>
     </div>
 
-     <asp:DropDownList ID="ddlMassor" runat="server" OnSelectedIndexChanged="ddlMassor_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+     <asp:DropDownList ID="ddlMassor" runat="server" OnSelectedIndexChanged="ddlMassor_SelectedIndexChanged" AutoPostBack="true">
+         
+     </asp:DropDownList>
 
     <div style="clear:left">
         <asp:Repeater runat="server" ID="repTjanster">
