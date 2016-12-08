@@ -31,17 +31,18 @@ public partial class registrera : System.Web.UI.Page
 
 
     protected void btnRegistrera_Click(object sender, EventArgs e)
-    { 
+    {
+
         string newUserId;
         BusinessDAL bd = new BusinessDAL();
         anvandare anv = new anvandare();
 
-        anv.FirstName = tb_FaMname.ToString();
-        anv.LastName = tb_lname.ToString();
-        anv.Epost = tb_email.ToString();
-        anv.ssn = tb_ssn.ToString();
-        anv.Password = tb_pw.ToString();
-        anv.newsletter = cb_newsletter.ToString();
+        anv.FirstName = tb_FaMname.Text.ToString();
+        anv.LastName = tb_lname.Text.ToString();
+        anv.Epost = tb_email.Text.ToString();
+        anv.ssn = tb_ssn.Text.ToString();
+        anv.Password = tb_pw.Text.ToString();
+        anv.newsletter = cb_newsletter.Text.ToString();
 
 
 
@@ -49,7 +50,7 @@ public partial class registrera : System.Web.UI.Page
         if (cvPassword.IsValid)
         {
             newUserId = bd.CreateUser(anv);
-           // ShowUserdata(NewUserId);
+            //ShowUserdata("ss");
         }
 
 
@@ -68,7 +69,7 @@ public partial class registrera : System.Web.UI.Page
         panRegistrera.Visible = false;
         panAfter.Visible = true;
         tbShowFirstName.Text = "NU VISAR VI EFTER REGISTRERA";
-        
+
     }
 
 }
