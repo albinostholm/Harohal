@@ -6,7 +6,6 @@ public partial class boka : Page
 {  
     protected void Page_Load(object sender, EventArgs e)
     {
-       
         if (!IsPostBack)
         {
             week.Value = DayPilot.Utils.Week.WeekNrISO8601(DateTime.Now).ToString();
@@ -15,27 +14,38 @@ public partial class boka : Page
             FillCalender();
             weekButtons();
         }
-
-        if (IsPostBack)
-        {
-            weekButtons();
-            FillCalender();
-        }
     }
 
     private void weekButtons()
     {
-        
         deWeek.Text = "Vecka: " + (int.Parse(week.Value) - 1).ToString();
         inWeek.Text = "Vecka: " + (int.Parse(week.Value) + 1).ToString();
         lblWeek.Text = "Vecka: " + week.Value;
 
-        if (int.Parse(week.Value) < 1)
+        if (int.Parse(week.Value) == 1)
             deWeek.Text = "Vecka: " + 52.ToString();
 
-        if (int.Parse(week.Value) > 52)
-            deWeek.Text = "Vecka: " + 1.ToString();
+        if (int.Parse(week.Value) == 52)
+            inWeek.Text = "Vecka: " + 1.ToString();
     }
+    protected void deWeek_Click(object sender, EventArgs e)
+    {
+        week.Value = (int.Parse(week.Value) - 1).ToString();
+        if (int.Parse(week.Value) < 1)
+            week.Value = 52.ToString();
+        weekButtons();
+        FillCalender();
+    }
+
+    protected void inWeek_Click(object sender, EventArgs e)
+    {
+        week.Value = (int.Parse(week.Value) + 1).ToString();
+        if (int.Parse(week.Value) > 52)
+            week.Value = 1.ToString();
+        weekButtons();
+        FillCalender();
+    }
+
     private void FillMassor()
     {
         repMassor.DataSource = massorList();
@@ -164,17 +174,5 @@ public partial class boka : Page
         DayPilotCalendar1.DataBind();
     }
 
-    protected void deWeek_Click(object sender, EventArgs e)
-    {
-        week.Value = (int.Parse(week.Value) - 1).ToString();
-        if (int.Parse(week.Value) < 1)
-            week.Value = 52.ToString();
-    }
-
-    protected void inWeek_Click(object sender, EventArgs e)
-    {
-        week.Value = (int.Parse(week.Value) + 1).ToString();
-        if (int.Parse(week.Value) > 52)
-            week.Value = 0.ToString();
-    }
+    
 }
