@@ -50,7 +50,7 @@ public partial class registrera : System.Web.UI.Page
         if (cvPassword.IsValid)
         {
             newUserId = bd.CreateUser(anv);
-            //ShowUserdata("ss");
+            ShowUserdata(newUserId);
         }
 
         Response.Redirect("hem.aspx");

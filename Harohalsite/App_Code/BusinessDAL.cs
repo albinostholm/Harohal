@@ -162,7 +162,6 @@ public class BusinessDAL
         }
     }
 
-    //private void ExecuteInsert(string fname, string fam_name, string password, string gender, string age, string address)
 
 
 
