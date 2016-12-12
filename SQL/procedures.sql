@@ -244,3 +244,29 @@ ALTER PROCEDURE [dbo].[usp_createUser]
     END;
 
 
+
+
+
+
+
+
+--Author: Linus Beckman
+--Created 2016-12-11 08:40:00
+--Takes new mail and new password as in parameter. Then inserts the data into the table where the mail given is located.
+CREATE PROCEDURE [dbo].[usp_RestorePassword]
+    @mail			NVARCHAR(100), 
+    @losenord       NVARCHAR(64) 
+
+	AS
+	BEGIN
+		SET NOCOUNT ON;
+		SELECT mail,losenord
+		FROM Personer
+		WHERE @mail = mail
+
+		UPDATE losenord
+		set losenord = @losenord
+		WHERE mail = @mail;
+		
+	END
+
