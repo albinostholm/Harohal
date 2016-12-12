@@ -53,9 +53,10 @@ public partial class registrera : System.Web.UI.Page
             //ShowUserdata("ss");
         }
 
+        Response.Redirect("hem.aspx");
 
 
-        
+
 
 
     }
