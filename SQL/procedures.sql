@@ -265,4 +265,6 @@ CREATE PROCEDURE [dbo].[usp_RestorePassword]
 		set losenord = @losenord
 		WHERE mail = @mail;
 		
+		SELECT 1
+		
 	END
