@@ -157,13 +157,12 @@ public partial class boka : Page
         newOrder.tjanstID = tjanstID();
 
         newOrder.startTid = starttime;
-        newOrder.slutTid = starttime.AddMinutes(tjanstTid());
-        
+        newOrder.slutTid = starttime.AddMinutes(tjanstTid() - 1);
+
 
         if (bDal.newOrder(newOrder) == 1)
-        {
             Response.Redirect("bekrafta_bokning.aspx");
-        }
+        
 
     }
 

@@ -156,7 +156,7 @@ public class BusinessDAL
             cmd.Parameters.AddWithValue("@orderStatusID", newO.orderStatusID);
             cmd.Parameters.AddWithValue("@CreatedBy", newO.anstalldID.ToUpper());
 
-            return Convert.ToInt16(cmd.ExecuteScalar());     
+            return cmd.ExecuteNonQuery();
         }
         catch
         {
