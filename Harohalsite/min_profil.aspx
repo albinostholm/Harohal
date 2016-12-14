@@ -19,18 +19,27 @@
                 <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="Login.aspx"></asp:MenuItem>
             </Items>
         </asp:Menu>
-        <div style="display:block; float:left; padding:1em; border:1px solid black; margin-bottom:1.5%; ">
-            <ul>
-                <li>Namn:</li>
-                <li>Adress:</li>
-                <li>Kontakt:</li>
-                <li>Mail:</li>
-            </ul>
-        </div>
 
-        <asp:Button ID="Button3" runat="server" Text="Avboka markerade"/>
-        <asp:Button ID="Button1" runat="server" Text="Byt lösenord" style="float:left; clear:left;"/>
-        <asp:Button ID="Button2" runat="server" Text="Byt liv" style="float:left; clear:left;"/>
+        <asp:BulletedList ID="blInfo" runat="server">
+            <asp:ListItem>Namn: </asp:ListItem>
+            <asp:ListItem>Mail: </asp:ListItem>
+            <asp:ListItem>Address: </asp:ListItem>
+            <asp:ListItem>Telefonnr: </asp:ListItem>
+            <asp:ListItem>Personnr: </asp:ListItem>
+        </asp:BulletedList>
+
+        <asp:Repeater ID="rptBokningar" runat="server">
+            <ItemTemplate>
+                <asp:literal ID="litMassor" runat="server">Massör: </asp:literal>
+                <asp:literal ID="litTjanst" runat="server">Tjänst: </asp:literal>
+                <asp:literal ID="litStarttid" runat="server">Starttid: </asp:literal>
+                <asp:literal ID="litSluttid" runat="server">Slutttid: </asp:literal>        
+                <asp:CheckBox ID="cbxBokning" runat="server"></asp:CheckBox>
+            </ItemTemplate>         
+        </asp:Repeater>
+
+        <asp:Button ID="btnAvboka" runat="server" Text="Avboka markerade" style="float:right;"/>
+        <asp:Button ID="btnBytLosen" runat="server" Text="Byt lösenord" style="float:right;"/>
     </div>
 </form>
 </body>
