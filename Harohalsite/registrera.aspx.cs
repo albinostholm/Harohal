@@ -50,27 +50,8 @@ public partial class registrera : System.Web.UI.Page
         if (cvPassword.IsValid)
         {
             newUserId = bd.CreateUser(anv);
-            ShowUserdata(newUserId);
+            Response.Redirect("min_profil.aspx");
         }
-
-     
-
-
-
-
-
-    }
-
-    protected void ShowUserdata(string UserId)
-    {
-        BusinessDAL bd = new BusinessDAL();
-        anvandare anv = new anvandare();
-        anv = bd.getUserData(UserId);
-        
-        panRegistrera.Visible = false;
-        panAfter.Visible = true;
-        tbShowFirstName.Text = "NU VISAR VI EFTER REGISTRERA";
-
     }
 
 }
