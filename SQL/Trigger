@@ -24,3 +24,19 @@ FROM Inserted I
     SET UpdatedDate = GETDATE()
 	WHERE Personid = @PersonID
 END
+
+
+
+--Author Linus Beckman
+--Created 2016-12-15:13:50
+
+ALTER TRIGGER dbo.Personer_InsertTrigger
+ON dbo.Personer
+FOR INSERT
+AS
+BEGIN
+   SELECT personID
+   FROM inserted;
+END;
+GO
+
