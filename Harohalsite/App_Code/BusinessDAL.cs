@@ -125,7 +125,7 @@ public class BusinessDAL
         SqlConnection conn = new SqlConnection(connStr);
 
         //The procedure I want to call
-        SqlCommand cmd = new SqlCommand("usp_getUserData", conn);
+        SqlCommand cmd = new SqlCommand("usp_getUserInfo", conn);
 
         //Command type I want to execute
         cmd.CommandType = CommandType.StoredProcedure;
@@ -134,7 +134,7 @@ public class BusinessDAL
         {
             conn.Open();
 
-            cmd.Parameters.AddWithValue("@userID", userID);
+            cmd.Parameters.AddWithValue("@personid", userID);
 
             SqlDataReader reader = cmd.ExecuteReader();
 

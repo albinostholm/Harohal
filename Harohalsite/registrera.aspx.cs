@@ -53,7 +53,7 @@ public partial class registrera : System.Web.UI.Page
             ShowUserdata(newUserId);
         }
 
-        Response.Redirect("hem.aspx");
+     
 
 
 

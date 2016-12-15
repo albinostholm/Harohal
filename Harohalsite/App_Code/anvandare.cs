@@ -17,10 +17,4 @@ public class anvandare
     public string newsletter { get; set; }
     public DateTime CreatedDate { get; set; }
 
-    public anvandare()
-    {
-
-    }
-
-
 }
