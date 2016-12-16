@@ -28,7 +28,7 @@ public partial class min_profil : System.Web.UI.Page
         BusinessDAL bDal = new BusinessDAL();
         DataTable dt = new DataTable();
 
-        dt = bDal.getUserOrders("095C51B3-C019-49F4-B80F-E4CEEADA3504");
+        dt = bDal.getUserOrders(Session["userid"].ToString());
 
         foreach (DataColumn dc in dt.Columns)
         {
@@ -53,7 +53,7 @@ public partial class min_profil : System.Web.UI.Page
     {
         BusinessDAL bDAL = new BusinessDAL();
         anvandare user = new anvandare();
-        user = bDAL.getUserData("095C51B3-C019-49F4-B80F-E4CEEADA3504");
+        user = bDAL.getUserData(Session["userid"].ToString());
         namn.Text += user.FirstName + " " + user.LastName;
         mail.Text += user.Epost;
         ssn.Text += user.ssn;

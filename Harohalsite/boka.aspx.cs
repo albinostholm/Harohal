@@ -153,7 +153,7 @@ public partial class boka : Page
 
         newOrder.orderStatusID = 10;
         newOrder.anstalldID = anstalldID();
-        newOrder.personID = "095C51B3-C019-49F4-B80F-E4CEEADA3504";
+        newOrder.personID = Session["userid"].ToString();
         newOrder.tjanstID = tjanstID();
 
         newOrder.startTid = starttime;
@@ -173,5 +173,10 @@ public partial class boka : Page
         DayPilotCalendar1.DataBind();
     }
 
-    
+
+
+    protected void TextBox1_TextChanged(object sender, EventArgs e)
+    {
+
+    }
 }
