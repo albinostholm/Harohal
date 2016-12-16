@@ -9,7 +9,10 @@ public partial class login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["userid"].ToString() != null)
+        {
+            
+        }
     }
 
 
@@ -40,7 +43,8 @@ public partial class login : System.Web.UI.Page
         {
             Session.Add("userId", sUserId);
             e.Authenticated = true;
-            Response.Redirect("hem.aspx");
+            Session["userid"].ToString();
+            Response.Redirect("min_profil.aspx");
         }
         else
         {
