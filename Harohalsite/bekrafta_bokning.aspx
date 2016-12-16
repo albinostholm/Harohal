@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="bekrafta_bokning.aspx.cs" Inherits="bekrafta_bokning" %>
 
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -21,26 +23,24 @@
     <section>
         <div style="float:right;">
             <p>InsertWireFrameHere<br/>kostnad:INSERTKOSTNAD</p>
-            <asp:Button ID="Button1" runat="server" Text="Bekräfta bokning" OnClick="Button1_Click"/>
-            <asp:Button ID="Button2" runat="server" Text="Avbryt" OnClick="Button2_Click"/>
+            <asp:Button ID="btnBekrafta" runat="server" Text="Bekräfta bokning" OnClick="btnBekrafta_Click" />
+            <asp:Button ID="btnAvbryt" runat="server" Text="Avbryt" OnClick="btnAvbryt_Click"/>
         </div>
     </section>
 
-    <asp:Repeater ID="RepOrder" runat="server">
+    <asp:Repeater ID="rptOrder" runat="server">
         <ItemTemplate>
-            <div style="border: 1px solid black;display:inline-block; width:25%; float:left; clear:left;">
-                <img src="massörellerngtvetintevaderiktänktesig.bildjävel"
-                     alt="massörellerngtvetintevaderiktänktesig.bildjävel"/>
-                <h2>Bokningar</h2>
-                <ul style="list-style:none;">
-                    <li>Fotmassage</li>
-                    <li>MASSÖR</li>
-                    <li>DATUM</li>
-                    <li>TID</li>
-                </ul>
-
-            </div>
-        </ItemTemplate>
+            <div style="display:block; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; "> 
+                <h2>Bokning</h2>
+                    <ul style="list-style:none; float:left; text-align:left; margin-left: 0px;">
+                        <li>Massör: <%# Eval("MassorNamn") %></li>
+                        <li>Tjänst: <%# Eval("TjanstNamn") %></li>
+                        <li>Datum: <%# Eval("Datum") %></li>
+                        <li>Starttid: <%# Eval("startTid") %></li>
+                        <li>Sluttid: <%# Eval("slutTid") %></li>
+                    </ul>
+                </div>
+            </ItemTemplate>         
     </asp:Repeater>
 </form>
 </body>

@@ -12,13 +12,13 @@ public partial class bekrafta_bokning : System.Web.UI.Page
 
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void btnAvbryt_Click(object sender, EventArgs e)
     {
 
     }
 
-    protected void Button2_Click(object sender, EventArgs e)
+    protected void btnBekrafta_Click(object sender, EventArgs e)
     {
-        
+
     }
 }
