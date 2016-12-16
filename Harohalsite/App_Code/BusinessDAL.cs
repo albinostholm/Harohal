@@ -112,6 +112,41 @@ public class BusinessDAL
             conn.Dispose();
         }
     }
+
+    public DataTable getOneUserOrder(string userID)
+    {
+        DataTable dt = new DataTable();
+
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_getOneUserOrder", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+
+            cmd.Parameters.AddWithValue("@personid", userID);
+
+            dt.Load(cmd.ExecuteReader());
+
+            return dt;
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
     public string CreateUser(anvandare a)
     {
         // Create a connection

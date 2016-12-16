@@ -39,6 +39,7 @@
                         <li>Starttid: <%# Eval("startTid") %></li>
                         <li>Sluttid: <%# Eval("slutTid") %></li>
                     </ul>
+                <asp:HiddenField ID="hfOrderID" runat="server" Value='<%# Eval("orderID") %>' />
                 </div>
             </ItemTemplate>         
     </asp:Repeater>
