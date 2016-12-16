@@ -20,13 +20,9 @@
             </Items>
         </asp:Menu>
 
-        <asp:BulletedList ID="blInfo" runat="server">
-            <asp:ListItem>Namn: </asp:ListItem>
-            <asp:ListItem>Mail: </asp:ListItem>
-            <asp:ListItem>Address: </asp:ListItem>
-            <asp:ListItem>Telefonnr: </asp:ListItem>
-            <asp:ListItem>Personnr: </asp:ListItem>
-        </asp:BulletedList>
+        <asp:Literal runat="server" ID="namn">Namn: </asp:Literal><br/>
+        <asp:Literal runat="server" ID="ssn">Personnr: </asp:Literal><br/>
+        <asp:Literal runat="server" ID="mail">Email: </asp:Literal><br/>
 
         <asp:Repeater ID="rptBokningar" runat="server">
             <ItemTemplate>
@@ -39,7 +35,7 @@
         </asp:Repeater>
 
         <asp:Button ID="btnAvboka" runat="server" Text="Avboka markerade" style="float:right;"/>
-        <asp:Button ID="btnBytLosen" runat="server" Text="Byt lösenord" style="float:right;"/>
+        <asp:Button ID="btnBytLosen" runat="server" Text="Byt lösenord" style="float:right;" OnClick="btnBytLosen_Click"/>
     </div>
 </form>
 </body>

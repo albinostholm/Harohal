@@ -118,7 +118,6 @@ public class BusinessDAL
 
     public anvandare getUserData(string userID)
     {
-
         anvandare user = new anvandare();
 
         //Create a connection
@@ -144,8 +143,6 @@ public class BusinessDAL
                 user.LastName = reader["efternamn"].ToString();
                 user.ssn = reader["personnr"].ToString();
                 user.Epost = reader["mail"].ToString();
-                user.newsletter = reader["nyhetsbrev"].ToString();
-
             }
 
             return user;
