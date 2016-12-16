@@ -46,7 +46,72 @@ public class BusinessDAL
         }
     }
 
+    public void updateOrderStatusID(int orderStatusID, string orderID)
+    {
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
 
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_orderStatusID", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+
+            cmd.Parameters.AddWithValue("@orderID", orderID);
+            cmd.Parameters.AddWithValue("@orderstatusID", orderStatusID);
+
+            cmd.ExecuteScalar();
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
+
+    public DataTable getUserOrders(string userID)
+    {
+        DataTable dt = new DataTable();
+
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_getUserOrders", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+
+            cmd.Parameters.AddWithValue("@personid", userID);
+
+            dt.Load(cmd.ExecuteReader());
+
+            return dt;
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
     public string CreateUser(anvandare a)
     {
         // Create a connection

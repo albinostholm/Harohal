@@ -26,15 +26,21 @@
 
         <asp:Repeater ID="rptBokningar" runat="server">
             <ItemTemplate>
-                <asp:literal ID="litMassor" runat="server">Massör: </asp:literal>
-                <asp:literal ID="litTjanst" runat="server">Tjänst: </asp:literal>
-                <asp:literal ID="litStarttid" runat="server">Starttid: </asp:literal>
-                <asp:literal ID="litSluttid" runat="server">Slutttid: </asp:literal>        
-                <asp:CheckBox ID="cbxBokning" runat="server"></asp:CheckBox>
+                <div style="display:block; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">
+                    <ul style="list-style:none; float:left; text-align:left; margin-left: 0px;">
+                        <li>Massör: <%# Eval("MassorNamn") %></li>
+                        <li>Tjänst: <%# Eval("TjanstNamn") %></li>
+                        <li>Datum: <%# Eval("Datum") %></li>
+                        <li>Starttid: <%# Eval("startTid") %></li>
+                        <li>Sluttid: <%# Eval("slutTid") %></li>
+                    </ul>
+                    <asp:CheckBox ID="cbxAvboka" runat="server" Text="Avboka" style="float:right"/>
+                    <asp:HiddenField ID="hfOrderID" runat="server" Value='<%# Eval("orderID") %>' />
+                </div>
             </ItemTemplate>         
         </asp:Repeater>
 
-        <asp:Button ID="btnAvboka" runat="server" Text="Avboka markerade" style="float:right;"/>
+        <asp:Button ID="btnAvboka" runat="server" Text="Avboka markerade" style="float:right;" OnClick="btnAvboka_Click"/>
         <asp:Button ID="btnBytLosen" runat="server" Text="Byt lösenord" style="float:right;" OnClick="btnBytLosen_Click"/>
     </div>
 </form>
