@@ -47,7 +47,7 @@ public partial class registrera : System.Web.UI.Page
 
 
 
-        if (cvPassword.IsValid)
+        if (cvPassword.IsValid && cb_avtal.Checked)
         {
             newUserId = bd.CreateUser(anv);
             Response.Redirect("min_profil.aspx");

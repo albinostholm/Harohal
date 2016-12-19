@@ -9,7 +9,6 @@ public partial class glomt_losen : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session.Add("userid", "Userid88");
     }
 
 
