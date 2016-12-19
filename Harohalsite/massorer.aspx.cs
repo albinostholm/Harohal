@@ -17,12 +17,14 @@ public partial class massorer : System.Web.UI.Page
         }
     }
 
+    //Fyller repeatern med massörinfo
     private void FillMassor()
     {
         repMassor.DataSource = massorList();
         repMassor.DataBind();
     }
 
+    //Hämtar artikeln för massörer och skriver ut den
     private void GetOneArtikel()
     {
         BusinessDAL bDAL = new BusinessDAL();
@@ -32,6 +34,7 @@ public partial class massorer : System.Web.UI.Page
         litBeskrivning.Text = art.beskrivning;
     }
 
+    //Hämtar massörinfo
     private DataTable massorList()
     {
         BusinessDAL bDal = new BusinessDAL();

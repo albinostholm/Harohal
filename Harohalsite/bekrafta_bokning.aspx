@@ -1,16 +1,15 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="bekrafta_bokning.aspx.cs" Inherits="bekrafta_bokning" %>
 
-<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Bekräfta bokningar</title>
 </head>
 <body>
 <form id="form1" runat="server">
-    <header></header>
+    <h1>Bekräfta din nya bokning</h1>
+
     <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
         <Items>
             <asp:MenuItem Text="Boka" Value="Boka" NavigateUrl="boka.aspx"></asp:MenuItem>
@@ -20,28 +19,27 @@
             <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="Login.aspx"></asp:MenuItem>
         </Items>
     </asp:Menu>
-    <section>
-        <div style="float:right;">
-            <p>InsertWireFrameHere<br/>kostnad:INSERTKOSTNAD</p>
-            <asp:Button ID="btnBekrafta" runat="server" Text="Bekräfta bokning" OnClick="btnBekrafta_Click" />
-            <asp:Button ID="btnAvbryt" runat="server" Text="Avbryt" OnClick="btnAvbryt_Click"/>
-        </div>
-    </section>
+
+    <div style="float:right;">
+        <p>TODO lägg till kostnad</p><br/>
+        <asp:Button ID="btnBekrafta" runat="server" Text="Bekräfta bokning" OnClick="btnBekrafta_Click"/>
+        <asp:Button ID="btnAvbryt" runat="server" Text="Avbryt" OnClick="btnAvbryt_Click"/>
+    </div>
 
     <asp:Repeater ID="rptOrder" runat="server">
         <ItemTemplate>
-            <div style="display:block; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; "> 
+            <div style="display:block; clear:left; float:left;border:1px solid black;">
                 <h2>Bokning</h2>
-                    <ul style="list-style:none; float:left; text-align:left; margin-left: 0px;">
-                        <li>Massör: <%# Eval("MassorNamn") %></li>
-                        <li>Tjänst: <%# Eval("TjanstNamn") %></li>
-                        <li>Datum: <%# Eval("Datum") %></li>
-                        <li>Starttid: <%# Eval("startTid") %></li>
-                        <li>Sluttid: <%# Eval("slutTid") %></li>
-                    </ul>
-                <asp:HiddenField ID="hfOrderID" runat="server" Value='<%# Eval("orderID") %>' />
-                </div>
-            </ItemTemplate>         
+                <ul style="float:left;">
+                    <li>Massör: <%# Eval("MassorNamn") %></li>
+                    <li>Tjänst: <%# Eval("TjanstNamn") %></li>
+                    <li>Datum: <%# Eval("Datum") %></li>
+                    <li>Starttid: <%# Eval("startTid") %></li>
+                    <li>Sluttid: <%# Eval("slutTid") %></li>
+                </ul>
+                <asp:HiddenField ID="hfOrderID" runat="server" Value='<%# Eval("orderID") %>'/>
+            </div>
+        </ItemTemplate>
     </asp:Repeater>
 </form>
 </body>

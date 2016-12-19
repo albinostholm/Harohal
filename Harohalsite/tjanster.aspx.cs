@@ -17,12 +17,14 @@ public partial class index : System.Web.UI.Page
         }
     }
 
+    //Fyller ut repeatern med tjänstinfo
     private void FillTjanster()
     {
         repTjanster.DataSource = tjanstList();
         repTjanster.DataBind();
     }
 
+    //Hämtar tjänstinfo
     private DataTable tjanstList()
     {
         BusinessDAL bDal = new BusinessDAL();
@@ -33,6 +35,7 @@ public partial class index : System.Web.UI.Page
         return dt;
     }
 
+    //Hämtar artikeln om tjänster
     private void GetOneArtikel()
     {
         BusinessDAL bDAL = new BusinessDAL();

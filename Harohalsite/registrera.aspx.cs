@@ -8,28 +8,11 @@ using System.Web.UI.WebControls;
 public partial class registrera : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
-    {
-
-       
+    { 
 
     }
 
-    protected void CreateUserWizard1_CreatedUser(object sender, EventArgs e)
-    {
-    }
-
-    protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
-    {
-
-    }
-
-
-    protected void CreateUserWizard1_CreatedUser1(object sender, EventArgs e)
-    {
-
-    }
-
-
+    //Lägger in en ny användare i databasen ifall allt går igenom validering
     protected void btnRegistrera_Click(object sender, EventArgs e)
     {
 
@@ -44,10 +27,7 @@ public partial class registrera : System.Web.UI.Page
         anv.Password = tb_pw.Text.ToString();
         anv.newsletter = cb_newsletter.Text.ToString();
 
-
-
-
-        if (cvPassword.IsValid)
+        if (cvPassword.IsValid && cb_avtal.Checked)
         {
             newUserId = bd.CreateUser(anv);
             Response.Redirect("min_profil.aspx");

@@ -15,7 +15,7 @@ public partial class bekrafta_bokning : System.Web.UI.Page
             FillOrder();
         }
     }
-
+    //Hämtar ut bokningen du precis gjorde på boka.aspx
     protected DataTable order()
     {
         BusinessDAL bDal = new BusinessDAL();
@@ -42,17 +42,20 @@ public partial class bekrafta_bokning : System.Web.UI.Page
         return dt;
     }
 
+    //Fyller repeatern med din bokning
     protected void FillOrder()
     {
         rptOrder.DataSource = order();
         rptOrder.DataBind();
     }
 
+    //Avbryter bekräftningen och tar dig tillbaka till bokningsidan
     protected void btnAvbryt_Click(object sender, EventArgs e)
     {
         Response.Redirect("boka.aspx");
     }
 
+    //Bekräftar bokningen så att den syns på scheman och liknande
     protected void btnBekrafta_Click(object sender, EventArgs e)
     {
         BusinessDAL bDAL = new BusinessDAL();

@@ -17,12 +17,14 @@ public partial class min_profil : System.Web.UI.Page
         }  
     }
 
+    //Fyller ut repeatern med dina ordrar
     protected void FillOrdrar()
     {
         rptBokningar.DataSource = orders();
         rptBokningar.DataBind();
     }
 
+    //Hämtar dina ordrar
     protected DataTable orders()
     {
         BusinessDAL bDal = new BusinessDAL();
@@ -49,21 +51,24 @@ public partial class min_profil : System.Web.UI.Page
         return dt;
     }
 
+    //Hämtar användarens info och skriver ut den
     private void GetUserData()
     {
         BusinessDAL bDAL = new BusinessDAL();
         anvandare user = new anvandare();
         user = bDAL.getUserData(Session["userid"].ToString());
-        namn.Text += user.FirstName + " " + user.LastName;
-        mail.Text += user.Epost;
-        ssn.Text += user.ssn;
+        litNamn.Text += user.FirstName + " " + user.LastName;
+        litMail.Text += user.Epost;
+        litSsn.Text += user.ssn;
     }
 
+    //Redirectar dig till glomt_losen.aspx
     protected void btnBytLosen_Click(object sender, EventArgs e)
     {
         Response.Redirect("glomt_losen.aspx");
     }
 
+    //Avbokar de markerade ordrarna
     protected void btnAvboka_Click(object sender, EventArgs e)
     {
         int x = 40;

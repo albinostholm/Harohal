@@ -10,8 +10,10 @@
 </head>
 <body>
 <form id="form1" runat="server">
-    
-    <header></header>
+    <asp:HiddenField runat="server" ID="hfWeek"/>
+
+    <h1>Boka en ny tid!</h1>
+
     <div style="float:left; clear:left">
         <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
             <Items>
@@ -23,72 +25,72 @@
             </Items>
         </asp:Menu>
     </div>
-    <asp:HiddenField runat="server" ID="week"/>
+
     <div style="clear:left">
         <asp:Repeater runat="server" ID="repMassor">
             <ItemTemplate>
                 <div style="width:10%; border:1px solid black; float:left;">
                     <h2><%# Eval("namn") %></h2>
                     <p><%# Eval("beskrivning") %></p>
-                    <asp:HiddenField ID="hfMassor" runat="server" Value='<%# Eval("anstalldID") %>' />
+                    <asp:HiddenField ID="hfMassor" runat="server" Value='<%# Eval("anstalldID") %>'/>
                 </div>
             </ItemTemplate>
         </asp:Repeater>
     </div>
 
-     <asp:DropDownList ID="ddlMassor" runat="server" OnSelectedIndexChanged="ddlMassor_SelectedIndexChanged" AutoPostBack="true">
-         
-     </asp:DropDownList>
+    <asp:DropDownList ID="ddlMassor" runat="server" OnSelectedIndexChanged="ddlMassor_SelectedIndexChanged"
+                      AutoPostBack="true">
+
+    </asp:DropDownList>
 
     <div style="clear:left">
         <asp:Repeater runat="server" ID="repTjanster">
             <ItemTemplate>
                 <div style="width:10%; border:1px solid black; float:left;">
                     <h2><%# Eval("namn") %></h2>
-                    <p><%# Eval("beskrivning") %></p>       
+                    <p><%# Eval("beskrivning") %></p>
                 </div>
             </ItemTemplate>
         </asp:Repeater>
     </div>
-    
-   <asp:DropDownList ID="ddlTjanst" runat="server"></asp:DropDownList>
+
+    <asp:DropDownList ID="ddlTjanst" runat="server"></asp:DropDownList>
 
     <div style="float:left; clear:left; padding:10px">
-    <label>Vilken dag vill do boka på? </label>
-    <asp:DropDownList ID="ddlDay" runat="server">
-        <asp:ListItem Text="Mån" Value="Monday"></asp:ListItem>
-        <asp:ListItem Text="Tis" Value="Tuesday"></asp:ListItem>
-        <asp:ListItem Text="Ons" Value="Wednesday"></asp:ListItem>
-        <asp:ListItem Text="Tor" Value="Thursday"></asp:ListItem>
-        <asp:ListItem Text="Fre" Value="Friday"></asp:ListItem>
-        <asp:ListItem Text="Lör" Value="Saturday"></asp:ListItem>
-    </asp:DropDownList>
+        <label>Vilken dag vill do boka på? </label>
+        <asp:DropDownList ID="ddlDay" runat="server">
+            <asp:ListItem Text="Mån" Value="Monday"></asp:ListItem>
+            <asp:ListItem Text="Tis" Value="Tuesday"></asp:ListItem>
+            <asp:ListItem Text="Ons" Value="Wednesday"></asp:ListItem>
+            <asp:ListItem Text="Tor" Value="Thursday"></asp:ListItem>
+            <asp:ListItem Text="Fre" Value="Friday"></asp:ListItem>
+            <asp:ListItem Text="Lör" Value="Saturday"></asp:ListItem>
+        </asp:DropDownList>
     </div>
-    
+
     <div style="float:left; padding:10px">
-    <label>Skriv tiden du vill börja(HH:MM): </label>
-    <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+        <label>Skriv tiden du vill börja(HH:MM): </label>
+        <asp:TextBox ID="tbTime" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
     </div>
 
     <div style="clear: left; position: center">
-        <asp:Button ID="deWeek" runat="server" OnClick="deWeek_Click" Enabled="true"/>
+        <asp:Button ID="btnDeWeek" runat="server" OnClick="btnDeWeek_Click" Enabled="true"/>
         <asp:Label ID="lblWeek" runat="server"></asp:Label>
-        <asp:Button ID="inWeek" runat="server" OnClick="inWeek_Click" Enabled="true" />
+        <asp:Button ID="btnInWeek" runat="server" OnClick="btnInWeek_Click" Enabled="true"/>
     </div>
 
     <div style="float:left; clear:left">
-        <DayPilot:DayPilotCalendar ID="DayPilotCalendar1" runat="server" Days="6" 
-         DataStartField="startTid" 
-         DataEndField="slutTid"
-         DataTextField="namn" 
-         DataValueField="schemaID"
-         style="top: 130px; left: -136px" 
-           />
+        <DayPilot:DayPilotCalendar ID="DayPilotCalendar1" runat="server" Days="6"
+                                   DataStartField="startTid"
+                                   DataEndField="slutTid"
+                                   DataTextField="namn"
+                                   DataValueField="schemaID"
+                                   style="top: 130px; left: -136px"/>
     </div>
 
     <div style="float:left; clear:left">
-        <asp:Button ID="Button1" runat="server" Text="Boka"  OnClick="btnBekrafta" style="float:left"/>
+        <asp:Button ID="Button1" runat="server" Text="Boka" OnClick="btnBekrafta" style="float:left"/>
     </div>
-</form>  
+</form>
 </body>
 </html>

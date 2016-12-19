@@ -9,18 +9,9 @@ public partial class glomt_losen : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session.Add("userid", "Userid88");
     }
 
-
-
-
-
-    protected void tbEpost_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
+    //Byter lösenord för den givna användaren
     protected void btnBytLosen_Click(object sender, EventArgs e)
     {
         BusinessDAL bd = new BusinessDAL();

@@ -15,6 +15,7 @@ public partial class om_oss : System.Web.UI.Page
         }
     }
 
+    //Hämtar artikelinfo för om oss sidan
     private void GetOneArtikel()
     {
         BusinessDAL bDAL = new BusinessDAL();

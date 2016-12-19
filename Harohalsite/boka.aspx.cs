@@ -8,7 +8,8 @@ public partial class boka : Page
     {
         if (!IsPostBack)
         {
-            week.Value = DayPilot.Utils.Week.WeekNrISO8601(DateTime.Now).ToString();
+            //Sätter så att schemat visar dagens vecka
+            hfWeek.Value = DayPilot.Utils.Week.WeekNrISO8601(DateTime.Now).ToString();
             FillMassor();
             FillTjanster();        
             FillCalender();
@@ -16,36 +17,41 @@ public partial class boka : Page
         }
     }
 
+    //Hanterar texten på knapparna för att byta vecka
     private void weekButtons()
     {
-        deWeek.Text = "Vecka: " + (int.Parse(week.Value) - 1).ToString();
-        inWeek.Text = "Vecka: " + (int.Parse(week.Value) + 1).ToString();
-        lblWeek.Text = "Vecka: " + week.Value;
+        btnDeWeek.Text = "Vecka: " + (int.Parse(hfWeek.Value) - 1).ToString();
+        btnInWeek.Text = "Vecka: " + (int.Parse(hfWeek.Value) + 1).ToString();
+        lblWeek.Text = "Vecka: " + hfWeek.Value;
 
-        if (int.Parse(week.Value) == 1)
-            deWeek.Text = "Vecka: " + 52.ToString();
+        if (int.Parse(hfWeek.Value) == 1)
+            btnDeWeek.Text = "Vecka: " + 52.ToString();
 
-        if (int.Parse(week.Value) == 52)
-            inWeek.Text = "Vecka: " + 1.ToString();
+        if (int.Parse(hfWeek.Value) == 52)
+            btnInWeek.Text = "Vecka: " + 1.ToString();
     }
-    protected void deWeek_Click(object sender, EventArgs e)
+
+    //Sänker veckonummret
+    protected void btnDeWeek_Click(object sender, EventArgs e)
     {
-        week.Value = (int.Parse(week.Value) - 1).ToString();
-        if (int.Parse(week.Value) < 1)
-            week.Value = 52.ToString();
+        hfWeek.Value = (int.Parse(hfWeek.Value) - 1).ToString();
+        if (int.Parse(hfWeek.Value) < 1)
+            hfWeek.Value = 52.ToString();
         weekButtons();
         FillCalender();
     }
 
-    protected void inWeek_Click(object sender, EventArgs e)
+    //Ökar veckonummret
+    protected void btnInWeek_Click(object sender, EventArgs e)
     {
-        week.Value = (int.Parse(week.Value) + 1).ToString();
-        if (int.Parse(week.Value) > 52)
-            week.Value = 1.ToString();
+        hfWeek.Value = (int.Parse(hfWeek.Value) + 1).ToString();
+        if (int.Parse(hfWeek.Value) > 52)
+            hfWeek.Value = 1.ToString();
         weekButtons();
         FillCalender();
     }
 
+    //Fyller repeatern och dropdownlisten med massörinfo
     private void FillMassor()
     {
         repMassor.DataSource = massorList();
@@ -56,6 +62,7 @@ public partial class boka : Page
         ddlMassor.DataBind();
     }
 
+    //Fyller repeatern och dropdownlisten med tjänstinfo
     private void FillTjanster()
     {
         repTjanster.DataSource = tjanstList();
@@ -66,18 +73,21 @@ public partial class boka : Page
         ddlTjanst.DataBind();
     }
 
+    //Hämtar tjänstinfo
     private DataTable tjanstList()
     {
         BusinessDAL bDal = new BusinessDAL();
         return bDal.getTjanstInfo();
     }
 
+    //Hämtar massörinfo
     private DataTable massorList()
     {
         BusinessDAL bDal = new BusinessDAL();
         return bDal.getMassorInfo();
     }
 
+    //Hämtar alla schemaevent, bokningar och tillgängliga tider
     private DataTable calenderEvents(DateTime start, int week)
     {
         BusinessDAL bDal = new BusinessDAL();
@@ -88,19 +98,21 @@ public partial class boka : Page
         return dt;
     }
 
+    //Fyller kalendern med bokningarna för den aktiva veckan
     private void FillCalender()
     {
-        
-        DayPilotCalendar1.StartDate = DateTimeExtensions.FirstDateOfWeekISO8601(2016, int.Parse(week.Value));
-        DayPilotCalendar1.DataSource = calenderEvents(DayPilotCalendar1.StartDate, int.Parse(week.Value) + 1);
+        DayPilotCalendar1.StartDate = DateTimeExtensions.FirstDateOfWeekISO8601(2016, int.Parse(hfWeek.Value));
+        DayPilotCalendar1.DataSource = calenderEvents(DayPilotCalendar1.StartDate, int.Parse(hfWeek.Value) + 1);
         DayPilotCalendar1.DataBind();
     }
 
+    //Returnerar id't för den valda tjänsten
     private int tjanstID() {
         int id = int.Parse(ddlTjanst.SelectedValue);
         return id;
     }
 
+    //Returnerar tiden för den valda tjänsten
     private int tjanstTid() {
         BusinessDAL bDal = new BusinessDAL();
         int tid = bDal.getTjanstTid(tjanstID());
@@ -108,8 +120,10 @@ public partial class boka : Page
         return tid;
     }
 
+    //Returnerar id't för den valda massören
     private string anstalldID() { return ddlMassor.SelectedValue; }
 
+    //Lägger in din order och skickar dig till bekrafta_bokning.aspx
     protected void btnBekrafta(object sender, EventArgs e)
     {
         BusinessDAL bDal = new BusinessDAL();
@@ -117,11 +131,11 @@ public partial class boka : Page
 
         string day = ddlDay.SelectedValue;
 
-        string input = TextBox1.Text.ToString();
+        string input = tbTime.Text.ToString();
 
         string[] splitTime = input.Split(':');
 
-        DateTime starttime = DateTimeExtensions.FirstDateOfWeekISO8601(2016, int.Parse(week.Value));
+        DateTime starttime = DateTimeExtensions.FirstDateOfWeekISO8601(2016, int.Parse(hfWeek.Value));
 
         if (day.ToLower() == "tuesday")
         {
@@ -166,17 +180,11 @@ public partial class boka : Page
 
     }
 
+    //Laddar om schemat ifall man byter massör
     protected void ddlMassor_SelectedIndexChanged(object sender, EventArgs e)
     {
-        DayPilotCalendar1.StartDate = DateTimeExtensions.FirstDateOfWeekISO8601(2016, int.Parse(week.Value));
-        DayPilotCalendar1.DataSource = calenderEvents(DayPilotCalendar1.StartDate, int.Parse(week.Value) + 1);
+        DayPilotCalendar1.StartDate = DateTimeExtensions.FirstDateOfWeekISO8601(2016, int.Parse(hfWeek.Value));
+        DayPilotCalendar1.DataSource = calenderEvents(DayPilotCalendar1.StartDate, int.Parse(hfWeek.Value) + 1);
         DayPilotCalendar1.DataBind();
-    }
-
-
-
-    protected void TextBox1_TextChanged(object sender, EventArgs e)
-    {
-
     }
 }
