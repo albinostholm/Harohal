@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 public partial class boka : Page
 {  
@@ -14,6 +15,34 @@ public partial class boka : Page
             FillTjanster();        
             FillCalender();
             weekButtons();
+            updateMenu();
+        }
+    }
+
+    //Updaterar navigeringsmenyn beroende på ifall man är inloggad
+    private void updateMenu()
+    {
+        if (Session.Count > 0)
+        {
+            foreach (MenuItem mItem in Menu.Items)
+            {
+                if (mItem.Text == "Logga in")
+                {
+                    mItem.Text = "Min Profil";
+                    mItem.NavigateUrl = "min_profil.aspx";
+                }
+            }
+        }
+        else
+        {
+            foreach (MenuItem mItem in Menu.Items)
+            {
+                if (mItem.Text == "Min Profil")
+                {
+                    mItem.Text = "Logga In";
+                    mItem.NavigateUrl = "login.aspx";
+                }
+            }
         }
     }
 

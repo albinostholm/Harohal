@@ -70,7 +70,7 @@
 
     <div style="float:left; padding:10px">
         <label>Skriv tiden du vill börja(HH:MM): </label>
-        <asp:TextBox ID="tbTime" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+        <asp:TextBox ID="tbTime" runat="server"></asp:TextBox>
     </div>
 
     <div style="clear: left; position: center">

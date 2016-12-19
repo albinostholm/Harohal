@@ -22,7 +22,7 @@
 
     <p>Epost</p>
 
-    <asp:TextBox ID="tbEpost" runat="server" OnTextChanged="tbEpost_TextChanged"></asp:TextBox>
+    <asp:TextBox ID="tbEpost" runat="server"></asp:TextBox>
 
     <p> Nytt Lösenord</p>
 

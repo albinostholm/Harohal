@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class index : System.Web.UI.Page
@@ -14,6 +10,34 @@ public partial class index : System.Web.UI.Page
         {
             GetOneArtikel();
             FillTjanster();
+            updateMenu();
+        }
+    }
+
+    //Updaterar navigeringsmenyn beroende på ifall man är inloggad
+    private void updateMenu()
+    {
+        if (Session.Count > 0)
+        {
+            foreach (MenuItem mItem in Menu.Items)
+            {
+                if (mItem.Text == "Logga in")
+                {
+                    mItem.Text = "Min Profil";
+                    mItem.NavigateUrl = "min_profil.aspx";
+                }
+            }
+        }
+        else
+        {
+            foreach (MenuItem mItem in Menu.Items)
+            {
+                if (mItem.Text == "Min Profil")
+                {
+                    mItem.Text = "Logga In";
+                    mItem.NavigateUrl = "login.aspx";
+                }
+            }
         }
     }
 
