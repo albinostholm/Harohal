@@ -18,7 +18,17 @@
             <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="Login.aspx"></asp:MenuItem>
         </Items>
     </asp:Menu>
-    <asp:ChangePassword ID="ChangePassword1" runat="server" Height="154px" Width="410px"></asp:ChangePassword>
+    <p>Epost</p>
+    <asp:TextBox ID="tbEpost" runat="server" OnTextChanged="tbEpost_TextChanged"></asp:TextBox>
+
+    <p> Nytt Lösenord</p>
+    <asp:TextBox ID="tbpw" runat="server"></asp:TextBox>
+    
+    <asp:CompareValidator ID="cvPassword" runat="server" ErrorMessage="Olika lösenord" ControlToCompare="tbpw" ControlToValidate="tbPw2"></asp:CompareValidator>
+    
+    <p>Nytt lösenord igen</p>
+    <asp:TextBox ID="tbPw2" runat="server"></asp:TextBox><br />
+    <asp:Button ID="btnBytLosen" runat="server" Text="Byt Lösenord" OnClick="btnBytLosen_Click" />
 </form>
 </body>
 </html>

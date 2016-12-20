@@ -1,0 +1,42 @@
+USE [harohal]
+GO
+/****** Object:  Trigger [dbo].[trPersoner_AfterUpdate]    Script Date: 2016-12-06 11:17:42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Linus Beckman
+-- Create date: 2016-12-06
+-- Description:	Updates the column "updatedDate" when a change is done in table
+-- =============================================
+ALTER TRIGGER [dbo].[trPersoner_AfterUpdate]
+   ON  [dbo].[personer] 
+   AFTER UPDATE
+AS 
+BEGIN
+
+	DECLARE @personId UNIQUEIDENTIFIER
+	SELECT @personId = I.PersonId
+FROM Inserted I
+
+	UPDATE Personer
+    SET UpdatedDate = GETDATE()
+	WHERE Personid = @PersonID
+END
+
+
+
+--Author Linus Beckman
+--Created 2016-12-15:13:50
+
+ALTER TRIGGER dbo.Personer_InsertTrigger
+ON dbo.Personer
+FOR INSERT
+AS
+BEGIN
+   SELECT personID
+   FROM inserted;
+END;
+GO
+

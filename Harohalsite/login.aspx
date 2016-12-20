@@ -7,9 +7,10 @@
     <title></title>
 </head>
 <body>
-<header></header>
+
 <form id="login_form" runat="server">
-    <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
+    <header></header>
+<asp:Menu ID="Menu" runat="server" orientation="Horizontal">
         <Items>
             <asp:MenuItem Text="Boka" Value="Boka" NavigateUrl="boka.aspx"></asp:MenuItem>
             <asp:MenuItem Text="Massörer" Value="Massörer" NavigateUrl="massorer.aspx"></asp:MenuItem>
@@ -18,19 +19,16 @@
             <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="Login.aspx"></asp:MenuItem>
         </Items>
     </asp:Menu>
-
-    <asp:Login ID="Login1" runat="server" Height="157px" OnAuthenticate="Login1_Authenticate" Width="302px"
-               PasswordRequiredErrorMessage="Lösenord krävs för att logga in."
-               UserNameRequiredErrorMessage="Användarnamn behövs för att logga in.">
+    <asp:Login ID="Login1" runat="server" Height="157px" onauthenticate="Login1_Authenticate"
+               Width="302px" PasswordRequiredErrorMessage="Lösenord krävs för att logga in."
+               UserNameRequiredErrorMessage="Användarnamn krävs för att logga in.">
         <HyperLinkStyle BorderStyle="Solid"/>
-        <FailureTextStyle BackColor="#CC66FF" BorderColor="Red"/>
+        <FailureTextStyle BackColor="#DBDBDB" BorderColor="Red"/>
     </asp:Login>
     <asp:LinkButton ID="btnRegister" runat="server" OnClick="btnRegister_Click" Text="Registrera"
                     NavigateUrl="registrera.aspx"/>
     <asp:LinkButton ID="btnGlomt" runat="server" OnClick="btnGlomt_Click" Text="Glömt lösenord"
                     NavigateUrl="glomt_losen.aspx"/>
-    <asp:LinkButton ID="btnMinProfil" runat="server" OnClick="btnMinProfi_Click"
-                    Text="Min Profil Test luilullululluullulu" NavigateUrl="min_profil.aspx"/>
 </form>
 </body>
 </html>

@@ -8,7 +8,6 @@
 </head>
 <body>
 <form id="form1" runat="server">
-
     <header></header>
     <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
         <Items>
@@ -21,24 +20,20 @@
     </asp:Menu>
     <section>
         <div style="float:left; width: 60%; height: 150px;">
-            <p> *Infoga info om oss*
-                <br/> <br/>
-            <p style="font-size:14px">Telefon: 112, Fax: 300, Adress: KukLuxLan </p>
-            <img src="Vägbeskrivning.BILD" alt="GOOGLEMAPS?"
+
+            <h2>
+                <asp:Label ID="lblRubrik" runat="server" Text="Label"></asp:Label>
+            </h2>
+            <div style="border:1px solid black;">
+                <asp:Literal ID="litBeskrivning" runat="server"></asp:Literal>
+            </div>
+
+            <br/> <br/>
+            Telefon: 112, Fax: 300, Adress: Dankvägen 42
+            <img src="NÅNTINGNÅNTING.png" alt="GOOGLEMAPS"
                  style="height: 175px; width: 375px; float:left; margin-left:10px;"/>
-            </p>
         </div>
     </section>
-    <div style="float:right;">
-        <asp:Repeater runat="server">
-            <ItemTemplate>
-                <img src="Template.bild" alt="Template"/>
-            </ItemTemplate>
-        </asp:Repeater>
-
-    </div>
 </form>
-<p>
-
 </body>
 </html>
