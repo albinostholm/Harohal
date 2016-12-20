@@ -40,3 +40,270 @@ BEGIN
 END;
 GO
 
+USE [harohal]
+GO
+/****** Object:  Trigger [dbo].[trtjanster_AfterUpdate]    Script Date: 2016-12-20 12:15:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		Linus Beckman
+-- Create date: 2016-12-20
+-- Description:	Updates the column "updatedDate" when a change is done in table
+-- =============================================
+ALTER TRIGGER [dbo].[trtjanster_AfterUpdate]
+   ON  [dbo].[tjanster] 
+   AFTER UPDATE
+AS 
+BEGIN
+
+	DECLARE @tjanstid int
+	SELECT tjanstid = I.tjanstid
+FROM Inserted I
+
+	UPDATE tjanster
+    SET UpdatedDate = GETDATE()
+	WHERE tjanstid = @tjanstid
+END
+
+
+
+
+
+
+USE [harohal]
+GO
+/****** Object:  Trigger [dbo].[trordrar_AfterUpdate]    Script Date: 2016-12-20 12:15:11 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Linus Beckman
+-- Create date: 2016-12-20
+-- Description:	Updates the column "updatedDate" when a change is done in table
+-- =============================================
+ALTER TRIGGER [dbo].[trordrar_AfterUpdate]
+   ON  [dbo].[ordrar] 
+   AFTER UPDATE
+AS 
+BEGIN
+
+	DECLARE @orderId uniqueidentifier
+	SELECT orderId = I.orderId
+FROM Inserted I
+
+	UPDATE ordrar
+    SET UpdatedDate = GETDATE()
+	WHERE orderId = @orderId
+END
+
+
+
+
+USE [harohal]
+GO
+/****** Object:  Trigger [dbo].[trnyheter_AfterUpdate]    Script Date: 2016-12-20 12:15:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER TRIGGER [dbo].[trnyheter_AfterUpdate]
+   ON  [dbo].[nyheter] 
+   AFTER UPDATE
+AS 
+BEGIN
+
+	DECLARE @nyhetsid int
+	SELECT nyhetsid = I.nyhetsid
+FROM Inserted I
+
+	UPDATE nyheter
+    SET UpdatedDate = GETDATE()
+	WHERE nyhetsid = @nyhetsid
+END
+
+
+
+USE [harohal]
+GO
+/****** Object:  Trigger [dbo].[trArtikel_AfterUpdate]    Script Date: 2016-12-20 12:14:59 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER TRIGGER [dbo].[trArtikel_AfterUpdate]
+   ON  [dbo].[artikel] 
+   AFTER UPDATE
+AS 
+BEGIN
+
+	DECLARE @artikelID int
+	SELECT artikelID = I.artikelID
+FROM Inserted I
+
+	UPDATE artikel
+    SET UpdatedDate = GETDATE()
+	WHERE artikelID = @artikelID
+END
+
+
+
+USE [harohal]
+GO
+/****** Object:  Trigger [dbo].[trAnstalld_AfterUpdate]    Script Date: 2016-12-20 12:14:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER TRIGGER [dbo].[trAnstalld_AfterUpdate]
+   ON  [dbo].[anstallda] 
+   AFTER UPDATE
+AS 
+BEGIN
+
+	DECLARE @anstalldID uniqueidentifier
+	SELECT anstalldID = I.anstalldID
+FROM Inserted I
+
+	UPDATE anstallda
+    SET UpdatedDate = GETDATE()
+	WHERE anstalldID = @anstalldID
+END
+
+
+USE [harohal]
+GO
+/****** Object:  Trigger [dbo].[trAnstalld_AfterUpdate]    Script Date: 2016-12-20 12:14:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER TRIGGER [dbo].[trAnstalld_AfterUpdate]
+   ON  [dbo].[anstallda] 
+   AFTER UPDATE
+AS 
+BEGIN
+
+	DECLARE @anstalldID uniqueidentifier
+	SELECT anstalldID = I.anstalldID
+FROM Inserted I
+
+	UPDATE anstallda
+    SET UpdatedDate = GETDATE()
+	WHERE anstalldID = @anstalldID
+END
+
+
+
+USE [harohal]
+GO
+/****** Object:  Trigger [dbo].[trAnstalldTjanst_AfterUpdate]    Script Date: 2016-12-20 12:14:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Linus Beckman
+-- Create date: 2016-12-20
+-- Description:	Updates the column "updatedDate" when a change is done in table
+-- =============================================
+ALTER TRIGGER [dbo].[trAnstalldTjanst_AfterUpdate]
+   ON  [dbo].[anstalld_tjanst] 
+   AFTER UPDATE
+AS 
+BEGIN
+
+	DECLARE @tjanstID int
+	SELECT tjanstID = I.tjanstID
+FROM Inserted I
+
+	UPDATE anstalld_tjanst
+    SET UpdatedDate = GETDATE()
+	WHERE tjanstID = @tjanstID
+END
+
+
+
+USE [harohal]
+GO
+/****** Object:  Trigger [dbo].[trAnstalldSchema_AfterUpdate]    Script Date: 2016-12-20 12:14:28 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER TRIGGER [dbo].[trAnstalldSchema_AfterUpdate]
+   ON  [dbo].[anstalld_schema] 
+   AFTER UPDATE
+AS 
+BEGIN
+
+	DECLARE @schemaID int
+	SELECT schemaID = I.schemaID
+FROM Inserted I
+
+	UPDATE anstalld_schema
+    SET UpdatedDate = GETDATE()
+	WHERE schemaID = @schemaID
+END
+
+
+
+USE [harohal]
+GO
+/****** Object:  Trigger [dbo].[trAnnonsorer_AfterUpdate]    Script Date: 2016-12-20 12:14:21 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		Linus Beckman
+-- Create date: 2016-12-20
+-- Description:	Updates the column "updatedDate" when a change is done in table
+-- =============================================
+ALTER TRIGGER [dbo].[trAnnonsorer_AfterUpdate]
+   ON  [dbo].[annonsorer] 
+   AFTER UPDATE
+AS 
+BEGIN
+
+	DECLARE @annonsorID int
+	SELECT @annonsorID = I.annonsorID
+FROM Inserted I
+
+	UPDATE annonsorer
+    SET UpdatedDate = GETDATE()
+	WHERE annonsorID = @annonsorID
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
