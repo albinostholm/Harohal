@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class massorer : System.Web.UI.Page
@@ -14,15 +10,45 @@ public partial class massorer : System.Web.UI.Page
         {
             FillMassor();
             GetOneArtikel();
+            updateMenu();
         }
     }
 
+    //Updaterar navigeringsmenyn beroende på ifall man är inloggad
+    private void updateMenu()
+    {
+        if (Session.Count > 0)
+        {
+            foreach (MenuItem mItem in Menu.Items)
+            {
+                if (mItem.Text == "Logga in")
+                {
+                    mItem.Text = "Min Profil";
+                    mItem.NavigateUrl = "min_profil.aspx";
+                }
+            }
+        }
+        else
+        {
+            foreach (MenuItem mItem in Menu.Items)
+            {
+                if (mItem.Text == "Min Profil")
+                {
+                    mItem.Text = "Logga In";
+                    mItem.NavigateUrl = "login.aspx";
+                }
+            }
+        }
+    }
+
+    //Fyller repeatern med massörinfo
     private void FillMassor()
     {
         repMassor.DataSource = massorList();
         repMassor.DataBind();
     }
 
+    //Hämtar artikeln för massörer och skriver ut den
     private void GetOneArtikel()
     {
         BusinessDAL bDAL = new BusinessDAL();
@@ -32,6 +58,7 @@ public partial class massorer : System.Web.UI.Page
         litBeskrivning.Text = art.beskrivning;
     }
 
+    //Hämtar massörinfo
     private DataTable massorList()
     {
         BusinessDAL bDal = new BusinessDAL();

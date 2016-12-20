@@ -14,6 +14,7 @@ public class BusinessDAL
     {
     }
 
+    //Kollar login credentials
     public string LogIn(anvandare a)
     {
         // Create a connection
@@ -46,6 +47,7 @@ public class BusinessDAL
         }
     }
 
+    //Uppdaterar en orders statuisID till det givna värdet
     public void updateOrderStatusID(int orderStatusID, string orderID)
     {
         //Create a connection
@@ -78,6 +80,7 @@ public class BusinessDAL
         }
     }
 
+    //Hämtar alla ordrar för en användare
     public DataTable getUserOrders(string userID)
     {
         DataTable dt = new DataTable();
@@ -112,6 +115,44 @@ public class BusinessDAL
             conn.Dispose();
         }
     }
+
+    //Hämtar den senaste obekräftade ordern för en användare
+    public DataTable getOneUserOrder(string userID)
+    {
+        DataTable dt = new DataTable();
+
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_getOneUserOrder", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+
+            cmd.Parameters.AddWithValue("@personid", userID);
+
+            dt.Load(cmd.ExecuteReader());
+
+            return dt;
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
+
+    //Skapar en ny användare
     public string CreateUser(anvandare a)
     {
         // Create a connection
@@ -149,6 +190,7 @@ public class BusinessDAL
         }
     }
 
+    //Byter ut lösenordet för en användare
     public string RestorePassword(anvandare a)
     {
         // Create a connection
@@ -181,6 +223,7 @@ public class BusinessDAL
         }
     }
 
+    //Hämtar info för en användare
     public anvandare getUserData(string userID)
     {
         anvandare user = new anvandare();
@@ -224,9 +267,7 @@ public class BusinessDAL
         }
     }
 
-
-
-
+    //Sätter in en ny order i databasen
     public int newOrder(order newO)
     {
         //Create a connection
@@ -262,6 +303,8 @@ public class BusinessDAL
             conn.Dispose();
         }
     }
+
+    //Hämtar en veckas schema för en anställd
     public DataTable getSchedule(int veckoNR, string anstalldID)
     {
         DataTable dt = new DataTable();
@@ -301,6 +344,8 @@ public class BusinessDAL
         }
         
     }
+
+    //Hämtar tiden för en tjänst
     public int getTjanstTid(int id)
     {
         int tid = 0;
@@ -340,6 +385,8 @@ public class BusinessDAL
             conn.Dispose();
         }
     }
+
+    //Hämtar info om alla massörer
     public DataTable getMassorInfo()
     {
         DataTable dt = new DataTable();
@@ -372,6 +419,7 @@ public class BusinessDAL
         }
     }
 
+    //Hämtar en artikel
     public artikel getArtikelInfo(int id)
     {
         DataTable dt = new DataTable();
@@ -416,6 +464,7 @@ public class BusinessDAL
         }
     }
 
+    //Hämtar en del annonser
     public DataTable getAnnonsorInfo()
     {
         DataTable dt = new DataTable();
@@ -448,6 +497,7 @@ public class BusinessDAL
         }
     }
 
+    //Hämtar alla tjänster
     public DataTable getTjanstInfo()
     {
         DataTable dt = new DataTable();
@@ -480,6 +530,7 @@ public class BusinessDAL
         }
     }
 
+    //Hämtar alla nyheter
     public DataTable getNyheterInfo()
     {
         DataTable dt = new DataTable();

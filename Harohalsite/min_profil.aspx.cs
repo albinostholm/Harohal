@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class min_profil : System.Web.UI.Page
@@ -14,21 +10,51 @@ public partial class min_profil : System.Web.UI.Page
         {
             GetUserData();
             FillOrdrar();
+            updateMenu();
         }  
     }
 
+    //Updaterar navigeringsmenyn beroende på ifall man är inloggad
+    private void updateMenu()
+    {
+        if (Session.Count > 0)
+        {
+            foreach (MenuItem mItem in Menu.Items)
+            {
+                if (mItem.Text == "Logga in")
+                {
+                    mItem.Text = "Min Profil";
+                    mItem.NavigateUrl = "min_profil.aspx";
+                }
+            }
+        }
+        else
+        {
+            foreach (MenuItem mItem in Menu.Items)
+            {
+                if (mItem.Text == "Min Profil")
+                {
+                    mItem.Text = "Logga In";
+                    mItem.NavigateUrl = "login.aspx";
+                }
+            }
+        }
+    }
+
+    //Fyller ut repeatern med dina ordrar
     protected void FillOrdrar()
     {
         rptBokningar.DataSource = orders();
         rptBokningar.DataBind();
     }
 
+    //Hämtar dina ordrar
     protected DataTable orders()
     {
         BusinessDAL bDal = new BusinessDAL();
         DataTable dt = new DataTable();
 
-        dt = bDal.getUserOrders("095C51B3-C019-49F4-B80F-E4CEEADA3504");
+        dt = bDal.getUserOrders(Session["userid"].ToString());
 
         foreach (DataColumn dc in dt.Columns)
         {
@@ -49,21 +75,24 @@ public partial class min_profil : System.Web.UI.Page
         return dt;
     }
 
+    //Hämtar användarens info och skriver ut den
     private void GetUserData()
     {
         BusinessDAL bDAL = new BusinessDAL();
         anvandare user = new anvandare();
-        user = bDAL.getUserData("095C51B3-C019-49F4-B80F-E4CEEADA3504");
-        namn.Text += user.FirstName + " " + user.LastName;
-        mail.Text += user.Epost;
-        ssn.Text += user.ssn;
+        user = bDAL.getUserData(Session["userid"].ToString());
+        litNamn.Text += user.FirstName + " " + user.LastName;
+        litMail.Text += user.Epost;
+        litSsn.Text += user.ssn;
     }
 
+    //Redirectar dig till glomt_losen.aspx
     protected void btnBytLosen_Click(object sender, EventArgs e)
     {
         Response.Redirect("glomt_losen.aspx");
     }
 
+    //Avbokar de markerade ordrarna
     protected void btnAvboka_Click(object sender, EventArgs e)
     {
         int x = 40;
@@ -79,5 +108,12 @@ public partial class min_profil : System.Web.UI.Page
             }
         }
         FillOrdrar();
+    }
+
+    //Loggar ut den aktiva personen
+    protected void btnLogout_Click(object sender, EventArgs e)
+    {
+        Session.Abandon();
+        Response.Redirect("hem.aspx");
     }
 }
