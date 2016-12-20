@@ -9,7 +9,6 @@ using System.Web;
 /// </summary>
 public static class DateTimeExtensions
 {
-    //Ny DateTime function för att hämta första dagen i veckan
     public static DateTime FirstDateOfWeekISO8601(int year, int weekOfYear)
     {
         DateTime jan1 = new DateTime(year, 1, 1);
