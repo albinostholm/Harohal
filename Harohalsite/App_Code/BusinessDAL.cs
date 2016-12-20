@@ -117,7 +117,7 @@ public class BusinessDAL
     }
 
     //Hämtar den senaste obekräftade ordern för en användare
-    public DataTable getOneUserOrder(string userID)
+    public DataTable getOneUserOrder(string orderID)
     {
         DataTable dt = new DataTable();
 
@@ -134,7 +134,7 @@ public class BusinessDAL
         {
             conn.Open();
 
-            cmd.Parameters.AddWithValue("@personid", userID);
+            cmd.Parameters.AddWithValue("@orderId", orderID);
 
             dt.Load(cmd.ExecuteReader());
 
@@ -268,7 +268,7 @@ public class BusinessDAL
     }
 
     //Sätter in en ny order i databasen
-    public int newOrder(order newO)
+    public string newOrder(order newO)
     {
         //Create a connection
         SqlConnection conn = new SqlConnection(connStr);
@@ -290,7 +290,7 @@ public class BusinessDAL
             cmd.Parameters.AddWithValue("@orderStatusID", newO.orderStatusID);
             cmd.Parameters.AddWithValue("@CreatedBy", newO.anstalldID.ToUpper());
 
-            return cmd.ExecuteNonQuery();
+            return cmd.ExecuteScalar().ToString();
         }
         catch
         {

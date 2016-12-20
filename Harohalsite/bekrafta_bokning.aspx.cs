@@ -11,14 +11,15 @@ public partial class bekrafta_bokning : System.Web.UI.Page
             FillOrder();
         }
     }
+
     //Hämtar ut bokningen du precis gjorde på boka.aspx
     protected DataTable order()
     {
         BusinessDAL bDal = new BusinessDAL();
         DataTable dt = new DataTable();
 
-        dt = bDal.getOneUserOrder(Session["userid"].ToString());
-
+        dt = bDal.getOneUserOrder(Session["orderID"].ToString());
+        Session.Remove("orderID");
         foreach (DataColumn dc in dt.Columns)
         {
             dc.ReadOnly = false;
