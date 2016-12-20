@@ -38,7 +38,7 @@ public partial class Nyheter : System.Web.UI.Page
     protected void button1_Click(object sender, EventArgs e)
     {
         BusinessDAL bd = new BusinessDAL();
-        artikel a = new artikel();
+        cArtikel a = new cArtikel();
 
         
     }
@@ -54,12 +54,22 @@ public partial class Nyheter : System.Web.UI.Page
     protected void btnUppdatera_Click(object sender, EventArgs e)
     {
         BusinessDAL bd = new BusinessDAL();
-        artikel a = new artikel();
+        cArtikel a = new cArtikel();
 
         a.rubrik = tbRubrik.Text.ToString();
         a.beskrivning = tbText.Text.ToString();
-        a.id = Convert.ToInt16(lblRCtest.Text.ToString());
+        a.id = (lblRCtest.Text.ToString());
 
-        bd.updateArtikelInfo(a);
+        bd.updateNyhetInfo(a);
+    }
+
+    protected void tbText_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void tbRubrik_TextChanged(object sender, EventArgs e)
+    {
+
     }
 }

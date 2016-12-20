@@ -14,7 +14,7 @@ public class BusinessDAL
     {
     }
 
-    public string LogIn(anvandare a)
+    public string LogIn(cAnvandare a)
     {
         // Create a connection
         SqlConnection conn = new SqlConnection(connStr);
@@ -112,7 +112,7 @@ public class BusinessDAL
             conn.Dispose();
         }
     }
-    public string CreateUser(anvandare a)
+    public string CreateUser(cAnvandare a)
     {
         // Create a connection
         SqlConnection conn = new SqlConnection(connStr);
@@ -149,7 +149,7 @@ public class BusinessDAL
         }
     }
 
-    public string RestorePassword(anvandare a)
+    public string RestorePassword(cAnvandare a)
     {
         // Create a connection
         SqlConnection conn = new SqlConnection(connStr);
@@ -181,9 +181,9 @@ public class BusinessDAL
         }
     }
 
-    public anvandare getUserData(string userID)
+    public cAnvandare getUserData(string userID)
     {
-        anvandare user = new anvandare();
+        cAnvandare user = new cAnvandare();
 
         //Create a connection
         SqlConnection conn = new SqlConnection(connStr);
@@ -227,7 +227,7 @@ public class BusinessDAL
 
 
 
-    public int newOrder(order newO)
+    public int newOrder(cOrder newO)
     {
         //Create a connection
         SqlConnection conn = new SqlConnection(connStr);
@@ -373,11 +373,11 @@ public class BusinessDAL
     }
 
 
-    public int updateArtikelInfo(artikel a)
+    public int updateArtikelInfo(cArtikel a)
     {
         //DataTable dt = new DataTable();
 
-        artikel art = new artikel();
+        cArtikel art = new cArtikel();
 
         //Create a connection
         SqlConnection conn = new SqlConnection(connStr);
@@ -412,11 +412,11 @@ public class BusinessDAL
 
 
 
-    public artikel getArtikelInfo(int id)
+    public cArtikel getArtikelInfo(int id)
     {
         DataTable dt = new DataTable();
 
-        artikel art = new artikel();
+        cArtikel art = new cArtikel();
 
         //Create a connection
         SqlConnection conn = new SqlConnection(connStr);
@@ -539,6 +539,43 @@ public class BusinessDAL
             dt.Load(cmd.ExecuteReader());
 
             return dt;
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
+
+    public int updateNyhetInfo(cArtikel a)
+    {
+        //DataTable dt = new DataTable();
+
+        cArtikel art = new cArtikel();
+
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_ADMIN_edit_nyheter", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+
+            cmd.Parameters.AddWithValue("@nyhetsID", a.id);
+            cmd.Parameters.AddWithValue("@rubrik", a.rubrik);
+            cmd.Parameters.AddWithValue("@beskrivning", a.beskrivning);
+
+            return cmd.ExecuteNonQuery();
         }
         catch
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Erik Sandberg
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,7 +7,7 @@ using System.Web;
 /// <summary>
 /// Summary description for order
 /// </summary>
-public class order
+public class cOrder
 {
     public int tjanstID { get; set; }
     public string anstalldID { get; set; }
@@ -14,7 +15,7 @@ public class order
     public DateTime startTid { get; set; }
     public DateTime slutTid { get; set; }
     public int orderStatusID { get; set; }
-    public order()
+    public cOrder()
     {
 
     }
