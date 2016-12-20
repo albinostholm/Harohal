@@ -81,9 +81,25 @@ public partial class min_profil : System.Web.UI.Page
         BusinessDAL bDAL = new BusinessDAL();
         anvandare user = new anvandare();
         user = bDAL.getUserData(Session["userid"].ToString());
-        litNamn.Text += user.FirstName + " " + user.LastName;
-        litMail.Text += user.Epost;
-        litSsn.Text += user.ssn;
+        tbxFornamn.Text = user.FirstName;
+        tbxEfternamn.Text = user.LastName;
+        tbxMail.Text = user.Epost;
+        tbxSSN.Text = user.ssn;
+        if (user.faktura == "False")
+        {
+            cbxFaktura.Checked = false;
+        } else
+        {
+            cbxFaktura.Checked = true;
+        }
+        if (user.newsletter == "False")
+        {
+            cbxNewsLetter.Checked = false;
+        }
+        else
+        {
+            cbxNewsLetter.Checked = true;
+        }
     }
 
     //Redirectar dig till glomt_losen.aspx
@@ -115,5 +131,76 @@ public partial class min_profil : System.Web.UI.Page
     {
         Session.Abandon();
         Response.Redirect("hem.aspx");
+    }
+
+    protected void btnEditinfo_Click(object sender, EventArgs e)
+    {
+        btnEditinfo.Visible = false;
+        btnCancelEdit.Visible = true;
+        btnSaveinfo.Visible = true;
+
+        tbxFornamn.Enabled = true;
+        tbxEfternamn.Enabled = true;
+        tbxMail.Enabled = true;
+        tbxSSN.Enabled = true;
+        cbxFaktura.Enabled = true;
+        cbxNewsLetter.Enabled = true;
+
+    }
+
+    protected void btnSaveInfo_Click(object sender, EventArgs e)
+    {
+        btnEditinfo.Visible = true;
+        btnCancelEdit.Visible = false;
+        btnSaveinfo.Visible = false;
+
+        tbxFornamn.Enabled = false;
+        tbxEfternamn.Enabled = false;
+        tbxMail.Enabled = false;
+        tbxSSN.Enabled = false;
+        cbxFaktura.Enabled = false;
+        cbxNewsLetter.Enabled = false;
+
+        BusinessDAL bDAL = new BusinessDAL();
+        anvandare updatedUser = new anvandare();
+        updatedUser.Epost = tbxMail.Text;
+        updatedUser.FirstName = tbxFornamn.Text;
+        updatedUser.LastName = tbxEfternamn.Text;
+        updatedUser.ssn = tbxSSN.Text;
+
+        if (cbxNewsLetter.Checked)
+        {
+            updatedUser.newsletter = "1";
+        } else
+        {
+            updatedUser.newsletter = "0";
+        }
+        if (cbxFaktura.Checked)
+        {
+            updatedUser.faktura = "1";
+        }
+        else
+        {
+            updatedUser.faktura = "0";
+        }
+
+        bDAL.updateUserInfo(updatedUser, Session["userid"].ToString());
+
+        GetUserData();
+    }
+
+    protected void btnCancelEdit_Click(object sender, EventArgs e)
+    {
+        btnEditinfo.Visible = true;
+        btnCancelEdit.Visible = false;
+        btnSaveinfo.Visible = false;
+
+        tbxFornamn.Enabled = false;
+        tbxEfternamn.Enabled = false;
+        tbxMail.Enabled = false;
+        tbxSSN.Enabled = false;
+        cbxFaktura.Enabled = false;
+        cbxNewsLetter.Enabled = false;
+        GetUserData();
     }
 }

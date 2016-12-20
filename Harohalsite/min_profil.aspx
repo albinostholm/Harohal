@@ -21,13 +21,37 @@
         </Items>
     </asp:Menu>
 
-    <asp:Literal runat="server" ID="litNamn">Namn: </asp:Literal><br/>
-    <asp:Literal runat="server" ID="litSsn">Personnr: </asp:Literal><br/>
-    <asp:Literal runat="server" ID="litMail">Email: </asp:Literal><br/>
+    <h2>Din info</h2><br />
+
+    <asp:Label ID="lblFornamn" runat="server" Text="Label">Förnamn:
+        <asp:TextBox ID="tbxFornamn" runat="server" Enabled="false"></asp:TextBox> 
+    </asp:Label><br />
+    <asp:Label ID="lblEfternamn" runat="server" Text="Label">Efternamn:
+        <asp:TextBox ID="tbxEfternamn" runat="server" Enabled="false"></asp:TextBox> 
+    </asp:Label><br />
+    <asp:Label ID="lblSSN" runat="server" Text="Label">PersonNR:
+        <asp:TextBox ID="tbxSSN" runat="server" Enabled="false"></asp:TextBox> 
+    </asp:Label><br />
+    <asp:Label ID="lblMail" runat="server" Text="Label">Mail:
+        <asp:TextBox ID="tbxMail" runat="server" Enabled="false"></asp:TextBox> 
+    </asp:Label><br />
+    <asp:Label ID="lblNewsletter" runat="server" Text="Label">Nyhetsbrev: 
+        <asp:CheckBox ID="cbxNewsLetter" runat="server" Enabled="false"/>
+    </asp:Label><br />
+    <asp:Label ID="lblFaktura" runat="server" Text="Label">Faktura:
+        <asp:CheckBox ID="cbxFaktura" runat="server" Enabled="false"/>
+    </asp:Label><br />
+
+    <asp:Button ID="btnEditinfo" runat="server" Text="Redigera din info" style="float:left; clear:left" OnClick="btnEditinfo_Click" />
+    <asp:Button ID="btnSaveinfo" runat="server" Text="Spara" OnClick="btnSaveInfo_Click" Visible="false" style="float:left; clear:left"/>
+    <asp:Button ID="btnCancelEdit" runat="server" Text="Avbryt Ändringarna" OnClick="btnCancelEdit_Click" Visible="false" style="float:left; clear:left"/>
+    <asp:Button ID="btnBytLosen" runat="server" Text="Byt lösenord" style="float:left; clear:left" OnClick="btnBytLosen_Click"/>
+    
+    <h2 style="float:left; clear:left;">Dina bokningar</h2><br />
 
     <asp:Repeater ID="rptBokningar" runat="server">
         <ItemTemplate>
-            <div style="display:block; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">
+            <div style="display:block; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; clear:left; ">
                 <ul style="list-style:none; float:left; text-align:left; margin-left: 0px;">
                     <li>Massör: <%# Eval("MassorNamn") %></li>
                     <li>Tjänst: <%# Eval("TjanstNamn") %></li>
@@ -41,8 +65,7 @@
         </ItemTemplate>         
     </asp:Repeater>
 
-    <asp:Button ID="btnAvboka" runat="server" Text="Avboka markerade" style="float:right;" OnClick="btnAvboka_Click"/>
-    <asp:Button ID="btnBytLosen" runat="server" Text="Byt lösenord" style="float:right;" OnClick="btnBytLosen_Click"/>
+    <asp:Button ID="btnAvboka" runat="server" Text="Avboka markerade" style="float:left; clear:left" OnClick="btnAvboka_Click"/><br />
     <asp:Button ID="btnLogout" runat="server" Text="Logga ut" style="float:right;" OnClick="btnLogout_Click"/>
 </form>
 </body>
