@@ -17,8 +17,9 @@ public partial class bekrafta_bokning : System.Web.UI.Page
     {
         BusinessDAL bDal = new BusinessDAL();
         DataTable dt = new DataTable();
+        string price = "";
 
-        dt = bDal.getOneUserOrder(Session["orderID"].ToString());
+        dt = bDal.getOrder(Session["orderID"].ToString());
         Session.Remove("orderID");
         foreach (DataColumn dc in dt.Columns)
         {
@@ -35,7 +36,12 @@ public partial class bekrafta_bokning : System.Web.UI.Page
             {
                 dr["slutTid"] += "0";
             }
+            if (dr["pris"].ToString() != "0")
+            {
+                price = dr["pris"].ToString();
+            }
         }
+        litPrice.Text += price;
         return dt;
     }
 

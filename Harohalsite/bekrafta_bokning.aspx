@@ -11,7 +11,7 @@
     <h1>Bekräfta din nya bokning</h1>
 
     <div style="float:right;">
-        <p>TODO lägg till kostnad</p><br/>
+        <asp:Literal ID="litPrice" runat="server">Total Pris: </asp:Literal><br/>
         <asp:Button ID="btnBekrafta" runat="server" Text="Bekräfta bokning" OnClick="btnBekrafta_Click"/>
         <asp:Button ID="btnAvbryt" runat="server" Text="Avbryt" OnClick="btnAvbryt_Click"/>
     </div>
@@ -27,7 +27,6 @@
                     <li>Starttid: <%# Eval("startTid") %></li>
                     <li>Sluttid: <%# Eval("slutTid") %></li>
                 </ul>
-                <asp:HiddenField ID="hfOrderID" runat="server" Value='<%# Eval("orderID") %>'/>
             </div>
         </ItemTemplate>
     </asp:Repeater>
