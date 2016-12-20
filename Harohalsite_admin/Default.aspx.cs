@@ -15,7 +15,7 @@ public partial class _Default : System.Web.UI.Page
     protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
     {
         BusinessDAL bd = new BusinessDAL();
-        anvandare a = new anvandare();
+        cAnvandare a = new cAnvandare();
         string sUserId = "";
         a.Epost = Login1.UserName.ToString();
         a.Password = Login1.Password.ToString();

@@ -26,7 +26,7 @@ public partial class a_massorer : System.Web.UI.Page
     private void GetOneArtikel()
     {
         BusinessDAL bDAL = new BusinessDAL();
-        artikel art = new artikel();
+        cArtikel art = new cArtikel();
         art = bDAL.getArtikelInfo(2);
         lblRubrik.Text = art.rubrik;
         litBeskrivning.Text = art.beskrivning;

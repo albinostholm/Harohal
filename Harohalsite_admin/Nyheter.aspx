@@ -22,9 +22,9 @@
     </asp:Menu>
         <asp:Panel ID="panEditNyhet" runat="server">
             <asp:Label ID="lblRubrik" runat="server" Text="Rubrik"></asp:Label>
-            <asp:TextBox ID="tbRubrik" runat="server"></asp:TextBox>
+            <asp:TextBox ID="tbRubrik" runat="server" OnTextChanged="tbRubrik_TextChanged"></asp:TextBox>
             <asp:Label ID="lblText" runat="server" Text="Innehåll"></asp:Label>
-            <asp:TextBox ID="tbText" runat="server"></asp:TextBox>
+            <asp:TextBox ID="tbText" runat="server" OnTextChanged="tbText_TextChanged"></asp:TextBox>
             <asp:Button ID="btnUppdatera" runat="server" Text="Spara" OnClick="btnUppdatera_Click" />
         </asp:Panel>
 
