@@ -18,6 +18,7 @@ public partial class glomt_losen : System.Web.UI.Page
         anv.Password = tbpw.Text.ToString();
 
         newPassword = bd.RestorePassword(anv);
+        Response.Redirect("login.aspx");
 
     }
 }
