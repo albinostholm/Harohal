@@ -410,8 +410,6 @@ public class BusinessDAL
         }
     }
 
-
-
     public cArtikel getArtikelInfo(int id)
     {
         DataTable dt = new DataTable();
@@ -624,4 +622,6 @@ public class BusinessDAL
             conn.Dispose();
         }
     }
+
+
 }

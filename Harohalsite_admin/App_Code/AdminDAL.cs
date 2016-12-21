@@ -46,4 +46,74 @@ public class AdminDAL
             conn.Dispose();
         }
     }
+
+    public DataTable getArtiklar()
+    {
+        DataTable dt = new DataTable();
+
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_artikel_alla", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+
+            dt.Load(cmd.ExecuteReader());
+
+            return dt;
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
+
+    public int updateArtikelInfo(cArtikel a)
+    {
+        //DataTable dt = new DataTable();
+
+        cArtikel art = new cArtikel();
+
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_ADMIN_edit_artikel", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+
+            cmd.Parameters.AddWithValue("@artikelID", a.id);
+            cmd.Parameters.AddWithValue("@rubrik", a.rubrik);
+            cmd.Parameters.AddWithValue("@beskrivning", a.beskrivning);
+
+            return cmd.ExecuteNonQuery();
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
 }

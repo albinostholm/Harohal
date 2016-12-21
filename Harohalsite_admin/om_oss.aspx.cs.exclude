@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Data;
-using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 
-public partial class Artiklar : System.Web.UI.Page
+public partial class om_oss : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-            FillArtiklar();
+            GetOneArtikel();
             updateMenu();
-            panEditartikel.Visible = false;
         }
     }
 
@@ -43,43 +40,29 @@ public partial class Artiklar : System.Web.UI.Page
     }
 
     //Hämtar artikelinfo för om oss sidan
-    private DataTable GetArtiklar()
+    private void GetOneArtikel()
     {
-        AdminDAL aDAL = new AdminDAL();
-        DataTable dt;
-        dt = aDAL.getArtiklar();
-        return dt;
+        BusinessDAL bDAL = new BusinessDAL();
+        cArtikel art = new cArtikel();
+        art = bDAL.getArtikelInfo(3);
+        lblRubrik.Text = art.rubrik;
+        litBeskrivning.Text = art.beskrivning;
     }
 
-    private void FillArtiklar()
-    {
-        repArtiklar.DataSource = GetArtiklar();
-        repArtiklar.DataBind();   
-    }
-
-    protected void lbVisaartikel_Click(object sender, EventArgs e)
+    protected void lbVisaOmOss_Click(object sender, EventArgs e)
     {
 
     }
 
     protected void btnUppdatera_Click(object sender, EventArgs e)
     {
-         AdminDAL aDAL = new AdminDAL();
+        BusinessDAL bd = new BusinessDAL();
         cArtikel a = new cArtikel();
 
-        a.beskrivning = tbText.Text.ToString();
-        a.rubrik = tbRubrik.Text.ToString();
+        //a.rubrik = tbRubrik.Text.ToString();
         a.id = (lblRCtest.Text.ToString());
 
-        aDAL.updateArtikelInfo(a);
-    }
-
-    protected void repArtiklar_ItemCommand(object source, RepeaterCommandEventArgs e)
-    {
-        lblRCtest.Text = e.CommandArgument.ToString();
-        panEditartikel.Visible = true;
-        // populera  nyheten
-
+        bd.updateNyhetInfo(a);
     }
 
     protected void tbRubrik_TextChanged(object sender, EventArgs e)
