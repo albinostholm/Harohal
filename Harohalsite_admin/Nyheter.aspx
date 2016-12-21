@@ -12,12 +12,11 @@
     <header></header>
     <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
         <Items>
-            <asp:MenuItem Text="Boka" Value="Boka" NavigateUrl="a_boka.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Massörer" Value="Massörer" NavigateUrl="a_massorer.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Tjänster" Value="Tjänster" NavigateUrl="a_tjanster.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Om Oss" Value="Om Oss" NavigateUrl="a_om_oss.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Min Profil" Value="Min Profil" NavigateUrl="a_min_profil.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Artiklar" Value="Artiklar" NavigateUrl="Artiklar.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Massörer" Value="Massörer" NavigateUrl="massorer.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Om Oss" Value="Om Oss" NavigateUrl="om_oss.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Min Profil" Value="Min Profil" NavigateUrl="min_profil.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Nyheter" Value="Nyheter" NavigateUrl="Nyheter.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="tjänster" Value="tjänster" NavigateUrl="tjanster.aspx"></asp:MenuItem>
         </Items>
     </asp:Menu>
         <asp:Panel ID="panEditNyhet" runat="server">
@@ -34,7 +33,6 @@
             <section>
                 <div style="display:inline; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">
                     <h1><%# Eval("rubrik") %></h1>
-                    <!--<h1><asp:HyperLink ID="hlVisaNyhet" runat="server" NavigateUrl= '<%# Eval("nyhetsID") %>' ><%# Eval("rubrik") %></asp:HyperLink></h1> -->
                     <asp:LinkButton ID="lbVisaNyhet" runat="server" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "nyhetsID" )%>'><%# Eval("rubrik") %></asp:LinkButton>
                     <hr style="width:auto; margin-left:auto;">
                     <p style="float:right; text-align:left; margin-left:1%;">
