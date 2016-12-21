@@ -79,7 +79,10 @@ public partial class Artiklar : System.Web.UI.Page
     {
         lblRCtest.Text = e.CommandArgument.ToString();
         panEditartikel.Visible = true;
-        // populera  nyheten
+
+        //Hämta data från tabellen Artikel med id = e.CommandArgument.ToString();
+        //Fyll tectboxarna med data frå proceduren
+
 
     }
 
