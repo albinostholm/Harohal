@@ -622,6 +622,39 @@ public class BusinessDAL
             conn.Dispose();
         }
     }
+    public void updateUserInfo(cAnvandare user, string userID)
+    {
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
 
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_updateUserInfo", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+            cmd.Parameters.AddWithValue("@personID", userID);
+            cmd.Parameters.AddWithValue("@fornamn", user.FirstName);
+            cmd.Parameters.AddWithValue("@efternamn", user.LastName);
+            cmd.Parameters.AddWithValue("@mail", user.Epost);
+            cmd.Parameters.AddWithValue("@personnr", user.ssn);
+            cmd.Parameters.AddWithValue("@nyhetsbrev", user.newsletter);
+            cmd.Parameters.AddWithValue("@tarfaktura", user.faktura);
+            cmd.ExecuteScalar();
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
 
 }

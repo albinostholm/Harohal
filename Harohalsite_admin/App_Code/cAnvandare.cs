@@ -21,6 +21,7 @@ public class cAnvandare
     public string UserId { get; set; }
     public string Password { get; set; }
     public string ssn { get; set; }
+    public string faktura { get; set; }
     public string newsletter { get; set; }
     public DateTime CreatedDate { get; set; }
 

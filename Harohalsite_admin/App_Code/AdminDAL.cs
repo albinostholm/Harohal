@@ -116,4 +116,40 @@ public class AdminDAL
             conn.Dispose();
         }
     }
+
+    public DataTable getMassorOrders(string anstalldID)
+    {
+        DataTable dt = new DataTable();
+
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_Massor_orders", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+
+            cmd.Parameters.AddWithValue("@anstalldID", anstalldID);
+
+            dt.Load(cmd.ExecuteReader());
+
+            return dt;
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+
+    }
 }
