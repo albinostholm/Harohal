@@ -17,4 +17,6 @@ public class cArtikel
     public string beskrivning { get; set; }
     public string id { get; set; }
 
+    public string namn { get; set; }
+
 }

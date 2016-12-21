@@ -588,4 +588,40 @@ public class BusinessDAL
             conn.Dispose();
         }
     }
+    public int updateTjanstInfo(cArtikel a)
+    {
+        //DataTable dt = new DataTable();
+
+        cArtikel art = new cArtikel();
+
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_ADMIN_edit_tjanster", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+
+            cmd.Parameters.AddWithValue("@tjanstID", a.id);
+            cmd.Parameters.AddWithValue("@namn", a.namn);
+            cmd.Parameters.AddWithValue("@beskrivning", a.beskrivning);
+
+            return cmd.ExecuteNonQuery();
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
 }

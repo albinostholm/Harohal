@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="admin_om_oss.aspx.cs" Inherits="admin_om_oss" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="min_profil.aspx.cs" Inherits="min_profil" %>
 
 <!DOCTYPE html>
 
