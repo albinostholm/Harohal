@@ -10,7 +10,10 @@ public partial class min_profil : System.Web.UI.Page
         {
             GetUserData();
             FillOrdrar();
+            FillMassor();
+            FillTjanster();
             updateMenu();
+            panEditOrder.Visible = false;
         }
     }
 
@@ -44,8 +47,58 @@ public partial class min_profil : System.Web.UI.Page
     //Fyller ut repeatern med dina ordrar
     protected void FillOrdrar()
     {
-        rptBokningar.DataSource = orders();
-        rptBokningar.DataBind();
+        rptOrders.DataSource = orders();
+        rptOrders.DataBind();
+    }
+
+    //Fyller dropdownlisten med massörinfo
+    private void FillMassor()
+    {
+        ddlMassor.DataSource = massorList();
+        ddlMassor.DataTextField = "namn";
+        ddlMassor.DataValueField = "anstalldID";
+        ddlMassor.DataBind();
+    }
+
+    //Returnerar id't för den valda tjänsten
+    private int tjanstID()
+    {
+        int id = int.Parse(ddlTjanster.SelectedValue);
+        return id;
+    }
+
+    //Returnerar id't för den valda massören
+    private string anstalldID() { return ddlMassor.SelectedValue; }
+
+    //Fyller dropdownlisten med tjänstinfo
+    private void FillTjanster()
+    {
+        ddlTjanster.DataSource = tjanstList();
+        ddlTjanster.DataValueField = "tjanstID";
+        ddlTjanster.DataTextField = "namn";
+        ddlTjanster.DataBind();
+    }
+
+    //Hämtar tjänstinfo
+    private DataTable tjanstList()
+    {
+        BusinessDAL bDal = new BusinessDAL();
+        return bDal.getTjanstInfo();
+    }
+
+    //Hämtar massörinfo
+    private DataTable massorList()
+    {
+        BusinessDAL bDal = new BusinessDAL();
+        return bDal.getMassorInfo();
+    }
+
+    protected void btnUppdatera_Click(object sender, EventArgs e)
+    {
+        BusinessDAL bDAL = new BusinessDAL();
+        cOrder o = new cOrder();
+
+        //bDAL.updateOrderInfo(o);
     }
 
     //Hämtar dina ordrar
@@ -114,7 +167,7 @@ public partial class min_profil : System.Web.UI.Page
     {
         int x = 40;
         BusinessDAL bDAL = new BusinessDAL();
-        foreach (RepeaterItem rptI in rptBokningar.Items)
+        foreach (RepeaterItem rptI in rptOrders.Items)
         {
             CheckBox cbx = (CheckBox)rptI.FindControl("cbxAvboka");
             HiddenField hf = (HiddenField)rptI.FindControl("hfOrderID");
@@ -131,7 +184,7 @@ public partial class min_profil : System.Web.UI.Page
     protected void btnLogout_Click(object sender, EventArgs e)
     {
         Session.Abandon();
-        Response.Redirect("hem.aspx");
+        Response.Redirect("default.aspx");
     }
 
     protected void btnEditinfo_Click(object sender, EventArgs e)
@@ -204,5 +257,12 @@ public partial class min_profil : System.Web.UI.Page
         cbxFaktura.Enabled = false;
         cbxNewsLetter.Enabled = false;
         GetUserData();
+    }
+
+    protected void rptOrders_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+        lblRCtest.Text = e.CommandArgument.ToString();
+        panEditOrder.Visible = true;
+        // populera  nyheten
     }
 }

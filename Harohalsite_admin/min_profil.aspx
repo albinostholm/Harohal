@@ -12,11 +12,12 @@
 
     <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
         <Items>
+            <asp:MenuItem Text="Min Profil" Value="Min Profil" NavigateUrl="min_profil.aspx"></asp:MenuItem>           
             <asp:MenuItem Text="Massörer" Value="Massörer" NavigateUrl="massorer.aspx"></asp:MenuItem>
             <asp:MenuItem Text="Artiklar" Value="Artiklar" NavigateUrl="artiklar.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="default.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Schema" Value="Schema" NavigateUrl="schema.aspx"></asp:MenuItem>
             <asp:MenuItem Text="Nyheter" Value="Nyheter" NavigateUrl="Nyheter.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="tjänster" Value="tjänster" NavigateUrl="tjanster.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Tjänster" Value="Tjänster" NavigateUrl="tjanster.aspx"></asp:MenuItem>
         </Items>
     </asp:Menu>
 
@@ -48,22 +49,38 @@
     
     <h2 style="float:left; clear:left;">Dina bokningar</h2><br />
 
-    <asp:Repeater ID="rptBokningar" runat="server">
-        <ItemTemplate>
-            <div style="display:block; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; clear:left; ">
-                <ul style="list-style:none; float:left; text-align:left; margin-left: 0px;">
-                    <li>Massör: <%# Eval("namn") %></li>
-                    <li>Tjänst: <%# Eval("tjanst") %></li>
-                    <li>Datum: <%# Eval("Datum") %></li>
-                    <li>Starttid: <%# Eval("startTid") %></li>
-                    <li>Sluttid: <%# Eval("slutTid") %></li>
-                </ul>
-                <asp:CheckBox ID="cbxAvboka" runat="server" Text="Avboka" style="float:right"/>
-                <asp:HiddenField ID="hfOrderID" runat="server" Value='<%# Eval("orderID") %>' />
-            </div>
-        </ItemTemplate>         
-    </asp:Repeater>
+    <asp:Panel ID="panEditOrder" runat="server">
+        <asp:Label ID="lblMassorNamn" runat="server" Text="MassorNamn"></asp:Label>
+        <asp:DropDownList ID="ddlMassor" runat="server"></asp:DropDownList>
 
+        <asp:Label ID="lblTjanstNamn" runat="server" Text="TjanstNamn"></asp:Label>
+        <asp:DropDownList ID="ddlTjanster" runat="server"></asp:DropDownList>
+
+	    <asp:Label ID="lblStartTid" runat="server" Text="StartTid"></asp:Label>
+        <asp:TextBox ID="tbStartTid" runat="server"></asp:TextBox>
+	
+	    <asp:Label ID="lblSlutTid" runat="server" Text="SlutTid"></asp:Label>
+        <asp:TextBox ID="tbSlutTid" runat="server"></asp:TextBox>
+	
+        <asp:Button ID="btnUppdatera" runat="server" Text="Spara" OnClick="btnUppdatera_Click" />
+    </asp:Panel>
+
+    <asp:Panel ID="panVisaOrderLista" runat="server">
+        <asp:Repeater ID="rptOrders" runat="server" OnItemCommand="rptOrders_ItemCommand">
+            <ItemTemplate>
+                <div style="display:block; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">
+                    <p><%# Eval("MassorNamn") %></p>
+                    <p><%# Eval("TjanstNamn") %></p>
+			        <p><%# Eval("startTid") %></p>
+			        <p><%# Eval("slutTid") %></p>
+				 
+                    <asp:LinkButton ID="lbVisaNyhet" runat="server" 
+				    CommandArgument='<%#DataBinder.Eval(Container.DataItem, "orderID" )%>'>Redigera order</asp:LinkButton>
+                </div>                             
+            </ItemTemplate>
+        </asp:Repeater>
+    </asp:Panel>
+    <asp:Label ID="lblRCtest" runat="server" Text=""></asp:Label>
     <asp:Button ID="btnAvboka" runat="server" Text="Avboka markerade" style="float:left; clear:left" OnClick="btnAvboka_Click"/><br />
     <asp:Button ID="btnLogout" runat="server" Text="Logga ut" style="float:right;" OnClick="btnLogout_Click"/>
 </form>

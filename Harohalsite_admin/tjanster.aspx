@@ -12,11 +12,12 @@
 
     <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
         <Items>
+            <asp:MenuItem Text="Min Profil" Value="Min Profil" NavigateUrl="min_profil.aspx"></asp:MenuItem>           
             <asp:MenuItem Text="Massörer" Value="Massörer" NavigateUrl="massorer.aspx"></asp:MenuItem>
             <asp:MenuItem Text="Artiklar" Value="Artiklar" NavigateUrl="artiklar.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="default.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Schema" Value="Schema" NavigateUrl="schema.aspx"></asp:MenuItem>
             <asp:MenuItem Text="Nyheter" Value="Nyheter" NavigateUrl="Nyheter.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="tjänster" Value="tjänster" NavigateUrl="tjanster.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Tjänster" Value="Tjänster" NavigateUrl="tjanster.aspx"></asp:MenuItem>
         </Items>
     </asp:Menu>
 
@@ -38,7 +39,7 @@
              <div style="display:block; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">
                  <h1><%# Eval("namn") %></h1>
                  <p><%# Eval("beskrivning") %></p>
-                <p><%# Eval("tjanstid") %></p>
+                 <p><%# Eval("tjanstid") %></p>
 
                  <ul>
                      <li>Pris: <%# Eval("pris") %> kr</li>
