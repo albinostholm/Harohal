@@ -79,6 +79,9 @@ public partial class index : System.Web.UI.Page
         a.namn = tbNamn.Text.ToString();
         a.beskrivning = tbBeskrivning.Text.ToString();
         a.id = (lblRCtest.Text.ToString());
+        a.pris = (tbPris.Text.ToString());
+        a.tid = (tbTid.Text.ToString());
+
 
         bd.updateTjanstInfo(a);
     }

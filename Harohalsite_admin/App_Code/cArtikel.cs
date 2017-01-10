@@ -19,4 +19,8 @@ public class cArtikel
 
     public string namn { get; set; }
 
+    public int pris { get; set; }
+
+    public int tid { get; set; }
+
 }

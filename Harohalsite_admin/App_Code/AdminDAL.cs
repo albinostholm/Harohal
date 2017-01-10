@@ -102,6 +102,8 @@ public class AdminDAL
             cmd.Parameters.AddWithValue("@artikelID", a.id);
             cmd.Parameters.AddWithValue("@rubrik", a.rubrik);
             cmd.Parameters.AddWithValue("@beskrivning", a.beskrivning);
+            cmd.Parameters.AddWithValue("@pris", a.pris);
+            cmd.Parameters.AddWithValue("@tid", a.tid);
 
             return cmd.ExecuteNonQuery();
         }
