@@ -18,15 +18,7 @@
    
 <form id="login_form" runat="server">
     <header></header>
-    <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
-        <Items>
-            <asp:MenuItem Text="Massörer" Value="Massörer" NavigateUrl="massorer.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Artiklar" Value="Artiklar" NavigateUrl="artiklar.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="default.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Nyheter" Value="Nyheter" NavigateUrl="Nyheter.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="tjänster" Value="tjänster" NavigateUrl="tjanster.aspx"></asp:MenuItem>
-        </Items>
-    </asp:Menu>
+    
     <asp:Login ID="Login1" runat="server" Height="157px" onauthenticate="Login1_Authenticate"
                Width="302px" PasswordRequiredErrorMessage="Lösenord krävs för att logga in."
                UserNameRequiredErrorMessage="Användarnamn krävs för att logga in.">
