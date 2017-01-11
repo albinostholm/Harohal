@@ -73,6 +73,8 @@ public partial class Artiklar : System.Web.UI.Page
         a.id = (lblRCtest.Text.ToString());
 
         aDAL.updateArtikelInfo(a);
+
+        FillArtiklar();
     }
 
     protected void repArtiklar_ItemCommand(object source, RepeaterCommandEventArgs e)

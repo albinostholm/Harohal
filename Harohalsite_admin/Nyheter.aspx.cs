@@ -63,6 +63,7 @@ public partial class Nyheter : System.Web.UI.Page
         a.id = (lblRCtest.Text.ToString());
 
         bd.updateNyhetInfo(a);
+        FillNyheter();
     }
 
     protected void tbText_TextChanged(object sender, EventArgs e)

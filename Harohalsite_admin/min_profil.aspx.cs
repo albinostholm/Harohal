@@ -96,10 +96,18 @@ public partial class min_profil : System.Web.UI.Page
 
     protected void btnUppdatera_Click(object sender, EventArgs e)
     {
-        BusinessDAL bDAL = new BusinessDAL();
+        AdminDAL aDAL = new AdminDAL();
         cOrder o = new cOrder();
 
-        //bDAL.updateOrderInfo(o);
+        o.anstalldID = anstalldID();
+        o.tjanstID = tjanstID();
+        o.personID = lblRCtest.Text;
+        o.slutTid = Convert.ToDateTime(tbSlutTid.Text);
+        o.startTid = Convert.ToDateTime(tbStartTid.Text);
+
+        aDAL.updateOrderInfo(o);
+
+        FillOrdrar();
     }
 
     //Hämtar dina ordrar
@@ -264,6 +272,5 @@ public partial class min_profil : System.Web.UI.Page
     {
         lblRCtest.Text = e.CommandArgument.ToString();
         panEditOrder.Visible = true;
-        // populera  nyheten
     }
 }

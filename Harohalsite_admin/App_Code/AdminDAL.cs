@@ -119,6 +119,40 @@ public class AdminDAL
         }
     }
 
+    public int updateOrderInfo(cOrder newO)
+    {
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_ADMIN_edit_order", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+            cmd.Parameters.AddWithValue("@orderID", newO.personID);
+            cmd.Parameters.AddWithValue("@anstalldID", newO.anstalldID);
+            cmd.Parameters.AddWithValue("@startTid", newO.startTid);
+            cmd.Parameters.AddWithValue("@slutTid", newO.slutTid);
+            cmd.Parameters.AddWithValue("@tjanstID", newO.tjanstID);
+
+            return cmd.ExecuteNonQuery();
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
+
     public DataTable getMassorOrders(string anstalldID)
     {
         DataTable dt = new DataTable();
