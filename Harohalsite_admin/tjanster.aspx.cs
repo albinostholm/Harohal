@@ -13,6 +13,7 @@ public partial class index : System.Web.UI.Page
             FillTjanster();
             updateMenu();
             panEditTjanst.Visible = false;
+            
         }
     }
 
@@ -79,6 +80,8 @@ public partial class index : System.Web.UI.Page
         a.namn = tbNamn.Text.ToString();
         a.beskrivning = tbBeskrivning.Text.ToString();
         a.id = (lblRCtest.Text.ToString());
+        a.pris = Convert.ToDecimal(tbPris.Text);
+        a.tid = Convert.ToInt16(tbTid.Text);
 
         bd.updateTjanstInfo(a);
     }
@@ -90,6 +93,16 @@ public partial class index : System.Web.UI.Page
     }
 
     protected void tbBeskrivning_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void tbPris_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void tbTid_TextChanged(object sender, EventArgs e)
     {
 
     }

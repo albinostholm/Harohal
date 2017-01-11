@@ -608,6 +608,9 @@ public class BusinessDAL
             cmd.Parameters.AddWithValue("@tjanstID", a.id);
             cmd.Parameters.AddWithValue("@namn", a.namn);
             cmd.Parameters.AddWithValue("@beskrivning", a.beskrivning);
+            cmd.Parameters.AddWithValue("@pris", a.pris);
+            cmd.Parameters.AddWithValue("@tid", a.tid);
+
 
             return cmd.ExecuteNonQuery();
         }

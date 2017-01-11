@@ -16,6 +16,8 @@ public class cArtikel
     public string rubrik { get; set; }
     public string beskrivning { get; set; }
     public string id { get; set; }
+    public decimal pris { get; set; }
+    public int tid { get; set; }
 
     public string namn { get; set; }
 

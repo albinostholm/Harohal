@@ -13,6 +13,7 @@ public partial class min_profil : System.Web.UI.Page
             FillMassor();
             FillTjanster();
             updateMenu();
+            lblRCtest.Visible = false;
             panEditOrder.Visible = false;
         }
     }
