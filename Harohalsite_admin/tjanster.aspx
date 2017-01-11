@@ -26,9 +26,11 @@
             <asp:TextBox ID="tbNamn" runat="server" OnTextChanged="tbNamn_TextChanged"></asp:TextBox>
             <asp:Label ID="lblBeskrivning" runat="server" Text="Beskivning"></asp:Label>
             <asp:TextBox ID="tbBeskrivning" runat="server" OnTextChanged="tbBeskrivning_TextChanged"></asp:TextBox>
-           <asp:Label ID="lblPris" runat="server" Text="Pris"></asp:Label>
+
+            <asp:Label ID="lblPris" runat="server" Text="Pris"></asp:Label>
             <asp:TextBox ID="tbPris" runat="server" OnTextChanged="tbPris_TextChanged"></asp:TextBox>
-           <asp:Label ID="lblTid" runat="server" Text="Tid"></asp:Label>
+            <asp:Label ID="lblTid" runat="server" Text="Tid"></asp:Label>
+
             <asp:TextBox ID="tbTid" runat="server" OnTextChanged="tbTid_TextChanged"></asp:TextBox>
             <asp:Button ID="btnUppdatera" runat="server" Text="Spara" OnClick="btnUppdatera_Click" />
         </asp:Panel>

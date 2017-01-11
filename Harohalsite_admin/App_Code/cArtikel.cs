@@ -21,4 +21,5 @@ public class cArtikel
 
     public string namn { get; set; }
 
+
 }
