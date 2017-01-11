@@ -10,97 +10,62 @@ public partial class schema : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!IsPostBack)
+        {
+            //Sätter så att schemat visar dagens vecka
+            hfWeek.Value = DayPilot.Utils.Week.WeekNrISO8601(DateTime.Now).ToString();
+            FillCalender();
+            weekButtons();
+        }
     }
 
-    //Fyller ut repeatern med dina ordrar
-    protected void FillOrdrar()
+    private void FillCalender()
     {
-        rptBokningar.DataSource = orders();
-        rptBokningar.DataBind();
+        DayPilotCalendar1.StartDate = DateTimeExtensions.FirstDateOfWeekISO8601(2016, int.Parse(hfWeek.Value));
+        DayPilotCalendar1.DataSource = calenderEvents(DayPilotCalendar1.StartDate, int.Parse(hfWeek.Value) + 1);
+        DayPilotCalendar1.DataBind();
     }
 
-    //Hämtar dina ordrar
-    protected DataTable orders()
+    private DataTable calenderEvents(DateTime start, int week)
     {
         BusinessDAL bDal = new BusinessDAL();
         DataTable dt = new DataTable();
 
-        dt = bDal.getUserOrders(Session["userid"].ToString());
+        dt = bDal.getSchedule(week, Session["userId"].ToString());
 
-        foreach (DataColumn dc in dt.Columns)
-        {
-            dc.ReadOnly = false;
-        }
-
-        foreach (DataRow dr in dt.Rows)
-        {
-            if (dr["startTid"].ToString().Length == 4)
-            {
-                dr["startTid"] += "0";
-            }
-            if (dr["slutTid"].ToString().Length == 4)
-            {
-                dr["slutTid"] += "0";
-            }
-        }
         return dt;
     }
-
-
-
-    // // // // // // // // //
-    protected void button1_Click(object sender, EventArgs e)
+    //Hanterar texten på knapparna för att byta vecka
+    private void weekButtons()
     {
-        BusinessDAL bd = new BusinessDAL();
-        cArtikel a = new cArtikel();
+        btnDeWeek.Text = "Vecka: " + (int.Parse(hfWeek.Value) - 1).ToString();
+        btnInWeek.Text = "Vecka: " + (int.Parse(hfWeek.Value) + 1).ToString();
+        lblWeek.Text = "Vecka: " + hfWeek.Value;
+
+        if (int.Parse(hfWeek.Value) == 1)
+            btnDeWeek.Text = "Vecka: " + 52.ToString();
+
+        if (int.Parse(hfWeek.Value) == 52)
+            btnInWeek.Text = "Vecka: " + 1.ToString();
     }
 
-    protected void repBokningar_ItemCommand(object source, RepeaterCommandEventArgs e)
+    //Sänker veckonummret
+    protected void btnDeWeek_Click(object sender, EventArgs e)
     {
-        //lblRCtest.Text = e.CommandArgument.ToString();
-        panEditBokning.Visible = true;
-        // populera  nyheten
+        hfWeek.Value = (int.Parse(hfWeek.Value) - 1).ToString();
+        if (int.Parse(hfWeek.Value) < 1)
+            hfWeek.Value = 52.ToString();
+        weekButtons();
+        FillCalender();
     }
 
-    protected void btnUppdatera_Click(object sender, EventArgs e)
+    //Ökar veckonummret
+    protected void btnInWeek_Click(object sender, EventArgs e)
     {
-        BusinessDAL bd = new BusinessDAL();
-        cArtikel a = new cArtikel();
-
-        a.rubrik = tbStartTid.Text.ToString();
-        a.beskrivning = tbSlutTid.Text.ToString();
-        //a.id = (lblRCtest.Text.ToString());
-
-        bd.updateNyhetInfo(a);
-    }
-    protected void tbText_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void tbRubrik_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-    // // // // // // // // //
-
-
-    //Avbokar de markerade ordrarna
-    protected void btnAvboka_Click(object sender, EventArgs e)
-    {
-        int x = 40;
-        BusinessDAL bDAL = new BusinessDAL();
-        foreach (RepeaterItem rptI in rptBokningar.Items)
-        {
-            CheckBox cbx = (CheckBox)rptI.FindControl("cbxAvboka");
-            HiddenField hf = (HiddenField)rptI.FindControl("hfOrderID");
-
-            if (cbx.Checked)
-            {
-                bDAL.updateOrderStatusID(x, hf.Value);
-            }
-        }
-        FillOrdrar();
+        hfWeek.Value = (int.Parse(hfWeek.Value) + 1).ToString();
+        if (int.Parse(hfWeek.Value) > 52)
+            hfWeek.Value = 1.ToString();
+        weekButtons();
+        FillCalender();
     }
 }

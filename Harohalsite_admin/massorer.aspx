@@ -4,12 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Massörer</title>
 </head>
 <body>
 <form id="form1" runat="server">
+    <h1>Våra massörer</h1>
 
-    <header></header>
     <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
         <Items>
             <asp:MenuItem Text="Min Profil" Value="Min Profil" NavigateUrl="min_profil.aspx"></asp:MenuItem>           
@@ -21,43 +21,27 @@
         </Items>
     </asp:Menu>
 
-    <div style="background-color:yellow; float:right;height:auto; width:30%; padding:30px; margin-right:1%; margin-left:4%; border:1px solid black;">
-        <h2>
-            <asp:Label ID="lblRubrik" runat="server" Text="Label"></asp:Label>
-        </h2>
-        <div style="border:1px solid black;">
-            <asp:Literal ID="litBeskrivning" runat="server"></asp:Literal>
-        </div>
-    </div>
-
-    <asp:Repeater ID="repMassor" runat="server">
+       <asp:Panel ID="panEditMassor" runat="server">
+            <asp:Label ID="lblNamn" runat="server" Text="Namn"></asp:Label>
+            <asp:TextBox ID="tbNamn" runat="server" OnTextChanged="tbNamn_TextChanged"></asp:TextBox>
+            <asp:Label ID="lblBeskrivning" runat="server" Text="Beskivning"></asp:Label>
+            <asp:TextBox ID="tbBeskrivning" runat="server" OnTextChanged="tbBeskrivning_TextChanged"></asp:TextBox>
+            <asp:Button ID="btnUppdatera" runat="server" Text="Spara" OnClick="btnUppdatera_Click" />
+        </asp:Panel>
+    <asp:Panel ID="panVisaMassorLista" runat="server">
+    <asp:Repeater ID="repMassorer" runat="server"  OnItemCommand="repMassorer_ItemCommand">
         <ItemTemplate>
-            <section>
-                <div style="display:block; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">
-                    <img src="image/xd.png" alt="MassörNamn"
-                         style="float:left; width:150px; height:150px; margin-top:58px;">
-                    <h1 style="margin-top:30px; margin-left:160px;"><%# Eval("namn") %></h1>
-                    <asp:CheckBox ID="CheckBox1" runat="server" style="float:right;"/>
-                    <hr style="width:auto; margin-left:auto;">
-                    <p style="float:right; text-align:left; margin-left:1%;"><%# Eval("beskrivning") %>
 
-                        <br/>
-                    </p>
+             <div style="display:block; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">
+                 <h1><%# Eval("namn") %></h1>
+                 <p><%# Eval("beskrivning") %></p>
 
-
-                    <ul style="list-style:none; float:left; text-align:left; margin-left: 0px;">
-                        <li>Ålder</li>
-                        <li>Behandlar Män: <%# Eval("behandlarMan") %></li>
-                        <li>Behandlar Kvinnor: <%# Eval("behandlarKvinnor") %></li>
-                    </ul>
-                </div>
-
-            </section>
+                 <asp:LinkButton ID="lbVisaMassor" runat="server" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "anstalldID" )%>'>Redigera text</asp:LinkButton>
+             </div>                             
         </ItemTemplate>
     </asp:Repeater>
-
+    </asp:Panel>
+    <asp:Label ID="lblRCtest" runat="server" Text=""></asp:Label>
 </form>
-
-
 </body>
 </html>

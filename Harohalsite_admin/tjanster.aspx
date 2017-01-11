@@ -41,7 +41,6 @@
              <div style="display:block; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">
                  <h1><%# Eval("namn") %></h1>
                  <p><%# Eval("beskrivning") %></p>
-                 <p><%# Eval("tjanstid") %></p>
 
                  <ul>
                      <li>Pris: <%# Eval("pris") %> kr</li>

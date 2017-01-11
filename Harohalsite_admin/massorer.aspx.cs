@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class a_massorer : System.Web.UI.Page
@@ -12,26 +8,48 @@ public partial class a_massorer : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-          //  FillMassor();
-          //  GetOneArtikel();
+            FillMassorer();
+            updateMenu();
+            panEditMassor.Visible = false;
+
         }
     }
 
-    private void FillMassor()
+    //Updaterar navigeringsmenyn beroende på ifall man är inloggad
+    private void updateMenu()
     {
-        repMassor.DataSource = massorList();
-        repMassor.DataBind();
+        if (Session.Count > 0)
+        {
+            foreach (MenuItem mItem in Menu.Items)
+            {
+                if (mItem.Text == "Logga in")
+                {
+                    mItem.Text = "Min Profil";
+                    mItem.NavigateUrl = "min_profil.aspx";
+                }
+            }
+        }
+        else
+        {
+            foreach (MenuItem mItem in Menu.Items)
+            {
+                if (mItem.Text == "Min Profil")
+                {
+                    mItem.Text = "Logga In";
+                    mItem.NavigateUrl = "login.aspx";
+                }
+            }
+        }
     }
 
-    private void GetOneArtikel()
+    //Fyller ut repeatern med massörinfo
+    private void FillMassorer()
     {
-        BusinessDAL bDAL = new BusinessDAL();
-        cArtikel art = new cArtikel();
-        art = bDAL.getArtikelInfo(2);
-        lblRubrik.Text = art.rubrik;
-        litBeskrivning.Text = art.beskrivning;
+        repMassorer.DataSource = massorList();
+        repMassorer.DataBind();
     }
 
+    //Hämtar tjänstinfo
     private DataTable massorList()
     {
         BusinessDAL bDal = new BusinessDAL();
@@ -41,4 +59,41 @@ public partial class a_massorer : System.Web.UI.Page
 
         return dt;
     }
+
+    protected void repMassorer_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+        lblRCtest.Text = e.CommandArgument.ToString();
+        panEditMassor.Visible = true;
+        // populera  nyheten
+
+    }
+
+
+    //Hämtar artikeln om massörer
+    protected void btnUppdatera_Click(object sender, EventArgs e)
+    {
+        BusinessDAL bd = new BusinessDAL();
+        cArtikel a = new cArtikel();
+
+        a.namn = tbNamn.Text.ToString();
+        a.beskrivning = tbBeskrivning.Text.ToString();
+        a.id = (lblRCtest.Text.ToString());
+
+        bd.updateMassorInfo(a);
+
+        FillMassorer();
+    }
+
+
+    protected void tbNamn_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void tbBeskrivning_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    
 }
