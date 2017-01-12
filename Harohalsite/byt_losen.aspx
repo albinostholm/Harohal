@@ -1,15 +1,15 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="byt_losen.aspx.cs" Inherits="glomt_losen" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Login</title>
+    <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 </head>
 <body>
     <div class="container">
-<form id="login_form" runat="server">
+<form id="form1" runat="server">
 
     <div class="row">
                 <div class="navbar navbar-default navbar" role="navigation">
@@ -21,7 +21,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="hem.aspx" ><img alt="Logo" src="image/logo.png" height="30" /></a><h1 class="navbar-text">Logga In</h1>
+                            <a class="navbar-brand" href="hem.aspx" ><img alt="Logo" src="image/logo.png" height="30" /></a><h1 class="navbar-text">Återställ Lösenord</h1>
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right">                       
@@ -35,17 +35,25 @@
                         </div>
                     </div>
                 </div> 
-            </div> 
+            </div>
 
     <div class="row">
-    <asp:Login ID="Login1" runat="server" Height="157px" onauthenticate="Login1_Authenticate"
-               Width="302px" PasswordRequiredErrorMessage="Lösenord krävs för att logga in."
-               UserNameRequiredErrorMessage="Användarnamn krävs för att logga in.">
-        <HyperLinkStyle BorderStyle="Solid"/>
-        <FailureTextStyle BackColor="#DBDBDB" BorderColor="Red"/>
-    </asp:Login>
+    <p>Gammalt Lösenord</p>
 
-    <a href="registera.aspx" class="btn btn-default">Registrera</a>
+    <asp:TextBox ID="tbEpost" runat="server"></asp:TextBox>
+
+    <p> Nytt Lösenord</p>
+
+    <asp:TextBox ID="tbpw" runat="server"></asp:TextBox>
+
+    <asp:CompareValidator ID="cvPassword" runat="server" ErrorMessage="Olika lösenord" ControlToCompare="tbpw"
+                          ControlToValidate="tbPw2"></asp:CompareValidator>
+
+    <p>Nytt lösenord igen</p>
+
+    <asp:TextBox ID="tbPw2" runat="server"></asp:TextBox>
+    <br/>
+    <asp:Button ID="btnBytLosen" runat="server" Text="Byt Lösenord" OnClick="btnBytLosen_Click"/>
         </div>
 </form>
         </div>

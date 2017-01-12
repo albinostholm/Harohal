@@ -40,6 +40,10 @@
             </div> 
 
             <div class="row">
+                <div class="col-md-8"><h1>Nyheter</h1></div>
+                <div class="col-md-4"><h1>Annonser</h1></div>
+            </div>
+            <div class="row">
                 <div class="col-md-8">
                     <asp:Repeater ID="repNyheter" runat="server">
                         <ItemTemplate>
@@ -58,6 +62,7 @@
                     </asp:Repeater>
                 </div>
             </div>
+            
 
         </form>
 

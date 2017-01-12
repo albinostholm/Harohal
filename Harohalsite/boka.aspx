@@ -62,6 +62,10 @@
                 <div class="col-md-3">
                     <h2><%# Eval("namn") %></h2>
                     <p><%# Eval("beskrivning") %></p>
+                    <ul>
+                        <li><%# Eval("pris") %> Kr</li>
+                        <li><%# Eval("Tid") %> Min</li>
+                    </ul>
                     </div>
             </ItemTemplate>
         </asp:Repeater>
@@ -99,6 +103,9 @@
 
     <div class="row">
         <DayPilot:DayPilotCalendar ID="DayPilotCalendar1" runat="server" Days="6"
+                                   BusinessBeginsHour="9"
+                                   BusinessEndsHour="22"                                
+                                   HeightSpec="BusinessHoursNoScroll"
                                    DataStartField="startTid"
                                    DataEndField="slutTid"
                                    DataTextField="namn"

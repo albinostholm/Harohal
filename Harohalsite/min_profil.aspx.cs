@@ -77,7 +77,7 @@ public partial class min_profil : System.Web.UI.Page
     //Redirectar dig till glomt_losen.aspx
     protected void btnBytLosen_Click(object sender, EventArgs e)
     {
-        Response.Redirect("glomt_losen.aspx");
+        Response.Redirect("byt_losen.aspx");
     }
 
     //Avbokar de markerade ordrarna
