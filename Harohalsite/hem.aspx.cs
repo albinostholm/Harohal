@@ -10,12 +10,12 @@ public partial class hem : System.Web.UI.Page
         {
             FillNyheter();
             FillAnnonser();
-            updateMenu();
+            //updateMenu();
         }
     }
 
     //Updaterar navigeringsmenyn beroende på ifall man är inloggad
-    private void updateMenu()
+   /* private void updateMenu()
     {
         if (Session.Count > 0)
         {
@@ -38,7 +38,7 @@ public partial class hem : System.Web.UI.Page
                 }
             }
         }
-    }
+    }*/
 
     //Fyller repeatern med nyheterna
     private void FillNyheter()

@@ -12,18 +12,6 @@ public partial class login : Page
         }
     }
 
-    //Redirectar dig till registrera.aspx
-    protected void btnRegister_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("registrera.aspx");
-    }
-
-    //Redirectar dig till glomt_losen.aspx
-    protected void btnGlomt_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("glomt_losen.aspx");
-    }
-
     //Authenticatar dina inloggningsuppgifter
     protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
     {

@@ -8,43 +8,55 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 </head>
 <body>
-<form id="form1" runat="server">
-    <h1>Våra tjänster</h1>
+    <div class="container">
+        <form id="form1" runat="server">
+            <div class="row">
+                <div class="navbar navbar-default navbar" role="navigation">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="hem.aspx" ><img alt="Logo" src="image/logo.png" height="30" /></a><h1 class="navbar-text">Tjänster</h1>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right">                       
+                                <li><a href="hem.aspx">Hem</a></li>
+                                <li><a href="boka.aspx">Boka</a></li>                      
+                                <li><a href="massorer.aspx">Massörer</a></li>
+                                <li><a href="tjanster.aspx">Tjänster</a></li>
+                                <li><a href="om_oss.aspx">Om Oss</a></li>
+                                <li><a href="Login.aspx">Logga in</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> 
+            </div>
 
-    <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
-        <Items>
-            <asp:MenuItem Text="Hem" Value="Hem" NavigateUrl="hem.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Boka" Value="Boka" NavigateUrl="boka.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Massörer" Value="Massörer" NavigateUrl="massorer.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Tjänster" Value="Tjänster" NavigateUrl="tjanster.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Om Oss" Value="Om Oss" NavigateUrl="om_oss.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="Login.aspx"></asp:MenuItem>
-        </Items>
-    </asp:Menu>
+            <div class="row">
+                <div class="col-md-8">
+                    <asp:Repeater ID="repTjanster" runat="server">
+                        <ItemTemplate>
+                            <h1><%# Eval("namn") %></h1>
+                            <p><%# Eval("beskrivning") %></p>
 
-    <div style="background-color:yellow; float:right;border:1px solid black;">
-        <h2>
-            <asp:Label ID="lblRubrik" runat="server" Text="Label"></asp:Label>
-        </h2>
-        <div style="border:1px solid black;">
-            <asp:Literal ID="litBeskrivning" runat="server"></asp:Literal>
-        </div>
+                            <ul>
+                                <li>Pris: <%# Eval("pris") %> kr</li>
+                                <li>Tid: <%# Eval("tid") %> min</li>
+                            </ul>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
+                <div class="col-md-4">
+                    <asp:Label ID="lblRubrik" runat="server" Text="Label"></asp:Label>
+                    <asp:Literal ID="litBeskrivning" runat="server"></asp:Literal>
+                </div>
+            </div>
+        </form>
     </div>
-
-    <asp:Repeater ID="repTjanster" runat="server">
-        <ItemTemplate>
-             <div style="display:block; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">
-                 <h1><%# Eval("namn") %></h1>
-                 <p><%# Eval("beskrivning") %></p>
-
-                 <ul>
-                     <li>Pris: <%# Eval("pris") %> kr</li>
-                     <li>Tid: <%# Eval("tid") %> min</li>
-                 </ul>
-             </div>
-        </ItemTemplate>
-    </asp:Repeater>
-</form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>

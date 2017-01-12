@@ -8,20 +8,36 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 </head>
 <body>
+    <div class="container">
 <form id="login_form" runat="server">
-    <h1>Logga in</h1>
 
-    <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
-        <Items>
-            <asp:MenuItem Text="Hem" Value="Hem" NavigateUrl="hem.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Boka" Value="Boka" NavigateUrl="boka.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Massörer" Value="Massörer" NavigateUrl="massorer.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Tjänster" Value="Tjänster" NavigateUrl="tjanster.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Om Oss" Value="Om Oss" NavigateUrl="om_oss.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Logga in" Value="Logga in" NavigateUrl="Login.aspx"></asp:MenuItem>
-        </Items>
-    </asp:Menu>
+    <div class="row">
+                <div class="navbar navbar-default navbar" role="navigation">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="hem.aspx" ><img alt="Logo" src="image/logo.png" height="30" /></a><h1 class="navbar-text">Logga In</h1>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right">                       
+                                <li><a href="hem.aspx">Hem</a></li>
+                                <li><a href="boka.aspx">Boka</a></li>                      
+                                <li><a href="massorer.aspx">Massörer</a></li>
+                                <li><a href="tjanster.aspx">Tjänster</a></li>
+                                <li><a href="om_oss.aspx">Om Oss</a></li>
+                                <li><a href="Login.aspx">Logga in</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> 
+            </div> 
 
+    <div class="row">
     <asp:Login ID="Login1" runat="server" Height="157px" onauthenticate="Login1_Authenticate"
                Width="302px" PasswordRequiredErrorMessage="Lösenord krävs för att logga in."
                UserNameRequiredErrorMessage="Användarnamn krävs för att logga in.">
@@ -29,11 +45,11 @@
         <FailureTextStyle BackColor="#DBDBDB" BorderColor="Red"/>
     </asp:Login>
 
-    <asp:LinkButton ID="btnRegister" runat="server" OnClick="btnRegister_Click" Text="Registrera"/>
-
-    <asp:LinkButton ID="btnGlomt" runat="server" OnClick="btnGlomt_Click" Text="Glömt lösenord"
-                    NavigateUrl="glomt_losen.aspx"/>
+    <a href="registera.aspx" class="btn btn-default">Registrera</a>
+    <a href="glomt_losen.aspx" class="btn btn-default">Glömt Lösenord?</a>
+        </div>
 </form>
+        </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
