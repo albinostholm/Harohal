@@ -51,8 +51,7 @@
                 </div>
             </div>
             <div class="row">
-                <img src="NÅNTINGNÅNTING.png" alt="GOOGLEMAPS"
-                     style="height: 175px; width: 375px; float:left; margin-left:10px;"/>
+                <img src="image/google.jpg" alt="GOOGLEMAPS"/>
             </div>
         </form>
     </div>
