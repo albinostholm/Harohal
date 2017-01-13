@@ -40,7 +40,7 @@
                     <h2>Din info</h2>
                 </div>
                 <div class="col-md-5">
-                    <h2>Dina bokningar</h2>
+                    <h2>Dina Uppkommande bokningar</h2>
                 </div>
             </div>
 
@@ -92,6 +92,19 @@
                     <asp:Button ID="btnLogout" runat="server" Text="Logga ut" OnClick="btnLogout_Click"/>
                 </div>
             </div>
+            <asp:Repeater ID="rptOldBokningar" runat="server">
+                        <ItemTemplate>
+                                <p>gammal bokning</p>
+                                <ul>
+                                    <li>Massör: <%# Eval("MassorNamn") %></li>
+                                    <li>Tjänst: <%# Eval("TjanstNamn") %></li>
+                                    <li>Datum: <%# Eval("Datum") %></li>
+                                    <li>Starttid: <%# Eval("startTid") %></li>
+                                    <li>Sluttid: <%# Eval("slutTid") %></li>
+                                </ul>
+                                <asp:HiddenField ID="hfOrderID" runat="server" Value='<%# Eval("orderID") %>' />
+                        </ItemTemplate>         
+                    </asp:Repeater>
         </form>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

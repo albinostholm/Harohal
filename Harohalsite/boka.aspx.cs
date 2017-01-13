@@ -11,6 +11,7 @@ public partial class boka : Page
         {
             //Sätter så att schemat visar dagens vecka
             hfWeek.Value = DayPilot.Utils.Week.WeekNrISO8601(DateTime.Now).ToString();
+            hfYear.Value = DateTime.Now.Year.ToString();
             FillMassor();
             FillTjanster();        
             FillCalender();
@@ -27,18 +28,30 @@ public partial class boka : Page
         lblWeek.Text = "Vecka: " + hfWeek.Value;
 
         if (int.Parse(hfWeek.Value) == 1)
+        {
             btnDeWeek.Text = "Vecka: " + 52.ToString();
+        }
 
         if (int.Parse(hfWeek.Value) == 52)
+        {
             btnInWeek.Text = "Vecka: " + 1.ToString();
+        }
     }
 
     //Sänker veckonummret
     protected void btnDeWeek_Click(object sender, EventArgs e)
     {
         hfWeek.Value = (int.Parse(hfWeek.Value) - 1).ToString();
+
+        int year = int.Parse(hfYear.Value);
+
         if (int.Parse(hfWeek.Value) < 1)
+        {
             hfWeek.Value = 52.ToString();
+            year -= 1;
+            hfYear.Value = year.ToString();
+        }
+            
         weekButtons();
         FillCalender();
     }
@@ -47,8 +60,17 @@ public partial class boka : Page
     protected void btnInWeek_Click(object sender, EventArgs e)
     {
         hfWeek.Value = (int.Parse(hfWeek.Value) + 1).ToString();
+
+        int year = int.Parse(hfYear.Value);
+
         if (int.Parse(hfWeek.Value) > 52)
+        {
             hfWeek.Value = 1.ToString();
+            year += 1;
+            hfYear.Value = year.ToString();
+        }
+            
+
         weekButtons();
         FillCalender();
     }
@@ -116,7 +138,7 @@ public partial class boka : Page
     //Fyller kalendern med bokningarna för den aktiva veckan
     private void FillCalender()
     {
-        DayPilotCalendar1.StartDate = DateTimeExtensions.FirstDateOfWeekISO8601(2016, int.Parse(hfWeek.Value));
+        DayPilotCalendar1.StartDate = DateTimeExtensions.FirstDateOfWeekISO8601(int.Parse(hfYear.Value), int.Parse(hfWeek.Value));
         DayPilotCalendar1.DataSource = calenderEvents(DayPilotCalendar1.StartDate, int.Parse(hfWeek.Value) + 1);
         DayPilotCalendar1.DataBind();
     }
@@ -152,7 +174,7 @@ public partial class boka : Page
 
             string[] splitTime = input.Split(':');
 
-            DateTime starttime = DateTimeExtensions.FirstDateOfWeekISO8601(2016, int.Parse(hfWeek.Value));
+            DateTime starttime = DateTimeExtensions.FirstDateOfWeekISO8601(int.Parse(hfYear.Value), int.Parse(hfWeek.Value));
 
             if (day.ToLower() == "tuesday")
             {

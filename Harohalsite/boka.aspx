@@ -13,6 +13,7 @@
     <div class="container">
 <form id="form1" runat="server">
     <asp:HiddenField runat="server" ID="hfWeek"/>
+    <asp:HiddenField runat="server" ID="hfYear"/>
 
     <div class="row">
                 <div class="navbar navbar-default navbar" role="navigation">
