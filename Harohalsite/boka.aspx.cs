@@ -196,6 +196,11 @@ public partial class boka : Page
             {
                 Session.Add("orderID", orderid);
                 Response.Redirect("bekrafta_bokning.aspx");
+                litErrMsg.Visible = false;
+            }
+            else
+            {
+                litErrMsg.Visible = true;
             }
         }
         else
