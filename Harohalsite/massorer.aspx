@@ -39,6 +39,7 @@
                 <div class="col-md-8">
                     <asp:Repeater ID="repMassor" runat="server">
                         <ItemTemplate>
+                            <h1>irgwojiorgjirgojirgwojirgw</h1>
                             <h1><%# Eval("namn") %></h1>
                             <p><%# Eval("beskrivning") %></p>
                                 <ul>
@@ -50,7 +51,8 @@
                     </asp:Repeater>
                 </div>
                 <div class="col-md-4">
-                    <asp:Label ID="lblRubrik" runat="server" Text="Label"></asp:Label>   
+                    <h1><asp:Label ID="lblRubrik" runat="server" Text="Label"></asp:Label></h1>
+                   
                     <asp:Literal ID="litBeskrivning" runat="server"></asp:Literal>
                 </div>
             </div>
