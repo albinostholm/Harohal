@@ -46,7 +46,7 @@
         
 
         
-        <asp:Label ID="lblRCtest" runat="server" Text=""></asp:Label>
+        <asp:Label ID="lblRCtest" runat="server" Text="" Visible="false"></asp:Label>
 
       </asp:Panel>
 
