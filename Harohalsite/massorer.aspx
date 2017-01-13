@@ -41,11 +41,14 @@
                         <ItemTemplate>
                             <h1><%# Eval("namn") %></h1>
                             <p><%# Eval("beskrivning") %></p>
-                                <ul>
-                                    <li>Ålder</li>
-                                    <li>Behandlar Män: <%# Eval("behandlarMan") %></li>
-                                    <li>Behandlar Kvinnor: <%# Eval("behandlarKvinnor") %></li>
-                                </ul>
+                            <ul>
+                                <li><asp:Literal ID="litAge" runat="server">Född: </asp:Literal></li>
+                                <asp:HiddenField ID="hfAge" runat="server" Value='<%# Eval("personnr") %>'/>
+                                <li><asp:Literal ID="litTreatsM" runat="server">Behandlar Män</asp:Literal></li>
+                                <asp:HiddenField ID="hfTreatsM" runat="server" Value='<%# Eval("behandlarMan") %>'/>
+                                <li><asp:Literal ID="litTreatsW" runat="server">Behandlar Kvinnor</asp:Literal></li>
+                                <asp:HiddenField ID="hfTreatsW" runat="server" Value='<%# Eval("behandlarKvinnor") %>'/>
+                            </ul>
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>
