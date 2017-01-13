@@ -50,6 +50,10 @@ public partial class Nyheter : System.Web.UI.Page
         lblRCtest.Text = e.CommandArgument.ToString();
         panEditNyhet.Visible = true;
         // populera  nyheten
+        BusinessDAL bDAL = new BusinessDAL();
+        cArtikel art = bDAL.getOneNyhet(int.Parse(lblRCtest.Text));
+        tbRubrik.Text = art.rubrik;
+        tbText.Text = art.beskrivning;
 
     }
 
@@ -64,6 +68,7 @@ public partial class Nyheter : System.Web.UI.Page
 
         bd.updateNyhetInfo(a);
         FillNyheter();
+        panEditNyhet.Visible = false;
     }
 
     protected void tbText_TextChanged(object sender, EventArgs e)

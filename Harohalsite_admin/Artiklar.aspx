@@ -35,7 +35,7 @@
                     <section>
                             <h1><%# Eval("rubrik") %></h1>
                             <p> <%# Eval("beskrivning") %></p>   
-                            <asp:LinkButton ID="lbVisaartikel" runat="server" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "artikelID" )%>' OnClick="lbVisaartikel_Click">Redigera text</asp:LinkButton>        
+                            <asp:LinkButton ID="lbVisaartikel" runat="server" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "artikelID" )%>'>Redigera text</asp:LinkButton>        
                         </div>
                     </section>
                 </ItemTemplate>

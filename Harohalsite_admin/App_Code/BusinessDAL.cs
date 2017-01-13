@@ -225,7 +225,47 @@ public class BusinessDAL
     }
 
 
+    public cAnvandare getOneMassor(string userID)
+    {
+        cAnvandare user = new cAnvandare();
 
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_getMassorInfo", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+
+            cmd.Parameters.AddWithValue("@anstalldID", userID);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                user.FirstName = reader["fornamn"].ToString();
+                user.LastName = reader["efternamn"].ToString();
+                user.ssn = reader["beskrivning"].ToString();
+            }
+
+            return user;
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
 
     public int newOrder(cOrder newO)
     {
@@ -454,6 +494,92 @@ public class BusinessDAL
         }
     }
 
+    public cArtikel getOneTjanst(int id)
+    {
+        DataTable dt = new DataTable();
+
+        cArtikel art = new cArtikel();
+
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_getOneTjanst", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+
+            cmd.Parameters.AddWithValue("@tjanstID", id);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                art.rubrik = reader["namn"].ToString();
+                art.beskrivning = reader["beskrivning"].ToString();
+                art.pris = decimal.Parse(reader["pris"].ToString());
+                art.tid = int.Parse(reader["tid"].ToString());
+            }
+
+            return art;
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
+    public cArtikel getOneNyhet(int id)
+    {
+        DataTable dt = new DataTable();
+
+        cArtikel art = new cArtikel();
+
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_getOneNyhet", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+
+            cmd.Parameters.AddWithValue("@nyhetsID", id);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                art.rubrik = reader["rubrik"].ToString();
+                art.beskrivning = reader["beskrivning"].ToString();
+            }
+
+            return art;
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
     public DataTable getAnnonsorInfo()
     {
         DataTable dt = new DataTable();

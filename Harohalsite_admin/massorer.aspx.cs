@@ -65,7 +65,11 @@ public partial class a_massorer : System.Web.UI.Page
         lblRCtest.Text = e.CommandArgument.ToString();
         panEditMassor.Visible = true;
         // populera  nyheten
-
+        BusinessDAL bDAL = new BusinessDAL();
+        cAnvandare art = bDAL.getOneMassor(lblRCtest.Text);
+        tbForNamn.Text = art.FirstName;
+        tbEfterNamn.Text = art.LastName;
+        tbBeskrivning.Text = art.ssn;
     }
 
 
@@ -83,6 +87,7 @@ public partial class a_massorer : System.Web.UI.Page
         bd.updateMassorInfo(a);
 
         FillMassorer();
+        panEditMassor.Visible = false;
     }
 
 

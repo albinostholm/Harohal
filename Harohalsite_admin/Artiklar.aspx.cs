@@ -58,11 +58,6 @@ public partial class Artiklar : System.Web.UI.Page
         repArtiklar.DataBind();   
     }
 
-    protected void lbVisaartikel_Click(object sender, EventArgs e)
-    {
-
-    }
-
     protected void btnUppdatera_Click(object sender, EventArgs e)
     {
          AdminDAL aDAL = new AdminDAL();
@@ -75,6 +70,7 @@ public partial class Artiklar : System.Web.UI.Page
         aDAL.updateArtikelInfo(a);
 
         FillArtiklar();
+        panEditartikel.Visible = false;
     }
 
     protected void repArtiklar_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -84,8 +80,10 @@ public partial class Artiklar : System.Web.UI.Page
 
         //Hämta data från tabellen Artikel med id = e.CommandArgument.ToString();
         //Fyll tectboxarna med data frå proceduren
-
-
+        BusinessDAL bDAL = new BusinessDAL();
+        cArtikel art = bDAL.getArtikelInfo(int.Parse(lblRCtest.Text));
+        tbRubrik.Text = art.rubrik;
+        tbText.Text = art.beskrivning;
     }
 
     protected void tbRubrik_TextChanged(object sender, EventArgs e)

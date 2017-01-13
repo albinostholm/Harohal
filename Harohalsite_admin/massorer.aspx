@@ -22,9 +22,9 @@
     </asp:Menu>
 
        <asp:Panel ID="panEditMassor" runat="server">
-            <asp:Label ID="lblForNamn" runat="server" Text="Namn"></asp:Label>
+            <asp:Label ID="lblForNamn" runat="server" Text="Förnamn"></asp:Label>
             <asp:TextBox ID="tbForNamn" runat="server" OnTextChanged="tbNamn_TextChanged"></asp:TextBox>
-            <asp:Label ID="lblEfterNamn" runat="server" Text="Namn"></asp:Label>
+            <asp:Label ID="lblEfterNamn" runat="server" Text="Efternamn"></asp:Label>
             <asp:TextBox ID="tbEfterNamn" runat="server" OnTextChanged="tbNamn_TextChanged"></asp:TextBox>
             <asp:Label ID="lblBeskrivning" runat="server" Text="Beskivning"></asp:Label>
             <asp:TextBox ID="tbBeskrivning" runat="server" OnTextChanged="tbBeskrivning_TextChanged"></asp:TextBox>

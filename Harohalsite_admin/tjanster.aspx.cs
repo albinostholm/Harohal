@@ -55,10 +55,19 @@ public partial class index : System.Web.UI.Page
     private DataTable tjanstList()
     {
         BusinessDAL bDal = new BusinessDAL();
-        DataTable dt = new DataTable();
 
-        dt = bDal.getTjanstInfo();
+        DataTable dt = bDal.getTjanstInfo();
 
+        foreach (DataColumn dc in dt.Columns)
+        {
+            dc.ReadOnly = false;
+        }
+
+        foreach (DataRow dr in dt.Rows)
+        {
+            string[] prisparts = dr["pris"].ToString().Split(',');
+            dr["pris"] = prisparts[0];
+        }
         return dt;
     }
 
@@ -67,7 +76,14 @@ public partial class index : System.Web.UI.Page
         lblRCtest.Text = e.CommandArgument.ToString();
         panEditTjanst.Visible = true;
         // populera  nyheten
+        BusinessDAL bDAL = new BusinessDAL();
+        cArtikel art = bDAL.getOneTjanst(int.Parse(lblRCtest.Text));
+        tbNamn.Text = art.rubrik;
+        tbBeskrivning.Text = art.beskrivning;
+        tbPris.Text = art.pris.ToString();
+        tbTid.Text = art.tid.ToString();
 
+        tbPris.Text = tbPris.Text.ToString().Split(',')[0];
     }
 
 
@@ -88,6 +104,7 @@ public partial class index : System.Web.UI.Page
         bd.updateTjanstInfo(a);
 
         FillTjanster();
+        panEditTjanst.Visible = false;
     }
 
 
