@@ -46,7 +46,6 @@
     </asp:Login>
 
     <a href="registera.aspx" class="btn btn-default">Registrera</a>
-    <a href="glomt_losen.aspx" class="btn btn-default">Glömt Lösenord?</a>
         </div>
 </form>
         </div>

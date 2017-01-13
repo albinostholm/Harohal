@@ -18,6 +18,37 @@ public partial class massorer : System.Web.UI.Page
     {
         repMassor.DataSource = massorList();
         repMassor.DataBind();
+
+        foreach (RepeaterItem rptI in repMassor.Items)
+        {
+            HiddenField hfTreatsM = (HiddenField)rptI.FindControl("hfTreatsM");
+            HiddenField hfTreatsW = (HiddenField)rptI.FindControl("hfTreatsW");
+            Literal litTreatsM = (Literal)rptI.FindControl("litTreatsM");
+            Literal litTreatsW = (Literal)rptI.FindControl("litTreatsW");
+
+            if (hfTreatsM.Value == "True")
+            {
+                litTreatsM.Visible = true;
+            }
+            else
+            {
+                litTreatsM.Visible = false;
+            }
+
+            if (hfTreatsW.Value == "True")
+            {
+                litTreatsW.Visible = true;
+            }
+            else
+            {
+                litTreatsW.Visible = false;
+            }
+
+            Literal litAge = (Literal)rptI.FindControl("litAge");
+            HiddenField hfAge = (HiddenField)rptI.FindControl("hfAge");
+
+            litAge.Text += hfAge.Value.Substring(0, 4);           
+        }
     }
 
     //Hämtar artikeln för massörer och skriver ut den

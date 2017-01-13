@@ -22,8 +22,10 @@
     </asp:Menu>
 
        <asp:Panel ID="panEditMassor" runat="server">
-            <asp:Label ID="lblNamn" runat="server" Text="Namn"></asp:Label>
-            <asp:TextBox ID="tbNamn" runat="server" OnTextChanged="tbNamn_TextChanged"></asp:TextBox>
+            <asp:Label ID="lblForNamn" runat="server" Text="Namn"></asp:Label>
+            <asp:TextBox ID="tbForNamn" runat="server" OnTextChanged="tbNamn_TextChanged"></asp:TextBox>
+            <asp:Label ID="lblEfterNamn" runat="server" Text="Namn"></asp:Label>
+            <asp:TextBox ID="tbEfterNamn" runat="server" OnTextChanged="tbNamn_TextChanged"></asp:TextBox>
             <asp:Label ID="lblBeskrivning" runat="server" Text="Beskivning"></asp:Label>
             <asp:TextBox ID="tbBeskrivning" runat="server" OnTextChanged="tbBeskrivning_TextChanged"></asp:TextBox>
             <asp:Button ID="btnUppdatera" runat="server" Text="Spara" OnClick="btnUppdatera_Click" />
@@ -35,7 +37,6 @@
              <div style="display:block; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">
                  <h1><%# Eval("namn") %></h1>
                  <p><%# Eval("beskrivning") %></p>
-
                  <asp:LinkButton ID="lbVisaMassor" runat="server" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "anstalldID" )%>'>Redigera text</asp:LinkButton>
              </div>                             
         </ItemTemplate>
