@@ -33,11 +33,9 @@
             <asp:Repeater ID="repArtiklar" runat="server" OnItemCommand="repArtiklar_ItemCommand">
                 <ItemTemplate>
                     <section>
-                        <div style="display:inline; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">
                             <h1><%# Eval("rubrik") %></h1>
-                            <asp:LinkButton ID="lbVisaartikel" runat="server" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "artikelID" )%>' OnClick="lbVisaartikel_Click">Redigera text</asp:LinkButton>
-                            <hr style="width:auto; margin-left:auto;">
-                            <p style="float:right; text-align:left; margin-left:1%;"> <%# Eval("beskrivning") %></p>           
+                            <p> <%# Eval("beskrivning") %></p>   
+                            <asp:LinkButton ID="lbVisaartikel" runat="server" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "artikelID" )%>' OnClick="lbVisaartikel_Click">Redigera text</asp:LinkButton>        
                         </div>
                     </section>
                 </ItemTemplate>
