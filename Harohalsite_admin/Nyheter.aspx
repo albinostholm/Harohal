@@ -34,7 +34,7 @@
             <section>
                 <div style="display:inline; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">
                     <h1><%# Eval("rubrik") %></h1>
-                    <asp:LinkButton ID="lbVisaNyhet" runat="server" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "nyhetsID" )%>'><%# Eval("rubrik") %></asp:LinkButton>
+                    <asp:LinkButton ID="lbVisaNyhet" runat="server" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "nyhetsID" )%>'>Redigera text</asp:LinkButton>
                     <hr style="width:auto; margin-left:auto;">
                     <p style="float:right; text-align:left; margin-left:1%;">
                         <%# Eval("beskrivning") %>

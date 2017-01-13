@@ -14,12 +14,12 @@
     <asp:HiddenField runat="server" ID="hfWeek"/>
     <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
         <Items>
-            <asp:MenuItem Text="Min Profil" Value="min_profil" NavigateUrl="min_profil.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Min Profil" Value="Min Profil" NavigateUrl="min_profil.aspx"></asp:MenuItem>           
             <asp:MenuItem Text="Massörer" Value="Massörer" NavigateUrl="massorer.aspx"></asp:MenuItem>
             <asp:MenuItem Text="Artiklar" Value="Artiklar" NavigateUrl="artiklar.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="Bokningar" Value="Bokningar" NavigateUrl="a_bokningar.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Schema" Value="Schema" NavigateUrl="schema.aspx"></asp:MenuItem>
             <asp:MenuItem Text="Nyheter" Value="Nyheter" NavigateUrl="Nyheter.aspx"></asp:MenuItem>
-            <asp:MenuItem Text="tjänster" Value="tjänster" NavigateUrl="tjanster.aspx"></asp:MenuItem>
+            <asp:MenuItem Text="Tjänster" Value="Tjänster" NavigateUrl="tjanster.aspx"></asp:MenuItem>
         </Items>
     </asp:Menu>
     <div style="clear: left; position: center">
