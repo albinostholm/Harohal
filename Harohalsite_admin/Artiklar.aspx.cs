@@ -58,11 +58,6 @@ public partial class Artiklar : System.Web.UI.Page
         repArtiklar.DataBind();   
     }
 
-    protected void lbVisaartikel_Click(object sender, EventArgs e)
-    {
-
-    }
-
     protected void btnUppdatera_Click(object sender, EventArgs e)
     {
          AdminDAL aDAL = new AdminDAL();
@@ -70,31 +65,24 @@ public partial class Artiklar : System.Web.UI.Page
 
         a.beskrivning = tbText.Text.ToString();
         a.rubrik = tbRubrik.Text.ToString();
-        a.id = (lblRCtest.Text.ToString());
+        a.id = (lblID.Text.ToString());
 
         aDAL.updateArtikelInfo(a);
 
         FillArtiklar();
+        panEditartikel.Visible = false;
     }
 
     protected void repArtiklar_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
-        lblRCtest.Text = e.CommandArgument.ToString();
+        lblID.Text = e.CommandArgument.ToString();
         panEditartikel.Visible = true;
 
         //Hämta data från tabellen Artikel med id = e.CommandArgument.ToString();
         //Fyll tectboxarna med data frå proceduren
-
-
-    }
-
-    protected void tbRubrik_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void tbText_TextChanged(object sender, EventArgs e)
-    {
-
+        BusinessDAL bDAL = new BusinessDAL();
+        cArtikel art = bDAL.getArtikelInfo(int.Parse(lblID.Text));
+        tbRubrik.Text = art.rubrik;
+        tbText.Text = art.beskrivning;
     }
 }

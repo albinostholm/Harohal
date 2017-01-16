@@ -135,7 +135,7 @@ public partial class min_profil : System.Web.UI.Page
     protected void btnLogout_Click(object sender, EventArgs e)
     {
         Session.Abandon();
-        Response.Redirect("hem.aspx");
+        Response.Redirect("Default.aspx");
     }
 
     protected void btnEditinfo_Click(object sender, EventArgs e)

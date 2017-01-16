@@ -10,6 +10,7 @@
     <form id="form1" runat="server">
     <div>
     <header></header>
+    <h1>Nyheter</h1>
     <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
         <Items>
             <asp:MenuItem Text="Min Profil" Value="Min Profil" NavigateUrl="min_profil.aspx"></asp:MenuItem>           
@@ -22,9 +23,9 @@
     </asp:Menu>
         <asp:Panel ID="panEditNyhet" runat="server">
             <asp:Label ID="lblRubrik" runat="server" Text="Rubrik"></asp:Label>
-            <asp:TextBox ID="tbRubrik" runat="server" OnTextChanged="tbRubrik_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="tbRubrik" runat="server"></asp:TextBox>
             <asp:Label ID="lblText" runat="server" Text="Innehåll"></asp:Label>
-            <asp:TextBox ID="tbText" runat="server" OnTextChanged="tbText_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="tbText" runat="server"></asp:TextBox>
             <asp:Button ID="btnUppdatera" runat="server" Text="Spara" OnClick="btnUppdatera_Click" />
         </asp:Panel>
 
@@ -32,13 +33,11 @@
         <asp:Repeater ID="repNyheter" runat="server" OnItemCommand="repNyheter_ItemCommand">
         <ItemTemplate>
             <section>
-                <div style="display:inline; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">
                     <h1><%# Eval("rubrik") %></h1>
-                    <asp:LinkButton ID="lbVisaNyhet" runat="server" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "nyhetsID" )%>'>Redigera text</asp:LinkButton>
-                    <hr style="width:auto; margin-left:auto;">
-                    <p style="float:right; text-align:left; margin-left:1%;">
+                    <p>
                         <%# Eval("beskrivning") %>
                     </p>
+                    <asp:LinkButton ID="lbVisaNyhet" runat="server" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "nyhetsID" )%>'>Redigera text</asp:LinkButton>
                        
                 </div>
             </section>
@@ -47,7 +46,7 @@
         
 
         
-        <asp:Label ID="lblRCtest" runat="server" Text=""></asp:Label>
+        <asp:Label ID="lblID" runat="server" Text="" Visible="false"></asp:Label>
 
       </asp:Panel>
 

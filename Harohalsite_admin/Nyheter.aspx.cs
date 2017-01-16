@@ -47,9 +47,13 @@ public partial class Nyheter : System.Web.UI.Page
 
     protected void repNyheter_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
-        lblRCtest.Text = e.CommandArgument.ToString();
+        lblID.Text = e.CommandArgument.ToString();
         panEditNyhet.Visible = true;
         // populera  nyheten
+        BusinessDAL bDAL = new BusinessDAL();
+        cArtikel art = bDAL.getOneNyhet(int.Parse(lblID.Text));
+        tbRubrik.Text = art.rubrik;
+        tbText.Text = art.beskrivning;
 
     }
 
@@ -60,19 +64,10 @@ public partial class Nyheter : System.Web.UI.Page
 
         a.rubrik = tbRubrik.Text.ToString();
         a.beskrivning = tbText.Text.ToString();
-        a.id = (lblRCtest.Text.ToString());
+        a.id = (lblID.Text.ToString());
 
         bd.updateNyhetInfo(a);
         FillNyheter();
-    }
-
-    protected void tbText_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void tbRubrik_TextChanged(object sender, EventArgs e)
-    {
-
+        panEditNyhet.Visible = false;
     }
 }

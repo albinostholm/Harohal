@@ -23,9 +23,9 @@
 
         <asp:Panel ID="panEditartikel" runat="server">
             <asp:Label ID="Label1" runat="server" Text="Rubrik"></asp:Label>
-            <asp:TextBox ID="tbRubrik" runat="server" OnTextChanged="tbRubrik_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="tbRubrik" runat="server"></asp:TextBox>
             <asp:Label ID="lblText" runat="server" Text="Beskrivning"></asp:Label>
-            <asp:TextBox ID="tbText" runat="server" OnTextChanged="tbText_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="tbText" runat="server"></asp:TextBox>
             <asp:Button ID="btnUppdatera" runat="server" Text="Spara" OnClick="btnUppdatera_Click" />
         </asp:Panel>
 
@@ -33,16 +33,14 @@
             <asp:Repeater ID="repArtiklar" runat="server" OnItemCommand="repArtiklar_ItemCommand">
                 <ItemTemplate>
                     <section>
-                        <div style="display:inline; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">
                             <h1><%# Eval("rubrik") %></h1>
-                            <asp:LinkButton ID="lbVisaartikel" runat="server" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "artikelID" )%>' OnClick="lbVisaartikel_Click">Redigera text</asp:LinkButton>
-                            <hr style="width:auto; margin-left:auto;">
-                            <p style="float:right; text-align:left; margin-left:1%;"> <%# Eval("beskrivning") %></p>           
+                            <p> <%# Eval("beskrivning") %></p>   
+                            <asp:LinkButton ID="lbVisaartikel" runat="server" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "artikelID" )%>'>Redigera text</asp:LinkButton>        
                         </div>
                     </section>
                 </ItemTemplate>
             </asp:Repeater>
-            <asp:Label ID="lblRCtest" runat="server" Text="" style="display:none;"></asp:Label>
+            <asp:Label ID="lblID" runat="server" Text="" style="display:none;"></asp:Label>
         </asp:Panel>
     
     

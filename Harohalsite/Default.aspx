@@ -1,18 +1,19 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="hem" %>
 
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head runat="server">
-    <title>Login</title>
-    <meta charset="UTF-8"/>
+    <title>Hem</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 </head>
+
 <body>
     <div class="container">
-<form id="login_form" runat="server">
+        <form id="form1" runat="server">
 
-    <div class="row">
+            <div class="row">
                 <div class="navbar navbar-default navbar" role="navigation">
                     <div class="container">
                         <div class="navbar-header">
@@ -22,7 +23,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="Default.aspx" ><img alt="Logo" src="image/logo.png" height="30" /></a><h1 class="navbar-text">Logga In</h1>
+                            <a class="navbar-brand" href="Default.aspx" ><img alt="Logo" src="image/logo.png" height="30" /></a><h1 class="navbar-text">Hår och Häl</h1>
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right">                       
@@ -38,18 +39,34 @@
                 </div> 
             </div> 
 
-    <div class="row">
-    <asp:Login ID="Login1" runat="server" Height="157px" onauthenticate="Login1_Authenticate"
-               Width="302px" PasswordRequiredErrorMessage="Lösenord krävs för att logga in."
-               UserNameRequiredErrorMessage="Användarnamn krävs för att logga in.">
-        <HyperLinkStyle BorderStyle="Solid"/>
-        <FailureTextStyle BackColor="#DBDBDB" BorderColor="Red"/>
-    </asp:Login>
+            <div class="row">
+                <div class="col-md-8"><h1>Nyheter</h1></div>
+                <div class="col-md-4"><h1>Annonser</h1></div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <asp:Repeater ID="repNyheter" runat="server">
+                        <ItemTemplate>
+                            <h1><%# Eval("rubrik") %></h1>
+                            <p><%# Eval("beskrivning") %></p>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
 
-    <a href="registera.aspx" class="btn btn-default">Registrera</a>
-        </div>
-</form>
-        </div>
+                <div class="col-md-4">
+                    <asp:Repeater ID="repAnnonser" runat="server">
+                        <ItemTemplate>
+                            <h2><%# Eval("namn") %></h2>
+                            <p><%# Eval("beskrivning") %></p>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
+            </div>
+            
+
+        </form>
+
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>

@@ -55,19 +55,35 @@ public partial class index : System.Web.UI.Page
     private DataTable tjanstList()
     {
         BusinessDAL bDal = new BusinessDAL();
-        DataTable dt = new DataTable();
 
-        dt = bDal.getTjanstInfo();
+        DataTable dt = bDal.getTjanstInfo();
 
+        foreach (DataColumn dc in dt.Columns)
+        {
+            dc.ReadOnly = false;
+        }
+
+        foreach (DataRow dr in dt.Rows)
+        {
+            string[] prisparts = dr["pris"].ToString().Split(',');
+            dr["pris"] = prisparts[0];
+        }
         return dt;
     }
 
     protected void repTjanster_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
-        lblRCtest.Text = e.CommandArgument.ToString();
+        lblID.Text = e.CommandArgument.ToString();
         panEditTjanst.Visible = true;
         // populera  nyheten
+        BusinessDAL bDAL = new BusinessDAL();
+        cArtikel art = bDAL.getOneTjanst(int.Parse(lblID.Text));
+        tbNamn.Text = art.rubrik;
+        tbBeskrivning.Text = art.beskrivning;
+        tbPris.Text = art.pris.ToString();
+        tbTid.Text = art.tid.ToString();
 
+        tbPris.Text = tbPris.Text.ToString().Split(',')[0];
     }
 
 
@@ -79,7 +95,7 @@ public partial class index : System.Web.UI.Page
 
         a.namn = tbNamn.Text.ToString();
         a.beskrivning = tbBeskrivning.Text.ToString();
-        a.id = (lblRCtest.Text.ToString());
+        a.id = (lblID.Text.ToString());
 
         a.pris = Convert.ToDecimal(tbPris.Text);
         a.tid = Convert.ToInt16(tbTid.Text);
@@ -88,26 +104,6 @@ public partial class index : System.Web.UI.Page
         bd.updateTjanstInfo(a);
 
         FillTjanster();
-    }
-
-
-    protected void tbNamn_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void tbBeskrivning_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void tbPris_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void tbTid_TextChanged(object sender, EventArgs e)
-    {
-
+        panEditTjanst.Visible = false;
     }
 }

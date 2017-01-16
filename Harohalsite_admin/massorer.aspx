@@ -22,27 +22,24 @@
     </asp:Menu>
 
        <asp:Panel ID="panEditMassor" runat="server">
-            <asp:Label ID="lblForNamn" runat="server" Text="Namn"></asp:Label>
-            <asp:TextBox ID="tbForNamn" runat="server" OnTextChanged="tbNamn_TextChanged"></asp:TextBox>
-            <asp:Label ID="lblEfterNamn" runat="server" Text="Namn"></asp:Label>
-            <asp:TextBox ID="tbEfterNamn" runat="server" OnTextChanged="tbNamn_TextChanged"></asp:TextBox>
+            <asp:Label ID="lblForNamn" runat="server" Text="Förnamn"></asp:Label>
+            <asp:TextBox ID="tbForNamn" runat="server"></asp:TextBox>
+            <asp:Label ID="lblEfterNamn" runat="server" Text="Efternamn"></asp:Label>
+            <asp:TextBox ID="tbEfterNamn" runat="server"></asp:TextBox>
             <asp:Label ID="lblBeskrivning" runat="server" Text="Beskivning"></asp:Label>
-            <asp:TextBox ID="tbBeskrivning" runat="server" OnTextChanged="tbBeskrivning_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="tbBeskrivning" runat="server"></asp:TextBox>
             <asp:Button ID="btnUppdatera" runat="server" Text="Spara" OnClick="btnUppdatera_Click" />
         </asp:Panel>
     <asp:Panel ID="panVisaMassorLista" runat="server">
     <asp:Repeater ID="repMassorer" runat="server"  OnItemCommand="repMassorer_ItemCommand">
         <ItemTemplate>
-
-             <div style="display:block; float:left;width:60%; padding:1em; border:1px solid black; margin-bottom:1.5%; ">
                  <h1><%# Eval("namn") %></h1>
                  <p><%# Eval("beskrivning") %></p>
-                 <asp:LinkButton ID="lbVisaMassor" runat="server" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "anstalldID" )%>'>Redigera text</asp:LinkButton>
-             </div>                             
+                 <asp:LinkButton ID="lbVisaMassor" runat="server" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "anstalldID" )%>'>Redigera text</asp:LinkButton>                         
         </ItemTemplate>
     </asp:Repeater>
     </asp:Panel>
-    <asp:Label ID="lblRCtest" runat="server" Text="" style="display:none;"></asp:Label>
+    <asp:Label ID="lblID" runat="server" Text="" style="display:none;"></asp:Label>
 </form>
 </body>
 </html>

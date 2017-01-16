@@ -11,6 +11,7 @@
 <body>
 <form id="form1" runat="server">
     <header></header>
+    <h1>Schema</h1>
     <asp:HiddenField runat="server" ID="hfWeek"/>
     <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
         <Items>
