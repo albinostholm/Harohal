@@ -21,11 +21,11 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="hem.aspx" ><img alt="Logo" src="image/logo.png" height="30" /></a><h1 class="navbar-text">Logga In</h1>
+                            <a class="navbar-brand" href="Default.aspx" ><img alt="Logo" src="image/logo.png" height="30" /></a><h1 class="navbar-text">Logga In</h1>
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right">                       
-                                <li><a href="hem.aspx">Hem</a></li>
+                                <li><a href="Default.aspx">Hem</a></li>
                                 <li><a href="boka.aspx">Boka</a></li>                      
                                 <li><a href="massorer.aspx">Massörer</a></li>
                                 <li><a href="tjanster.aspx">Tjänster</a></li>
