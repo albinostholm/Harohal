@@ -80,7 +80,7 @@
             </ItemTemplate>
         </asp:Repeater>
     </asp:Panel>
-    <asp:Label ID="lblRCtest" runat="server" Text=""></asp:Label>
+    <asp:Label ID="lblID" runat="server" Text=""></asp:Label>
     <asp:Button ID="btnAvboka" runat="server" Text="Avboka markerade" style="float:left; clear:left" OnClick="btnAvboka_Click"/><br />
     <asp:Button ID="btnLogout" runat="server" Text="Logga ut" style="float:right;" OnClick="btnLogout_Click"/>
 </form>

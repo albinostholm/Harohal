@@ -73,11 +73,11 @@ public partial class index : System.Web.UI.Page
 
     protected void repTjanster_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
-        lblRCtest.Text = e.CommandArgument.ToString();
+        lblID.Text = e.CommandArgument.ToString();
         panEditTjanst.Visible = true;
         // populera  nyheten
         BusinessDAL bDAL = new BusinessDAL();
-        cArtikel art = bDAL.getOneTjanst(int.Parse(lblRCtest.Text));
+        cArtikel art = bDAL.getOneTjanst(int.Parse(lblID.Text));
         tbNamn.Text = art.rubrik;
         tbBeskrivning.Text = art.beskrivning;
         tbPris.Text = art.pris.ToString();
@@ -95,7 +95,7 @@ public partial class index : System.Web.UI.Page
 
         a.namn = tbNamn.Text.ToString();
         a.beskrivning = tbBeskrivning.Text.ToString();
-        a.id = (lblRCtest.Text.ToString());
+        a.id = (lblID.Text.ToString());
 
         a.pris = Convert.ToDecimal(tbPris.Text);
         a.tid = Convert.ToInt16(tbTid.Text);

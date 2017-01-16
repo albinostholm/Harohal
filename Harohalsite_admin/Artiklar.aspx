@@ -40,7 +40,7 @@
                     </section>
                 </ItemTemplate>
             </asp:Repeater>
-            <asp:Label ID="lblRCtest" runat="server" Text="" style="display:none;"></asp:Label>
+            <asp:Label ID="lblID" runat="server" Text="" style="display:none;"></asp:Label>
         </asp:Panel>
     
     

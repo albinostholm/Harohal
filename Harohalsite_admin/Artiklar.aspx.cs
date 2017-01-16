@@ -65,7 +65,7 @@ public partial class Artiklar : System.Web.UI.Page
 
         a.beskrivning = tbText.Text.ToString();
         a.rubrik = tbRubrik.Text.ToString();
-        a.id = (lblRCtest.Text.ToString());
+        a.id = (lblID.Text.ToString());
 
         aDAL.updateArtikelInfo(a);
 
@@ -75,13 +75,13 @@ public partial class Artiklar : System.Web.UI.Page
 
     protected void repArtiklar_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
-        lblRCtest.Text = e.CommandArgument.ToString();
+        lblID.Text = e.CommandArgument.ToString();
         panEditartikel.Visible = true;
 
         //Hämta data från tabellen Artikel med id = e.CommandArgument.ToString();
         //Fyll tectboxarna med data frå proceduren
         BusinessDAL bDAL = new BusinessDAL();
-        cArtikel art = bDAL.getArtikelInfo(int.Parse(lblRCtest.Text));
+        cArtikel art = bDAL.getArtikelInfo(int.Parse(lblID.Text));
         tbRubrik.Text = art.rubrik;
         tbText.Text = art.beskrivning;
     }

@@ -39,7 +39,7 @@
         </ItemTemplate>
     </asp:Repeater>
     </asp:Panel>
-    <asp:Label ID="lblRCtest" runat="server" Text="" style="display:none;"></asp:Label>
+    <asp:Label ID="lblID" runat="server" Text="" style="display:none;"></asp:Label>
 </form>
 </body>
 </html>

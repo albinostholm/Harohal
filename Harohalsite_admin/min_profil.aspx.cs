@@ -13,7 +13,7 @@ public partial class min_profil : System.Web.UI.Page
             FillMassor();
             FillTjanster();
             updateMenu();
-            lblRCtest.Visible = false;
+            lblID.Visible = false;
             panEditOrder.Visible = false;
         }
     }
@@ -101,7 +101,7 @@ public partial class min_profil : System.Web.UI.Page
 
         o.anstalldID = anstalldID();
         o.tjanstID = tjanstID();
-        o.personID = lblRCtest.Text;
+        o.personID = lblID.Text;
         o.slutTid = Convert.ToDateTime(tbSlutTid.Text);
         o.startTid = Convert.ToDateTime(tbStartTid.Text);
 
@@ -270,7 +270,7 @@ public partial class min_profil : System.Web.UI.Page
 
     protected void rptOrders_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
-        lblRCtest.Text = e.CommandArgument.ToString();
+        lblID.Text = e.CommandArgument.ToString();
         panEditOrder.Visible = true;
     }
 }

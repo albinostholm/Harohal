@@ -62,11 +62,11 @@ public partial class a_massorer : System.Web.UI.Page
 
     protected void repMassorer_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
-        lblRCtest.Text = e.CommandArgument.ToString();
+        lblID.Text = e.CommandArgument.ToString();
         panEditMassor.Visible = true;
         // populera  nyheten
         BusinessDAL bDAL = new BusinessDAL();
-        cAnvandare art = bDAL.getOneMassor(lblRCtest.Text);
+        cAnvandare art = bDAL.getOneMassor(lblID.Text);
         tbForNamn.Text = art.FirstName;
         tbEfterNamn.Text = art.LastName;
         tbBeskrivning.Text = art.ssn;
@@ -82,7 +82,7 @@ public partial class a_massorer : System.Web.UI.Page
         a.FirstName = tbForNamn.Text.ToString();
         a.LastName = tbEfterNamn.Text.ToString();
         a.Password = tbBeskrivning.Text.ToString();
-        a.UserId = (lblRCtest.Text.ToString());
+        a.UserId = (lblID.Text.ToString());
 
         bd.updateMassorInfo(a);
 
