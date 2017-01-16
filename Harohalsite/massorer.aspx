@@ -39,14 +39,21 @@
                 <div class="col-md-8">
                     <asp:Repeater ID="repMassor" runat="server">
                         <ItemTemplate>
+<<<<<<< HEAD
                             <h1>irgwojiorgjirgojirgwojirgw</h1>
+=======
+                            <img src="<%# Eval("bild") %>" alt="massor"/>
+>>>>>>> 4f5ce0f40bc82ef504dc53ee036e40ad13cc392e
                             <h1><%# Eval("namn") %></h1>
                             <p><%# Eval("beskrivning") %></p>
-                                <ul>
-                                    <li>Ålder</li>
-                                    <li>Behandlar Män: <%# Eval("behandlarMan") %></li>
-                                    <li>Behandlar Kvinnor: <%# Eval("behandlarKvinnor") %></li>
-                                </ul>
+                            <ul>
+                                <li><asp:Literal ID="litAge" runat="server">Född: </asp:Literal></li>
+                                <asp:HiddenField ID="hfAge" runat="server" Value='<%# Eval("personnr") %>'/>
+                                <li><asp:Literal ID="litTreatsM" runat="server">Behandlar Män</asp:Literal></li>
+                                <asp:HiddenField ID="hfTreatsM" runat="server" Value='<%# Eval("behandlarMan") %>'/>
+                                <li><asp:Literal ID="litTreatsW" runat="server">Behandlar Kvinnor</asp:Literal></li>
+                                <asp:HiddenField ID="hfTreatsW" runat="server" Value='<%# Eval("behandlarKvinnor") %>'/>
+                            </ul>
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>

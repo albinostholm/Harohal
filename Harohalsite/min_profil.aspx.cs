@@ -10,6 +10,7 @@ public partial class min_profil : System.Web.UI.Page
         {
             GetUserData();
             FillOrdrar();
+            FillOldOrdrar();
         }  
     }
 
@@ -47,6 +48,38 @@ public partial class min_profil : System.Web.UI.Page
         return dt;
     }
 
+    protected DataTable oldorders()
+    {
+        BusinessDAL bDal = new BusinessDAL();
+        DataTable dt = new DataTable();
+
+        dt = bDal.getOldUserOrders(Session["userid"].ToString());
+
+        foreach (DataColumn dc in dt.Columns)
+        {
+            dc.ReadOnly = false;
+        }
+
+        foreach (DataRow dr in dt.Rows)
+        {
+            if (dr["startTid"].ToString().Length == 4)
+            {
+                dr["startTid"] += "0";
+            }
+            if (dr["slutTid"].ToString().Length == 4)
+            {
+                dr["slutTid"] += "0";
+            }
+        }
+        return dt;
+    }
+
+    protected void FillOldOrdrar()
+    {
+        rptOldBokningar.DataSource = oldorders();
+        rptOldBokningar.DataBind();
+    }
+
     //Hämtar användarens info och skriver ut den
     private void GetUserData()
     {
@@ -77,7 +110,7 @@ public partial class min_profil : System.Web.UI.Page
     //Redirectar dig till glomt_losen.aspx
     protected void btnBytLosen_Click(object sender, EventArgs e)
     {
-        Response.Redirect("glomt_losen.aspx");
+        Response.Redirect("byt_losen.aspx");
     }
 
     //Avbokar de markerade ordrarna

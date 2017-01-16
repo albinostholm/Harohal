@@ -626,7 +626,7 @@ public class BusinessDAL
         }
     }
 
-    public int updateMassorInfo(cArtikel a)
+    public int updateMassorInfo(cAnvandare a)
     {
         //DataTable dt = new DataTable();
 
@@ -645,9 +645,10 @@ public class BusinessDAL
         {
             conn.Open();
 
-            cmd.Parameters.AddWithValue("@anstalldID", a.id);
-            cmd.Parameters.AddWithValue("@namn", a.namn);
-            cmd.Parameters.AddWithValue("@beskrivning", a.beskrivning);
+            cmd.Parameters.AddWithValue("@anstalldID", a.UserId);
+            cmd.Parameters.AddWithValue("@fornamn", a.FirstName);
+            cmd.Parameters.AddWithValue("@efternamn", a.LastName);
+            cmd.Parameters.AddWithValue("@beskrivning", a.Password);
 
 
             return cmd.ExecuteNonQuery();

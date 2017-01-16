@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Web.UI.WebControls;
 
 public partial class index : System.Web.UI.Page
 {
@@ -24,10 +23,19 @@ public partial class index : System.Web.UI.Page
     private DataTable tjanstList()
     {
         BusinessDAL bDal = new BusinessDAL();
-        DataTable dt = new DataTable();
 
-        dt = bDal.getTjanstInfo();
+        DataTable dt = bDal.getTjanstInfo();
 
+        foreach (DataColumn dc in dt.Columns)
+        {
+            dc.ReadOnly = false;
+        }
+
+        foreach (DataRow dr in dt.Rows)
+        {
+            string[] prisparts = dr["pris"].ToString().Split(',');
+            dr["pris"] = prisparts[0];
+        }
         return dt;
     }
 

@@ -73,11 +73,12 @@ public partial class a_massorer : System.Web.UI.Page
     protected void btnUppdatera_Click(object sender, EventArgs e)
     {
         BusinessDAL bd = new BusinessDAL();
-        cArtikel a = new cArtikel();
+        cAnvandare a = new cAnvandare();
 
-        a.namn = tbNamn.Text.ToString();
-        a.beskrivning = tbBeskrivning.Text.ToString();
-        a.id = (lblRCtest.Text.ToString());
+        a.FirstName = tbForNamn.Text.ToString();
+        a.LastName = tbEfterNamn.Text.ToString();
+        a.Password = tbBeskrivning.Text.ToString();
+        a.UserId = (lblRCtest.Text.ToString());
 
         bd.updateMassorInfo(a);
 

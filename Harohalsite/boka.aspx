@@ -13,6 +13,7 @@
     <div class="container">
 <form id="form1" runat="server">
     <asp:HiddenField runat="server" ID="hfWeek"/>
+    <asp:HiddenField runat="server" ID="hfYear"/>
 
     <div class="row">
                 <div class="navbar navbar-default navbar" role="navigation">
@@ -62,6 +63,10 @@
                 <div class="col-md-3">
                     <h2><%# Eval("namn") %></h2>
                     <p><%# Eval("beskrivning") %></p>
+                    <ul>
+                        <li><%# Eval("pris") %> Kr</li>
+                        <li><%# Eval("Tid") %> Min</li>
+                    </ul>
                     </div>
             </ItemTemplate>
         </asp:Repeater>
@@ -88,6 +93,7 @@
         </div>
         <div class="col-md-4">
             <asp:Button ID="Button1" runat="server" Text="Boka" OnClick="btnBekrafta" style="float:left"/>
+            <asp:Literal ID="litErrMsg" runat="server" Visible="false">Denna tiden är inte tillgänglig</asp:Literal>
         </div>
     </div>
 
@@ -99,6 +105,9 @@
 
     <div class="row">
         <DayPilot:DayPilotCalendar ID="DayPilotCalendar1" runat="server" Days="6"
+                                   BusinessBeginsHour="9"
+                                   BusinessEndsHour="22"                                
+                                   HeightSpec="BusinessHoursNoScroll"
                                    DataStartField="startTid"
                                    DataEndField="slutTid"
                                    DataTextField="namn"

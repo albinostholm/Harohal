@@ -11,6 +11,7 @@ public partial class boka : Page
         {
             //Sätter så att schemat visar dagens vecka
             hfWeek.Value = DayPilot.Utils.Week.WeekNrISO8601(DateTime.Now).ToString();
+            hfYear.Value = DateTime.Now.Year.ToString();
             FillMassor();
             FillTjanster();        
             FillCalender();
@@ -27,18 +28,30 @@ public partial class boka : Page
         lblWeek.Text = "Vecka: " + hfWeek.Value;
 
         if (int.Parse(hfWeek.Value) == 1)
+        {
             btnDeWeek.Text = "Vecka: " + 52.ToString();
+        }
 
         if (int.Parse(hfWeek.Value) == 52)
+        {
             btnInWeek.Text = "Vecka: " + 1.ToString();
+        }
     }
 
     //Sänker veckonummret
     protected void btnDeWeek_Click(object sender, EventArgs e)
     {
         hfWeek.Value = (int.Parse(hfWeek.Value) - 1).ToString();
+
+        int year = int.Parse(hfYear.Value);
+
         if (int.Parse(hfWeek.Value) < 1)
+        {
             hfWeek.Value = 52.ToString();
+            year -= 1;
+            hfYear.Value = year.ToString();
+        }
+            
         weekButtons();
         FillCalender();
     }
@@ -47,8 +60,17 @@ public partial class boka : Page
     protected void btnInWeek_Click(object sender, EventArgs e)
     {
         hfWeek.Value = (int.Parse(hfWeek.Value) + 1).ToString();
+
+        int year = int.Parse(hfYear.Value);
+
         if (int.Parse(hfWeek.Value) > 52)
+        {
             hfWeek.Value = 1.ToString();
+            year += 1;
+            hfYear.Value = year.ToString();
+        }
+            
+
         weekButtons();
         FillCalender();
     }
@@ -79,7 +101,20 @@ public partial class boka : Page
     private DataTable tjanstList()
     {
         BusinessDAL bDal = new BusinessDAL();
-        return bDal.getTjanstInfo();
+
+        DataTable dt = bDal.getTjanstInfo();
+
+        foreach (DataColumn dc in dt.Columns)
+        {
+            dc.ReadOnly = false;
+        }
+
+        foreach (DataRow dr in dt.Rows)
+        {
+            string[] prisparts = dr["pris"].ToString().Split(',');
+            dr["pris"] = prisparts[0];
+        }
+        return dt;
     }
 
     //Hämtar massörinfo
@@ -103,7 +138,7 @@ public partial class boka : Page
     //Fyller kalendern med bokningarna för den aktiva veckan
     private void FillCalender()
     {
-        DayPilotCalendar1.StartDate = DateTimeExtensions.FirstDateOfWeekISO8601(2016, int.Parse(hfWeek.Value));
+        DayPilotCalendar1.StartDate = DateTimeExtensions.FirstDateOfWeekISO8601(int.Parse(hfYear.Value), int.Parse(hfWeek.Value));
         DayPilotCalendar1.DataSource = calenderEvents(DayPilotCalendar1.StartDate, int.Parse(hfWeek.Value) + 1);
         DayPilotCalendar1.DataBind();
     }
@@ -128,59 +163,71 @@ public partial class boka : Page
     //Lägger in din order och skickar dig till bekrafta_bokning.aspx
     protected void btnBekrafta(object sender, EventArgs e)
     {
-        BusinessDAL bDal = new BusinessDAL();
-        order newOrder = new order();
-
-        string day = ddlDay.SelectedValue;
-
-        string input = tbTime.Text.ToString();
-
-        string[] splitTime = input.Split(':');
-
-        DateTime starttime = DateTimeExtensions.FirstDateOfWeekISO8601(2016, int.Parse(hfWeek.Value));
-
-        if (day.ToLower() == "tuesday")
+        if (Session.Count != 0)
         {
-            starttime = starttime.AddDays(1);
+            BusinessDAL bDal = new BusinessDAL();
+            order newOrder = new order();
+
+            string day = ddlDay.SelectedValue;
+
+            string input = tbTime.Text.ToString();
+
+            string[] splitTime = input.Split(':');
+
+            DateTime starttime = DateTimeExtensions.FirstDateOfWeekISO8601(int.Parse(hfYear.Value), int.Parse(hfWeek.Value));
+
+            if (day.ToLower() == "tuesday")
+            {
+                starttime = starttime.AddDays(1);
+            }
+
+            else if (day.ToLower() == "wednesday")
+            {
+                starttime = starttime.AddDays(2);
+            }
+
+            else if (day.ToLower() == "thursday")
+            {
+                starttime = starttime.AddDays(3);
+            }
+
+            else if (day.ToLower() == "friday")
+            {
+                starttime = starttime.AddDays(4);
+            }
+
+            else if (day.ToLower() == "saturday")
+            {
+                starttime = starttime.AddDays(5);
+            }
+
+            starttime = starttime.AddHours(int.Parse(splitTime[0]));
+            starttime = starttime.AddMinutes(int.Parse(splitTime[1]));
+
+            newOrder.orderStatusID = 10;
+            newOrder.anstalldID = anstalldID();
+            newOrder.personID = Session["userid"].ToString();
+            newOrder.tjanstID = tjanstID();
+
+            newOrder.startTid = starttime;
+            newOrder.slutTid = starttime.AddMinutes(tjanstTid() - 1);
+
+            string orderid = bDal.newOrder(newOrder).ToString();
+
+            if (orderid != "0")
+            {
+                Session.Add("orderID", orderid);
+                Response.Redirect("bekrafta_bokning.aspx");
+                litErrMsg.Visible = false;
+            }
+            else
+            {
+                litErrMsg.Visible = true;
+            }
         }
-
-        else if (day.ToLower() == "wednesday")
+        else
         {
-            starttime = starttime.AddDays(2);
-        }
-
-        else if (day.ToLower() == "thursday")
-        {
-            starttime = starttime.AddDays(3);
-        }
-
-        else if (day.ToLower() == "friday")
-        {
-            starttime = starttime.AddDays(4);
-        }
-
-        else if (day.ToLower() == "saturday")
-        {
-            starttime = starttime.AddDays(5);
-        }
-
-        starttime = starttime.AddHours(int.Parse(splitTime[0]));
-        starttime = starttime.AddMinutes(int.Parse(splitTime[1]));
-
-        newOrder.orderStatusID = 10;
-        newOrder.anstalldID = anstalldID();
-        newOrder.personID = Session["userid"].ToString();
-        newOrder.tjanstID = tjanstID();
-
-        newOrder.startTid = starttime;
-        newOrder.slutTid = starttime.AddMinutes(tjanstTid() - 1);
-
-        string orderid = bDal.newOrder(newOrder).ToString();
-
-        if (orderid != "0")
-        {
-            Session.Add("orderID", orderid);
-            Response.Redirect("bekrafta_bokning.aspx");
+            Response.Redirect("login.aspx");
         }
         
 
