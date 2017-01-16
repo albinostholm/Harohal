@@ -39,11 +39,7 @@
                 <div class="col-md-8">
                     <asp:Repeater ID="repMassor" runat="server">
                         <ItemTemplate>
-<<<<<<< HEAD
-                            <h1>irgwojiorgjirgojirgwojirgw</h1>
-=======
                             <img src="<%# Eval("bild") %>" alt="massor"/>
->>>>>>> 4f5ce0f40bc82ef504dc53ee036e40ad13cc392e
                             <h1><%# Eval("namn") %></h1>
                             <p><%# Eval("beskrivning") %></p>
                             <ul>
