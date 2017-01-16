@@ -46,7 +46,7 @@
         <FailureTextStyle BackColor="#DBDBDB" BorderColor="Red"/>
     </asp:Login>
 
-    <a href="registera.aspx" class="btn btn-default">Registrera</a>
+    <a href="registrera.aspx" class="btn btn-default">Registrera</a>
         </div>
 </form>
         </div>
