@@ -89,17 +89,4 @@ public partial class a_massorer : System.Web.UI.Page
         FillMassorer();
         panEditMassor.Visible = false;
     }
-
-
-    protected void tbNamn_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void tbBeskrivning_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    
 }

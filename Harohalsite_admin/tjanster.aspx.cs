@@ -106,25 +106,4 @@ public partial class index : System.Web.UI.Page
         FillTjanster();
         panEditTjanst.Visible = false;
     }
-
-
-    protected void tbNamn_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void tbBeskrivning_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void tbPris_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void tbTid_TextChanged(object sender, EventArgs e)
-    {
-
-    }
 }

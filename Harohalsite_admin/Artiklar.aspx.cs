@@ -85,14 +85,4 @@ public partial class Artiklar : System.Web.UI.Page
         tbRubrik.Text = art.rubrik;
         tbText.Text = art.beskrivning;
     }
-
-    protected void tbRubrik_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void tbText_TextChanged(object sender, EventArgs e)
-    {
-
-    }
 }

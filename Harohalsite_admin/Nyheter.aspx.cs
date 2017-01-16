@@ -70,14 +70,4 @@ public partial class Nyheter : System.Web.UI.Page
         FillNyheter();
         panEditNyhet.Visible = false;
     }
-
-    protected void tbText_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void tbRubrik_TextChanged(object sender, EventArgs e)
-    {
-
-    }
 }
