@@ -130,7 +130,7 @@
     <div class="modal fade" id="contact" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form  id="contactForm" method="POST" action="http://formspree.io/linusbeck@hotmail.com">
+                <form  id="contactForm" action="mailto:linusbeck@hotmail.com" method="post" enctype="text/plain">
                     <div class="modal-header">
                         <h4>Kontakta Oss</h4>
                     </div>
@@ -154,7 +154,7 @@
 
                     <div class="modal-footer">
                         <a class="btn btn-default" data-dismiss="modal">Stäng</a>
-                        <button type="submit" class="btn btn-primary" data-dismiss="modal">Skicka</button>
+                        <input type="submit" class="btn btn-primary"   value="Skicka"/>
                     </div>
                  </form>
             </div>
