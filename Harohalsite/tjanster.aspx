@@ -101,13 +101,7 @@
                         <li> <p>Månadag-Fredag : 10:00 - 21:00</p> </li>
                         <li> <p>Lördag : 10:00 - 20:00</p> </li>
                         <li> <p>Söndag : Stängt</p> </li>
-                    </ul>
-                </div>
-                <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
-                    <div id="marginSocialIcons" class="top-buffer-sm"></div>
-                    <ul class="social">
-                        <li> <a href="#"> <i class=" fa fa-facebook">   </i> </a> </li>
-                        <li> <a href="#"> <i class="fa fa-twitter">   </i> </a> </li>
+
                     </ul>
                 </div>
             </div>
