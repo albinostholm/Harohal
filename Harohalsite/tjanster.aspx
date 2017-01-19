@@ -73,12 +73,11 @@
                     <ul>
                         <li> <p>Telefon: 112</p> </li>
                         <li> <p>Fax: 3003</p> </li>
-                        <li> <a href="#"> Lorem Ipsum </a> </li>
                         <li> <p>Adress: Danskvägen 47</p> </li>
                     </ul>
                      <div class="input-append newsletter-box text-center">
                                 <a href="#contact" data-toggle="modal"><button class="btn  bg-gray top-buffer-sm" type="button"> Fråga Oss <i class="fa fa-long-arrow-right"> </i> </button></a>
-                            </div>
+                            </div>  
                 </div>
                 <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
                     <h3> Vi Stödjer </h3>
@@ -154,48 +153,18 @@
 
                     <div class="modal-footer">
                         <a class="btn btn-default" data-dismiss="modal">Stäng</a>
-                        <input type="submit" class="btn btn-primary"   value="Skicka"/>
+                        <input type="submit" class="btn btn-primary" data-dismiss="modal"  value="Skicka"/>
                     </div>
                  </form>
             </div>
         </div>
     </div>
 
-    <div class="modal fade"  id="furtherInfo" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4></h4>
-                </div>
-
-                <div class="modal-body">
-                    <p>
-                        All designed artwork are usually done with 200 DPI to keep the files be relatively small. Logos are a special case and are done 300 DPI and usually in vector format to be suitable for printing. Larger DPI can be made by request.
-                        <br>
-                        <br>
-                        All backgrounds and wallpapers are usually done with the resolution (1920x1080). Larger resolutions can be made by request (e.g. 4K (3840x2160) and higher.
-                        <br>
-                        <br>
-                        Please have links or images for use as reference if you're looking for something specific or just for me to use as a guideline.
-                        <br>
-                        <br>
-                        Times may vary and it's all depending on the project. It can take all from 1 day to a week or even longer depending on how big the project is, so please have that in mind when requesting. If you have a specific date you need to have it completed by, please include it in the commission.
-                        <br>
-                        <br>
-                        ​If you got any questions, please do contact me.
-                    </p>
-                </div>
-
-                <div class="modal-footer">
-                    <a class="btn btn-primary" data-dismiss="modal">Close</a>
-                </div>
-            </div>
-        </div>
-    </div>
+  
 </section>
         </div>
 
-    <!--Footer taken from http://bootsnipp.com/snippets/featured/e-commerce-footer-responsive-->
+    <!--Footer taken from http://bootsnipp.com/snippets/featured/e-commerce-footer-responsive -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

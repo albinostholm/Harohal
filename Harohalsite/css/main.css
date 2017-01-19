@@ -1,4 +1,7 @@
 ﻿@import url('https://fonts.googleapis.com/css?family=Raleway');
+/*
+    Buffer Start
+*/
 .top-buffer-sm {
     margin-top:2vh;
 }
@@ -15,10 +18,21 @@
     margin-top:20vh;
 }
 
+.right-buffer-sm {
+    margin-right:.5vw;
+}
+/*
+================================================
+*/
+
 * {
     font-family: 'Raleway', sans-serif;
 }
 
 #marginSocialIcons {
     margin-top:80%;
+}
+
+.noPadding {
+    padding:0;
 }
