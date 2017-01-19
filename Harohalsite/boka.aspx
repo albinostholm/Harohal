@@ -41,7 +41,7 @@
                 </div> 
             </div>
 
-    <div class="row">
+    <div class="row panel panel-default">
         <asp:Repeater runat="server" ID="repMassor">
             <ItemTemplate>
                      <div class="col-md-3">
@@ -57,7 +57,7 @@
 
     
 
-    <div class="row">
+    <div class="row panel panel-default">
         <asp:Repeater runat="server" ID="repTjanster">
             <ItemTemplate>
                 <div class="col-md-3">
@@ -96,7 +96,7 @@
             <asp:Literal ID="litErrMsg" runat="server" Visible="false">Denna tiden är inte tillgänglig</asp:Literal>
         </div>
     </div>
-
+    <hr />
     <div class="row">
         <asp:Button ID="btnDeWeek" runat="server" OnClick="btnDeWeek_Click" Enabled="true"/>
         <asp:Label ID="lblWeek" runat="server"></asp:Label>
