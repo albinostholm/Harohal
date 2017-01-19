@@ -8,6 +8,9 @@
 <head runat="server">
     <title>Boka</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+            <link rel="stylesheet" href="css/footer.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+</head>
 </head>
 <body>
     <div class="container">
@@ -41,7 +44,7 @@
                 </div> 
             </div>
 
-    <div class="row panel panel-default">
+    <div class="row panel panel-default" style="padding-bottom:30px;">
         <asp:Repeater runat="server" ID="repMassor">
             <ItemTemplate>
                      <div class="col-md-3">
@@ -60,7 +63,7 @@
     <div class="row panel panel-default">
         <asp:Repeater runat="server" ID="repTjanster">
             <ItemTemplate>
-                <div class="col-md-3">
+                <div class="col-md-3 top-buffer-sm">
                     <h2><%# Eval("namn") %></h2>
                     <p><%# Eval("beskrivning") %></p>
                     <ul>
