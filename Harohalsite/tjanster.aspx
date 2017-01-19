@@ -42,24 +42,28 @@
     <div class="container-fluid">
         <form id="form1" runat="server">
             <div class="row">
-                <div class="col-md-8">
+                     <div class="col-md-push-8 col-md-4 panel panel-default top-buffer-sm" style="padding-bottom:1vh;">
+                    <h1><asp:Label ID="lblRubrik" runat="server" Text="Label"></asp:Label></h1>
+                    <asp:Literal ID="litBeskrivning" runat="server"></asp:Literal>
+                </div>
+
+                <div class="col-md-8 col-md-pull-4">
                     <asp:Repeater ID="repTjanster" runat="server">
                         <ItemTemplate>
-                            <img src="<%# Eval("bild") %>" alt="tjanst"/>
-                            <h1><%# Eval("namn") %></h1>
-                            <p><%# Eval("beskrivning") %></p>
-
+                            <div class="panel panel-default top-buffer-sm" style="padding:2vw;">                         
+                                <img src="<%# Eval("bild") %>" alt="tjanst"/>
+                                <h1><%# Eval("namn") %></h1>
+                                <hr />
+                                <p><%# Eval("beskrivning") %></p>                            
                             <ul>
                                 <li>Pris: <%# Eval("pris") %> kr</li>
                                 <li>Tid: <%# Eval("tid") %> min</li>
                             </ul>
+                           </div>
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>
-                <div class="col-md-4">
-                    <h1><asp:Label ID="lblRubrik" runat="server" Text="Label"></asp:Label></h1>
-                    <asp:Literal ID="litBeskrivning" runat="server"></asp:Literal>
-                </div>
+
             </div>
         </form>
     </div>
@@ -79,7 +83,7 @@
                                 <a href="#contact" data-toggle="modal"><button class="btn  bg-gray top-buffer-sm" type="button"> Fråga Oss <i class="fa fa-long-arrow-right"> </i> </button></a>
                             </div>  
                 </div>
-                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                <div class="col-md-3 col-sm-4 col-xs-6">
                     <h3> Vi Stödjer </h3>
                     <ul>
                         <li> <a href="#"> <img src="/image/MinStoraDag.png" alt="Min Stora Dag" height="35" /></a> </li>
@@ -87,7 +91,7 @@
                         <li> <a href="#"> <img src="/image/rosabandet.png" alt="Rosa bandet" height="35" /></a> </li>
                     </ul>
                 </div>
-                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                <div class="col-md-3 col-sm-4 col-xs-6">
                         <h3> </h3>
                     <ul>
                         <li> <a href="#"> <img src="/image/unicef.png" alt="Unicef" height="35" /> </a> </li>
@@ -95,7 +99,7 @@
 
                     </ul>
                 </div>
-                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                <div class="col-md-3 col-sm-4 col-xs-6">
                     <h3> Öppettider </h3>
                     <ul>
                         <li> <p>Månadag-Fredag : 10:00 - 21:00</p> </li>
