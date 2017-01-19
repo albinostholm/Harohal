@@ -6,6 +6,8 @@
 <head runat="server">
     <title>Massörer</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/footer.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
     <div class="container">
@@ -36,12 +38,20 @@
                 </div> 
             </div>
             <div class="row">
-                <div class="col-md-8">
+
+                <div class="col-md-push-8 col-md-4 panel panel-default top-buffer-sm" style="padding-bottom:1vh;">
+                    <h1><asp:Label ID="lblRubrik" runat="server" Text="Label"></asp:Label></h1>                  
+                    <asp:Literal ID="litBeskrivning" runat="server"></asp:Literal>
+                </div>
+
+                <div class="col-md-8 col-md-pull-4">
                     <asp:Repeater ID="repMassor" runat="server">
                         <ItemTemplate>
-                            <img src="<%# Eval("bild") %>" alt="massor"/>
-                            <h1><%# Eval("namn") %></h1>
-                            <p><%# Eval("beskrivning") %></p>
+                            <div class="panel panel-default top-buffer-sm" style="padding:2vw;">
+                                <img src="<%# Eval("bild") %>" alt="massor"/>
+                                <h1><%# Eval("namn") %></h1>
+                                <hr />
+                                <p><%# Eval("beskrivning") %></p>                                
                             <ul>
                                 <li><asp:Literal ID="litAge" runat="server">Född: </asp:Literal></li>
                                 <asp:HiddenField ID="hfAge" runat="server" Value='<%# Eval("personnr") %>'/>
@@ -50,15 +60,12 @@
                                 <li><asp:Literal ID="litTreatsW" runat="server">Behandlar Kvinnor</asp:Literal></li>
                                 <asp:HiddenField ID="hfTreatsW" runat="server" Value='<%# Eval("behandlarKvinnor") %>'/>
                             </ul>
+                                </div>
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>
-                <div class="col-md-4">
-                    <h1><asp:Label ID="lblRubrik" runat="server" Text="Label"></asp:Label></h1>
-                   
-                    <asp:Literal ID="litBeskrivning" runat="server"></asp:Literal>
-                </div>
             </div>
+                </div>
         </form>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
