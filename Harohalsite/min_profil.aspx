@@ -6,6 +6,8 @@
 <head runat="server">
     <title>Profil</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+            <link rel="stylesheet" href="css/footer.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
     <div class="container">

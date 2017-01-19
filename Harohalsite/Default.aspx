@@ -7,6 +7,8 @@
 <head runat="server">
     <title>Hem</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+            <link rel="stylesheet" href="css/footer.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
 </head>
 
 <body>
@@ -40,15 +42,17 @@
             </div> 
 
             <div class="row">
-                <div class="col-md-8"><h1>Nyheter</h1></div>
-                <div class="col-md-4"><h1>Annonser</h1></div>
+                <div class="col-md-8"><h1>Nyheter<hr /></h1></div>
+                <div class="col-md-4"><h1>Annonser<hr /></h1></div>
             </div>
             <div class="row">
                 <div class="col-md-8">
                     <asp:Repeater ID="repNyheter" runat="server">
                         <ItemTemplate>
-                            <h1><%# Eval("rubrik") %></h1>
-                            <p><%# Eval("beskrivning") %></p>
+                            <div class="panel panel-default boxPadding">
+                                <h1><%# Eval("rubrik") %></h1>
+                                <p><%# Eval("beskrivning") %></p>
+                            </div>
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>
@@ -56,8 +60,10 @@
                 <div class="col-md-4">
                     <asp:Repeater ID="repAnnonser" runat="server">
                         <ItemTemplate>
-                            <h2><%# Eval("namn") %></h2>
-                            <p><%# Eval("beskrivning") %></p>
+                            <div class="panel panel-default boxPadding">
+                                <h2><%# Eval("namn") %></h2>
+                                <p><%# Eval("beskrivning") %></p>
+                            </div>
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>
