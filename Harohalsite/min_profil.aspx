@@ -40,9 +40,11 @@
             <div class="row">
                 <div class="col-md-5">
                     <h2>Din info</h2>
+                    <hr />
                 </div>
                 <div class="col-md-5">
                     <h2>Dina Uppkommande bokningar</h2>
+                    <hr />
                 </div>
             </div>
 
