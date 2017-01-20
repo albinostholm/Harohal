@@ -95,7 +95,7 @@
             <asp:TextBox ID="tbTime" runat="server"></asp:TextBox>
         </div>
         <div class="col-md-4">
-            <asp:Button ID="Button1" runat="server" Text="Boka" OnClick="btnBekrafta" style="float:left"/>
+            <asp:Button class="btn btn-primary" ID="Button1" runat="server" Text="Boka" OnClick="btnBekrafta" style="float:left"/>
             <asp:Literal ID="litErrMsg" runat="server" Visible="false">Denna tiden är inte tillgänglig</asp:Literal>
         </div>
     </div>

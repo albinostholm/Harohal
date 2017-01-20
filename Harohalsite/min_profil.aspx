@@ -69,10 +69,10 @@
                         <asp:CheckBox ID="cbxFaktura" runat="server" Enabled="false"/>
                     </asp:Label><br />
                 
-                    <asp:Button ID="btnEditinfo" runat="server" Text="Redigera din info" style="float:left; clear:left" OnClick="btnEditinfo_Click" />
-                    <asp:Button ID="btnSaveinfo" runat="server" Text="Spara" OnClick="btnSaveInfo_Click" Visible="false" style="float:left; clear:left"/>
-                    <asp:Button ID="btnCancelEdit" runat="server" Text="Avbryt Ändringarna" OnClick="btnCancelEdit_Click" Visible="false" style="float:left; clear:left"/>
-                    <asp:Button ID="btnBytLosen" runat="server" Text="Byt lösenord" style="float:left; clear:left" OnClick="btnBytLosen_Click"/>
+                    <asp:Button class="btn btn-primary" ID="btnEditinfo" runat="server" Text="Redigera din info" style="float:left; clear:left" OnClick="btnEditinfo_Click" />
+                    <asp:Button class="btn btn-default" ID="btnSaveinfo" runat="server" Text="Spara" OnClick="btnSaveInfo_Click" Visible="false" style="float:left; clear:left"/>
+                    <asp:Button class="btn btn-default" ID="btnCancelEdit" runat="server" Text="Avbryt Ändringarna" OnClick="btnCancelEdit_Click" Visible="false" style="float:left; clear:left"/>
+                    <asp:Button class="btn btn-default" ID="btnBytLosen" runat="server" Text="Byt lösenord" style="float:left; clear:left" OnClick="btnBytLosen_Click"/>
                 </div>
 
             
@@ -92,8 +92,8 @@
                     </asp:Repeater>
                 </div>
                 <div class="col-md-2">
-                    <asp:Button ID="btnAvboka" runat="server" Text="Avboka markerade" OnClick="btnAvboka_Click"/>
-                    <asp:Button ID="btnLogout" runat="server" Text="Logga ut" OnClick="btnLogout_Click"/>
+                    <asp:Button class="btn btn-default" ID="btnAvboka" runat="server" Text="Avboka markerade" OnClick="btnAvboka_Click"/>
+                    <asp:Button class="btn btn-default" ID="btnLogout" runat="server" Text="Logga ut" OnClick="btnLogout_Click"/>
                 </div>
             </div>
             <asp:Repeater ID="rptOldBokningar" runat="server">
