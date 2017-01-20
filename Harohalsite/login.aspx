@@ -85,7 +85,10 @@
                                 <tr>
                                     <td align="right" colspan="2" class="top-buffer-sm">
                                         <a href="#"><asp:Button class="btn btn-primary" runat="server" CommandName="Login" Text="Log In" ValidationGroup="Login1" ID="LoginButton"></asp:Button></a>
+                                        <br/>
+                                        <div id="buttonBuffer" class="top-buffer-sm"></div>
                                             <a href="registrera.aspx" class="btn btn-default">Registrera</a>
+                                            <a href="byt_losen.aspx" class="btn btn-default">Byt Lösenord</a>
                                     </td>
                                 </tr>
                             </table>

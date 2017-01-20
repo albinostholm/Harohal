@@ -38,22 +38,34 @@
             </div>
 
     <div class="row">
-    <p>Gammalt Lösenord</p>
+    
+        <div class="row">
+            <div class="col-md-8 col-md-push-2">
+                <p>Gammalt Lösenord</p>
+    <asp:TextBox ID="tbEpost" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
+            </div>
 
-    <asp:TextBox ID="tbEpost" runat="server"></asp:TextBox>
-
+        <div class="row">
+            <div class="col-md-8 col-md-push-2">
     <p> Nytt Lösenord</p>
-
-    <asp:TextBox ID="tbpw" runat="server"></asp:TextBox>
+    <asp:TextBox ID="tbpw" runat="server" CssClass="form-control"></asp:TextBox>
 
     <asp:CompareValidator ID="cvPassword" runat="server" ErrorMessage="Olika lösenord" ControlToCompare="tbpw"
                           ControlToValidate="tbPw2"></asp:CompareValidator>
+                </div>
+            </div>
 
+        <div class="row">
+            <div class="col-md-8 col-md-push-2">
     <p>Nytt lösenord igen</p>
 
-    <asp:TextBox ID="tbPw2" runat="server"></asp:TextBox>
+    <asp:TextBox ID="tbPw2" runat="server" CssClass="form-control"></asp:TextBox>
     <br/>
-    <asp:Button ID="btnBytLosen" runat="server" Text="Byt Lösenord" OnClick="btnBytLosen_Click"/>
+    
+                 <a href="#"><asp:Button  class="btn btn-primary" ID="btnBytLosen" runat="server" Text="Byt Lösenord" OnClick="btnBytLosen_Click"/></asp:Button></a>
+        </div>
+            </div>
         </div>
 </form>
         </div>
