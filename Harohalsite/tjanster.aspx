@@ -12,6 +12,13 @@
 </head>
 <body>
     <div class="container">
+          <div class="row">
+        <div class="col-md-12 noPadding"> 
+        <header><img  class="img img-responsive"src="image/header.png" alt="header" id="header" /></header>
+            </div>
+              </div>
+
+
         <div class="row">
                 <div class="navbar navbar-default navbar" role="navigation">
                     <div class="container">
@@ -134,12 +141,12 @@
                     <div class="modal-body">
                             <div class="form-group top-buffer-sm">
                                 <h3 for="contactForm">Namn*</h3>
-                                <input class="form-control" id="contactName" rows="1" name="name"></input>
+                                <input class="form-control" id="contactName" rows="1" name="name" />
                             </div>
 
                             <div class="form-group top-buffer-sm">
                                 <h3 for="contactForm">Email*</h3>
-                                <input class="form-control" id="contactEmail" rows="1" name="email"></input>
+                                <input class="form-control" id="contactEmail" rows="1" name="email" />
                             </div>
 
                             <div class="form-group top-buffer-sm">
