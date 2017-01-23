@@ -76,7 +76,7 @@
             </div>
         </div>
 </form>
-    <footer class="top-buffer-lg">
+    <footer class="top-buffer-mdxl">
     <div class="footer" id="footer">
         <div class="container">
             <div class="row">
