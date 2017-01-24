@@ -40,7 +40,6 @@
                                 <li><a href="tjanster.aspx">Tjänster</a></li>
                                 <li><a href="om_oss.aspx">Om Oss</a></li>
                                 <li><asp:HyperLink ID="hllogin" runat="server" NavigateUrl="Login.aspx">Logga in</asp:HyperLink></li>
-                                <li><a href="Login.aspx">Logga in</a></li>
                             </ul>
                         </div>
                     </div>
