@@ -16,8 +16,8 @@ public partial class login : Page
                 hllogin.Text = "Logga in";
             }
             else {
-                hllogin.NavigateUrl = "min_profil.aspx";
-                hllogin.Text = "Min Profil";
+                hllogin.NavigateUrl = "login.aspx";
+                hllogin.Text = "Logga in";
             }
         }
     }
