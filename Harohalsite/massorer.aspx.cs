@@ -10,6 +10,17 @@ public partial class massorer : System.Web.UI.Page
         {
             FillMassor();
             GetOneArtikel();
+
+            if (Session["userid"] == null)
+            {
+                hllogin.NavigateUrl = "login.aspx";
+                hllogin.Text = "Logga in";
+            }
+            else
+            {
+                hllogin.NavigateUrl = "min_profil.aspx";
+                hllogin.Text = "Min Profil";
+            }
         }
     }
 

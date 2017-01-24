@@ -9,6 +9,17 @@ public partial class boka : Page
     {
         if (!IsPostBack)
         {
+            if (Session["userid"] == null)
+            {
+                hllogin.NavigateUrl = "login.aspx";
+                hllogin.Text = "Logga in";
+            }
+            else
+            {
+                hllogin.NavigateUrl = "min_profil.aspx";
+                hllogin.Text = "Min Profil";
+            }
+
             //Sätter så att schemat visar dagens vecka
             hfWeek.Value = DayPilot.Utils.Week.WeekNrISO8601(DateTime.Now).ToString();
             hfYear.Value = DateTime.Now.Year.ToString();

@@ -3,8 +3,17 @@
 public partial class registrera : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
-    { 
-
+    {
+        if (Session["userid"] == null)
+        {
+            hllogin.NavigateUrl = "login.aspx";
+            hllogin.Text = "Logga in";
+        }
+        else
+        {
+            hllogin.NavigateUrl = "min_profil.aspx";
+            hllogin.Text = "Min Profil";
+        }
     }
 
     //Lägger in en ny användare i databasen ifall allt går igenom validering
