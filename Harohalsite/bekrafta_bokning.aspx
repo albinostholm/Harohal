@@ -29,7 +29,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="Default.aspx" ><img alt="Logo" src="image/logo.png" height="30" /></a><h1 class="navbar-text">Bekräfta Bokning</h1>
+                            <a class="navbar-brand" href="Default.aspx" ><img alt="Logo" src="image/logo.png" id="logo" /></a><h1 class="navbar-text">Bekräfta Bokning</h1>
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right">                       
