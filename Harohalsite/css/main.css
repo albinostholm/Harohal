@@ -14,6 +14,10 @@
     margin-top:10vh;
 }
 
+.top-buffer-mdxl {
+    margin-top:15vh;
+}
+
 .top-buffer-xl {
     margin-top:20vh;
 }
@@ -28,14 +32,11 @@
 }
 /*
 ================================================
+    Generall margins
 */
 
 * {
     font-family: 'Raleway', sans-serif;
-}
-
-#marginSocialIcons {
-    margin-top:80%;
 }
 
 .noPadding {
@@ -45,4 +46,23 @@
 .boxPadding {
     padding-left:2vh;
    
+}
+
+header{
+      background: url("img/elliott-davidson-slider.jpg");
+      background-size:cover;
+    }
+
+#logo {
+    height:30px;
+    border-radius:30000px;
+}
+
+
+/*
+    COLORS
+*/
+
+.red {
+    color:red;
 }

@@ -6,8 +6,21 @@ public partial class min_profil : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+       
+
         if (!IsPostBack)
         {
+            if (Session["userid"] == null)
+            {
+                hllogin.NavigateUrl = "login.aspx";
+                hllogin.Text = "Logga in";
+            }
+            else
+            {
+                hllogin.NavigateUrl = "min_profil.aspx";
+                hllogin.Text = "Min Profil";
+            }
+
             GetUserData();
             FillOrdrar();
             FillOldOrdrar();
@@ -86,6 +99,8 @@ public partial class min_profil : System.Web.UI.Page
         BusinessDAL bDAL = new BusinessDAL();
         anvandare user = new anvandare();
         user = bDAL.getUserData(Session["userid"].ToString());
+
+        
         tbxFornamn.Text = user.FirstName;
         tbxEfternamn.Text = user.LastName;
         tbxMail.Text = user.Epost;

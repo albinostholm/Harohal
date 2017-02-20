@@ -12,6 +12,13 @@
 </head>
 <body>
     <div class="container">
+          <div class="row">
+        <div class="col-md-12 noPadding"> 
+        <header><img  class="img img-responsive"src="image/header.png" alt="header" id="header" /></header>
+            </div>
+              </div>
+
+
         <div class="row">
                 <div class="navbar navbar-default navbar" role="navigation">
                     <div class="container">
@@ -23,7 +30,7 @@
                                 <span class="icon-bar"></span>
                             </button>
 
-                            <a class="navbar-brand" href="Default.aspx" ><img alt="Logo" src="image/logo.png" height="30" /></a><h1 class="navbar-text">Tjänster</h1>
+                            <a class="navbar-brand" href="Default.aspx" ><img alt="Logo" src="image/logo.png" id="logo" /></a><h1 class="navbar-text">Tjänster</h1>
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right">                       
@@ -32,7 +39,7 @@
                                 <li><a href="massorer.aspx">Massörer</a></li>
                                 <li><a href="tjanster.aspx">Tjänster</a></li>
                                 <li><a href="om_oss.aspx">Om Oss</a></li>
-                                <li><a href="Login.aspx">Logga in</a></li>
+                                <li><asp:HyperLink ID="hllogin" runat="server" NavigateUrl="Login.aspx">Logga in</asp:HyperLink></li>
                             </ul>
                         </div>
                     </div>
@@ -134,12 +141,12 @@
                     <div class="modal-body">
                             <div class="form-group top-buffer-sm">
                                 <h3 for="contactForm">Namn*</h3>
-                                <input class="form-control" id="contactName" rows="1" name="name"></input>
+                                <input class="form-control" id="contactName" rows="1" name="name" />
                             </div>
 
                             <div class="form-group top-buffer-sm">
                                 <h3 for="contactForm">Email*</h3>
-                                <input class="form-control" id="contactEmail" rows="1" name="email"></input>
+                                <input class="form-control" id="contactEmail" rows="1" name="email" />
                             </div>
 
                             <div class="form-group top-buffer-sm">

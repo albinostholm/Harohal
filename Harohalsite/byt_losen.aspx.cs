@@ -4,6 +4,17 @@ public partial class glomt_losen : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        if (Session["userid"] == null)
+        {
+            hllogin.NavigateUrl = "login.aspx";
+            hllogin.Text = "Logga in";
+        }
+        else
+        {
+            hllogin.NavigateUrl = "min_profil.aspx";
+            hllogin.Text = "Min Profil";
+        }
     }
 
     //Byter lösenord för den givna användaren

@@ -7,6 +7,17 @@ public partial class index : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            if (Session["userid"] == null)
+            {
+                hllogin.NavigateUrl = "login.aspx";
+                hllogin.Text = "Logga in";
+            }
+            else
+            {
+                hllogin.NavigateUrl = "min_profil.aspx";
+                hllogin.Text = "Min Profil";
+            }
+
             GetOneArtikel();
             FillTjanster();
         }

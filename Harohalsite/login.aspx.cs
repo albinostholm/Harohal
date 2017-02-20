@@ -9,6 +9,16 @@ public partial class login : Page
         if (!IsPostBack)
         {
             Session.Abandon();
+
+            if (Session["userid"] == null)
+            {
+                hllogin.NavigateUrl = "login.aspx";
+                hllogin.Text = "Logga in";
+            }
+            else {
+                hllogin.NavigateUrl = "login.aspx";
+                hllogin.Text = "Logga in";
+            }
         }
     }
 
