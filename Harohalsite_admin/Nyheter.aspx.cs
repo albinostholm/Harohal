@@ -70,4 +70,18 @@ public partial class Nyheter : System.Web.UI.Page
         FillNyheter();
         panEditNyhet.Visible = false;
     }
+
+    protected void btnNewNyhet_Click(object sender, EventArgs e)
+    {
+        cArtikel newNyhet = new cArtikel();
+        AdminDAL aDAL = new AdminDAL();
+        if (tbNewRubrik.Text.Length > 0 && tbNewBeskrivning.Text.Length > 0 && tbNewTid.Text.Length > 0)
+        {
+            newNyhet.rubrik = tbNewRubrik.Text;
+            newNyhet.beskrivning = tbNewBeskrivning.Text;
+            newNyhet.date = DateTime.Parse(tbNewTid.Text);
+
+            aDAL.newNyhet(newNyhet, Session["userId"].ToString());
+        }
+    }
 }

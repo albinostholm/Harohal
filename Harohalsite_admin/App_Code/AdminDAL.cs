@@ -80,6 +80,124 @@ public class AdminDAL
         }
     }
 
+    public int newTjanst(cArtikel a, string userid)
+    {
+        //DataTable dt = new DataTable();
+
+        cArtikel art = new cArtikel();
+
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_ADMIN_newTjanst", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+
+            cmd.Parameters.AddWithValue("@namn", a.namn);
+            cmd.Parameters.AddWithValue("@beskrivning", a.beskrivning);
+            cmd.Parameters.AddWithValue("@pris", a.pris);
+            cmd.Parameters.AddWithValue("@tid", a.tid);
+            cmd.Parameters.AddWithValue("@createdby", userid);
+
+            return cmd.ExecuteNonQuery();
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
+
+    public int newNyhet(cArtikel a, string userid)
+    {
+        //DataTable dt = new DataTable();
+
+        cArtikel art = new cArtikel();
+
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_ADMIN_newNyhet", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+
+            cmd.Parameters.AddWithValue("@publicerad", 1);
+            cmd.Parameters.AddWithValue("@anstalldID", userid);
+            cmd.Parameters.AddWithValue("@rubrik", a.rubrik);
+            cmd.Parameters.AddWithValue("@beskrivning", a.beskrivning);
+            cmd.Parameters.AddWithValue("@publiceradDatum", a.tid);
+            cmd.Parameters.AddWithValue("@createdby", userid);
+
+            return cmd.ExecuteNonQuery();
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
+
+    public int newAnstalld(cArtikel a, string userid)
+    {
+        //DataTable dt = new DataTable();
+
+        cArtikel art = new cArtikel();
+
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_ADMIN_newAnstalld", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+
+            cmd.Parameters.AddWithValue("@personnummer", a.namn);
+            cmd.Parameters.AddWithValue("@beskrivning", a.beskrivning);
+            cmd.Parameters.AddWithValue("@behandlarMan", a.tid);
+            cmd.Parameters.AddWithValue("@behandlarKvinnor", a.pris);
+            cmd.Parameters.AddWithValue("@createdby", userid);
+
+            return cmd.ExecuteNonQuery();
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
+
     public int updateArtikelInfo(cArtikel a)
     {
         //DataTable dt = new DataTable();

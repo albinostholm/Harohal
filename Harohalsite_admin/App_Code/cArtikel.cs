@@ -18,7 +18,7 @@ public class cArtikel
     public string id { get; set; }
     public decimal pris { get; set; }
     public int tid { get; set; }
-
+    public DateTime date { get; set; }
     public string namn { get; set; }
 
 

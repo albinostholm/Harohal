@@ -22,6 +22,12 @@
         </Items>
     </asp:Menu>
 
+        <asp:TextBox ID="tbSSN" runat="server" Text="Personnummer"></asp:TextBox>
+        <asp:TextBox ID="tbNewBeskrivning" runat="server" Text="Beskrivning"></asp:TextBox>
+        <asp:CheckBox ID="cbxWomen" runat="server" Text="Behandlar Kvinnor" />
+        <asp:CheckBox ID="cbxMen" runat="server" Text="Behandlar Män" />
+        <asp:Button ID="btnNewMassor" runat="server" Text="Skapa ny Massör" OnClick="btnNewMassor_Click" />
+
        <asp:Panel ID="panEditMassor" runat="server">
             <asp:Label ID="lblForNamn" runat="server" Text="Förnamn"></asp:Label>
             <asp:TextBox ID="tbForNamn" runat="server"></asp:TextBox>

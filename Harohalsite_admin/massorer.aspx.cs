@@ -89,4 +89,33 @@ public partial class a_massorer : System.Web.UI.Page
         FillMassorer();
         panEditMassor.Visible = false;
     }
+
+    protected void btnNewMassor_Click(object sender, EventArgs e)
+    {
+        cArtikel newMassor = new cArtikel();
+        AdminDAL aDAL = new AdminDAL();
+
+        int x = 0;
+        int y = 0;
+
+        if (cbxMen.Checked)
+        {
+            x = 1;
+        }
+
+        if (cbxWomen.Checked)
+        {
+            y = 1;
+        }
+
+        if (tbSSN.Text.Length > 0 && tbNewBeskrivning.Text.Length > 0)
+        {
+            newMassor.namn = tbSSN.Text;
+            newMassor.beskrivning = tbNewBeskrivning.Text;
+            newMassor.pris = y;
+            newMassor.tid = x;
+
+            aDAL.newAnstalld(newMassor, Session["userId"].ToString());
+        }
+    }
 }

@@ -106,4 +106,19 @@ public partial class index : System.Web.UI.Page
         FillTjanster();
         panEditTjanst.Visible = false;
     }
+
+    protected void btnNewTjanst_Click(object sender, EventArgs e)
+    {
+        cArtikel newTjanst = new cArtikel();
+        AdminDAL aDAL = new AdminDAL();
+        if (tbNewNamn.Text.Length > 0 && tbNewBeskrivning.Text.Length > 0 && tbNewPris.Text.Length > 0 && tbNewTid.Text.Length > 0)
+        {
+            newTjanst.namn = tbNewNamn.Text;
+            newTjanst.beskrivning = tbNewBeskrivning.Text;
+            newTjanst.pris = int.Parse(tbNewPris.Text);
+            newTjanst.tid = int.Parse(tbNewTid.Text);
+
+            aDAL.newTjanst(newTjanst, Session["userId"].ToString());
+        }
+    }
 }

@@ -22,6 +22,12 @@
             <asp:MenuItem Text="Tjänster" Value="Tjänster" NavigateUrl="tjanster.aspx"></asp:MenuItem>
         </Items>
     </asp:Menu>
+
+        <asp:TextBox ID="tbNewRubrik" runat="server">Rubrik</asp:TextBox>
+        <asp:TextBox ID="tbNewBeskrivning" runat="server">Beskrivning</asp:TextBox>
+        <asp:TextBox ID="tbNewTid" runat="server">PubliceradDatum (YYYY-MM-DD)</asp:TextBox>
+        <asp:Button ID="btnNewNyhet" runat="server" Text="Skapa ny nyhet" OnClick="btnNewNyhet_Click"/>
+
         <asp:Panel ID="panEditNyhet" runat="server">
             <asp:Label ID="lblRubrik" runat="server" Text="Rubrik"></asp:Label>
             <asp:TextBox ID="tbRubrik" runat="server"></asp:TextBox>

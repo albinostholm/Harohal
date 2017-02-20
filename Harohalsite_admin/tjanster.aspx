@@ -22,6 +22,12 @@
         </Items>
     </asp:Menu>
 
+    <asp:TextBox ID="tbNewNamn" runat="server">Namn</asp:TextBox>
+    <asp:TextBox ID="tbNewBeskrivning" runat="server">Beskrivning</asp:TextBox>
+    <asp:TextBox ID="tbNewPris" runat="server">Pris</asp:TextBox>
+    <asp:TextBox ID="tbNewTid" runat="server">Tid</asp:TextBox>
+    <asp:Button ID="btnNewTjanst" runat="server" Text="Skapa ny tjänst" OnClick="btnNewTjanst_Click"/>
+
        <asp:Panel ID="panEditTjanst" runat="server">
             <asp:Label ID="lblNamn" runat="server" Text="Namn"></asp:Label>
             <asp:TextBox ID="tbNamn" runat="server"></asp:TextBox>
