@@ -102,7 +102,6 @@ public partial class min_profil : System.Web.UI.Page
         o.anstalldID = anstalldID();
         o.tjanstID = tjanstID();
         o.personID = lblID.Text;
-        o.slutTid = Convert.ToDateTime(tbSlutTid.Text);
         o.startTid = Convert.ToDateTime(tbStartTid.Text);
 
         aDAL.updateOrderInfo(o);
