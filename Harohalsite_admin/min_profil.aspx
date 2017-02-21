@@ -60,9 +60,6 @@
 	    <asp:Label ID="lblStartTid" runat="server" Text="StartTid"></asp:Label>
         <asp:TextBox ID="tbStartTid" runat="server"></asp:TextBox>
 	
-	    <asp:Label ID="lblSlutTid" runat="server" Text="SlutTid"></asp:Label>
-        <asp:TextBox ID="tbSlutTid" runat="server"></asp:TextBox>
-	
         <asp:Button ID="btnUppdatera" runat="server" Text="Spara" OnClick="btnUppdatera_Click" />
     </asp:Panel>
 

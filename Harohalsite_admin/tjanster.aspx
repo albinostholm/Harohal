@@ -17,7 +17,6 @@
     <h1>Våra tjänster</h1>
 
     <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
-        <p>
         <Items>
             <asp:MenuItem Text="Min Profil" Value="Min Profil" NavigateUrl="min_profil.aspx"></asp:MenuItem> 
             
@@ -27,8 +26,7 @@
             <asp:MenuItem Text="Nyheter" Value="Nyheter" NavigateUrl="Nyheter.aspx"></asp:MenuItem>
             <asp:MenuItem Text="Tjänster" Value="Tjänster" NavigateUrl="tjanster.aspx"></asp:MenuItem>
         </Items>
- </p>
-               </asp:Menu>
+    </asp:Menu>
 
     <asp:TextBox ID="tbNewNamn" runat="server">Namn</asp:TextBox>
     <asp:TextBox ID="tbNewBeskrivning" runat="server">Beskrivning</asp:TextBox>
