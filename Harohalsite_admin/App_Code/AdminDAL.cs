@@ -252,7 +252,6 @@ public class AdminDAL
             cmd.Parameters.AddWithValue("@orderID", newO.personID);
             cmd.Parameters.AddWithValue("@anstalldID", newO.anstalldID);
             cmd.Parameters.AddWithValue("@startTid", newO.startTid);
-            cmd.Parameters.AddWithValue("@slutTid", newO.slutTid);
             cmd.Parameters.AddWithValue("@tjanstID", newO.tjanstID);
 
             return cmd.ExecuteNonQuery();
