@@ -239,9 +239,7 @@ public partial class boka : Page
         else
         {
             Response.Redirect("login.aspx");
-        }
-        
-
+        }   
     }
 
     //Laddar om schemat ifall man byter massör
