@@ -98,7 +98,7 @@ public partial class schema : System.Web.UI.Page
         BusinessDAL bDAL = new BusinessDAL();
         if (DateTime.TryParse(tbEditTime_old_startTid.Text, out result) && DateTime.TryParse(tbEditTime_ny_startid.Text, out result) && DateTime.TryParse(tbEditTime_ny_sluttid.Text, out result))
         {
-            bDAL.editSchemaTid(Session["userid"].ToString(), DateTime.Parse(tbEditTime_old_startTid.Text), DateTime.Parse(tbNewTime_startTid.Text), DateTime.Parse(tbNewTime_slutTid.Text));
+            bDAL.editSchemaTid(Session["userid"].ToString(), DateTime.Parse(tbEditTime_old_startTid.Text), DateTime.Parse(tbEditTime_ny_startid.Text), DateTime.Parse(tbEditTime_ny_sluttid.Text));
         }
     }
 }
