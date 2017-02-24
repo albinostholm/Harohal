@@ -1,0 +1,64 @@
+% Paket och definitioner  ----------------------
+\documentclass[11pt]{article}					% Textstorlek och dokumenttyp.
+
+\usepackage[swedish]{babel}						% Språk.
+\usepackage[utf8]{inputenc}						% Teckenkodning.
+\usepackage[T1]{fontenc}
+\usepackage{geometry}							% Sidmarginaler.
+\usepackage{amsmath}							% Matematiska uttryck.
+\usepackage{amssymb}							% Specialsymboler.
+\usepackage{tikz}								% Bilder och figurer.
+\usepackage{fancyhdr}							% Se "/pagestyle{fancy}"
+\usepackage{graphicx}							% Utökad grafikhantering.
+\usepackage{float}								% Placering av bilder och figurer.
+\usepackage{tabularx}							% Utökad tabellfunktionalitet.
+\usepackage{hyperref}							% Klickbara länkar.
+
+\pagestyle{fancy}								% För sidhuvud.
+
+\def\school{Erik Dahlbergsgymnasiet, Jönköping}	% Skola.
+\def\programme{Teknikprogrammet}				% Program.
+\def\class{\programme, klass}					% FYLL I DIN KLASS.
+\def\student{Ditt namn}							% FYLL I DITT NAMN.
+\def\arbetsomrade{Arbetsområdets namn}			% FYLL I ARBETSOMRÅDETS NAMN.
+\def\teacher{Lärarens namn}						% FYLL I LÄRARENS NAMN.
+
+% Sidhuvudet -----------------------------------
+\lhead{\scriptsize \class \\ \school \\ \student, \today}
+\rhead{\scriptsize \arbetsomrade \\ Bedömning: \\ \teacher }
+
+% Ta bort indentering och lägg till mellanrum vid nytt stycke.
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+
+\begin{document}
+\vspace*{-20pt} % Lämpligt avstånd från sidhuvudets linje.
+
+% Dokumentets innehåll -------------------------
+\section*{Projekt utvärdering}
+Här går vi igenom hur det gick med vårat projekt, vi jämför de bra och dåliga aspekterna.
+\subsection*{Bra}
+Här har vi listat saker vi tyckte gick bra.
+\subsubsection*{Dokumentation}
+Vi har använt LaTex för att dokumentera. Vilket gör så att det blir trevliga PDF filer till all dokumentation. Innehållet har varit godtagbart i all vår dokumentation, den har också varit tydlig och enkel att läsa.
+\subsubsection*{Kraven}
+Vi nådde alla funktionella kraven som vi hade satt. Detta är vi imponerade över då vi inte har nyttjat de mest effektiva arbetssätten som vi kunde har gjort. Vi hade heller ingen tidigare erfarenhet av webserverprogrammering eller databaser som är förväntat i kursen webserverprogrammering 2. Då tycker vi att vi lärt oss snabbt och gjort ett bra arbete.
+\subsubsection*{Vänlig arbetsmiljö(till viss del)}
+Vi har varit väldigt samarbetsvilliga och alltid hjälpt varandra om det varit något som varit oklart. Även om det inte alltid har gått bra så har vi försökt vårt bästa att vara positiva till varandra och hjälpa så gott det går. Vi har även alltid varit trevliga mot varandra och försökt att vara trevliga. Sedan så har vi förstås haft konflikter men det har aldrig eskalerat till något större och vi har alltid lyckats lösa dessa konflikter på bra sätt.
+\subsubsection*{Blev bättre än wireframes}
+Vi är glada över att sidan inte blev som i wireframesen, även om wireframen var bra så hade vi många förbättringar som vi hittade under utvecklingsprocessen och implementerade dessa. Man kan säga att vi fick med allt det bra med wireframesen och ändrade det dåliga. Dock så skulle vi uppdaterat wireframesen, det hade inte gjort så stor skillnad för arbetet men varit bättre för dokumentation.
+\subsection*{Dåligt}
+Här går vi igenom vad som har gått lite sämre.
+\subsubsection*{Ingen databas backup}
+Vi tog oss inte tiden till att göra ett jobb som gör en backup på vår databas regelbundet när vi borde ha gjort det. Vi har dock inte stött på några problem där en backup har behövts. Vi gjorde också en backup under genomgången av backups.
+\subsubsection*{Mer konsekvent}
+I och med att vi jobbade i grupp så blev att vissa började skriva på svenska, vissa började skriva på engelska. Till slut så orkade vi inte ändra så vi blandade det lite. Men hade vi gjort om det så hade vi skrivit på engelska. Detta är för att det blir mer läsbart överlag och är bra träning för framtida projekt där det finns chans att jobba internationellt. Även lättare att googla informationen på engelska. Vissa ”moduler” är även uppbyggda på olika sätt. I och med att vi inte hade något officiellt arbetssätt och alla arbetade på alla områden så blev det att ”modulerna” blev olika konstruerade. Vilket senare är ett problem när man vill t.ex. ändra ”moduler”, bedöma m.m. Detta hade kunnat lösas genom att bestämma hur man ska konstruera och kolla hur personen som arbetat tidigare har gjort.
+\subsubsection*{Utgå från kraven(som vi borde ha gjort)}
+Vi borde ha implementerat funktioner utifrån kraven. Kraven var väldigt utförliga i checklista form och det hade bara varit att utgå ifrån och bocka av. Det vi gjorde var att utgå från en kanban tavla, vilket är bra. Men vi skulle strukturerat den kanban tavlan bättre genom att utgå från kraven.
+\subsubsection*{Arbetat mer(slöade för mycket)}
+Vi slösade mycket tid på aspekter som inte var så viktiga. Som t.ex. test data. Det hade i slutändan inte spelat så stor roll och vi hade alldeles för stor mängd. Vi var även relativt slöa med arbetet och fokuserade inte alltid på det viktigaste/ något.
+\subsubsection*{Gjort triggers tidigare}
+T.ex. updated by och date. Det borde ha gjorts direkt, men vi hade inte så bra kommunikation så det blev att vi gjorde det lite senare istället. Arbetet hade blivit något effektivare då.
+\subsubsection*{Bättre skriven kod}
+C\# koden kunde definitivt ha skrivits bättre. Den är svår och läsa, några dåliga variabelnamn och en lite sämre konstruerad kod överlag. Det vi borde gjort är att vi skulle ha fördelat tid till att kolla genom kod och förbättra den allt eftersom vi implementerat mer.
+\end{document}
