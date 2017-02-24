@@ -90,6 +90,7 @@ public partial class schema : System.Web.UI.Page
         {
             bDAL.newSchemaTid(Session["userid"].ToString(), DateTime.Parse(tbNewTime_startTid.Text), DateTime.Parse(tbNewTime_slutTid.Text));
         }
+        FillCalender();
     }
 
     protected void btnEditTime_Click(object sender, EventArgs e)
@@ -100,5 +101,6 @@ public partial class schema : System.Web.UI.Page
         {
             bDAL.editSchemaTid(Session["userid"].ToString(), DateTime.Parse(tbEditTime_old_startTid.Text), DateTime.Parse(tbEditTime_ny_startid.Text), DateTime.Parse(tbEditTime_ny_sluttid.Text));
         }
+        FillCalender();
     }
 }
