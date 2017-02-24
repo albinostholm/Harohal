@@ -68,4 +68,24 @@ public partial class schema : System.Web.UI.Page
         weekButtons();
         FillCalender();
     }
+
+    protected void btnNewTime_Click(object sender, EventArgs e)
+    {
+        DateTime result;
+        BusinessDAL bDAL = new BusinessDAL();
+        if (DateTime.TryParse(tbNewTime_slutTid.Text, out result) && DateTime.TryParse(tbNewTime_startTid.Text, out result))
+        {
+            bDAL.newSchemaTid(Session["userid"].ToString(), DateTime.Parse(tbNewTime_startTid.Text), DateTime.Parse(tbNewTime_slutTid.Text));
+        }
+    }
+
+    protected void btnEditTime_Click(object sender, EventArgs e)
+    {
+        DateTime result;
+        BusinessDAL bDAL = new BusinessDAL();
+        if (DateTime.TryParse(tbEditTime_old_startTid.Text, out result) && DateTime.TryParse(tbEditTime_ny_startid.Text, out result) && DateTime.TryParse(tbEditTime_ny_sluttid.Text, out result))
+        {
+            bDAL.editSchemaTid(Session["userid"].ToString(), DateTime.Parse(tbEditTime_old_startTid.Text), DateTime.Parse(tbNewTime_startTid.Text), DateTime.Parse(tbNewTime_slutTid.Text));
+        }
+    }
 }

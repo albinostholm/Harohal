@@ -24,6 +24,35 @@
             <asp:MenuItem Text="Tjänster" Value="Tjänster" NavigateUrl="tjanster.aspx"></asp:MenuItem>
         </Items>
     </asp:Menu>
+
+
+
+    <asp:Button ID="btnNewTime" runat="server" Text="Lägg till tid" style="float:left; clear:left" OnClick="btnNewTime_Click" />
+   
+     <asp:Label ID="lbNewTime_startTId" runat="server" Text="Startid: "></asp:Label>
+    <asp:TextBox ID="tbNewTime_startTid" runat="server"></asp:TextBox>
+
+    <asp:Label ID="lbNewTime_slutTid" runat="server" Text="Sluttid: "></asp:Label>
+     <asp:TextBox ID="tbNewTime_slutTid" runat="server"></asp:TextBox>
+    <br />
+
+    <asp:Button ID="btnEditTime" runat="server" Text="Redigera befintlig tid" style="float:left; clear:left" OnClick="btnEditTime_Click" />
+   
+     <asp:Label ID="lbEditTime_old_startTid" runat="server" Text="Befintlig Startid: "></asp:Label>
+    <asp:TextBox ID="tbEditTime_old_startTid" runat="server"></asp:TextBox>
+
+    <asp:Label ID="lbEditTime_ny_startid" runat="server" Text="Ny Starttid: "></asp:Label>
+     <asp:TextBox ID="tbEditTime_ny_startid" runat="server"></asp:TextBox>
+
+     <asp:Label ID="lbEditTime_ny_sluttid" runat="server" Text="ny Sluttid: "></asp:Label>
+     <asp:TextBox ID="tbEditTime_ny_sluttid" runat="server"></asp:TextBox>
+    <br />
+
+
+
+
+
+
     <div style="clear: left; position: center">
         <asp:Button ID="btnDeWeek" runat="server" OnClick="btnDeWeek_Click" Enabled="true"/>
         <asp:Label ID="lblWeek" runat="server"></asp:Label>

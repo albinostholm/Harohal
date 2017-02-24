@@ -826,4 +826,73 @@ public class BusinessDAL
         }
     }
 
+    public void newSchemaTid(string anstalldID, DateTime startTid, DateTime slutTid)
+    {
+        DataTable dt = new DataTable();
+
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_newSchemaTid", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+            cmd.Parameters.AddWithValue("@anstalldID", anstalldID);
+            cmd.Parameters.AddWithValue("@startTid", startTid);
+            cmd.Parameters.AddWithValue("@slutTid", slutTid);
+
+            cmd.ExecuteNonQuery();
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
+
+    public void editSchemaTid(string anstalldID, DateTime oldStartTid, DateTime startTid, DateTime slutTid)
+    {
+        DataTable dt = new DataTable();
+
+        //Create a connection
+        SqlConnection conn = new SqlConnection(connStr);
+
+        //The procedure I want to call
+        SqlCommand cmd = new SqlCommand("usp_ADMIN_edit_schemaTid", conn);
+
+        //Command type I want to execute
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        try
+        {
+            conn.Open();
+            cmd.Parameters.AddWithValue("@anstalldID", anstalldID);
+            cmd.Parameters.AddWithValue("@oldStartTid", oldStartTid);
+            cmd.Parameters.AddWithValue("@startTid", startTid);
+            cmd.Parameters.AddWithValue("@slutTid", slutTid);
+
+            cmd.ExecuteNonQuery();
+        }
+        catch
+        {
+            throw;
+        }
+        finally
+        {
+            cmd.Dispose();
+            conn.Close();
+            conn.Dispose();
+        }
+    }
+
 }
