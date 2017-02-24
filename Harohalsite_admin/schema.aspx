@@ -14,6 +14,8 @@
     <header></header>
     <h1>Schema</h1>
     <asp:HiddenField runat="server" ID="hfWeek"/>
+	<asp:HiddenField runat="server" ID="hfYear"/>
+
     <asp:Menu ID="Menu" runat="server" orientation="Horizontal">
         <Items>
             <asp:MenuItem Text="Min Profil" Value="Min Profil" NavigateUrl="min_profil.aspx"></asp:MenuItem>           

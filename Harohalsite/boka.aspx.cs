@@ -239,16 +239,12 @@ public partial class boka : Page
         else
         {
             Response.Redirect("login.aspx");
-        }
-        
-
+        }   
     }
 
     //Laddar om schemat ifall man byter massör
     protected void ddlMassor_SelectedIndexChanged(object sender, EventArgs e)
     {
-        DayPilotCalendar1.StartDate = DateTimeExtensions.FirstDateOfWeekISO8601(int.Parse(hfYear.Value), int.Parse(hfWeek.Value));
-        DayPilotCalendar1.DataSource = calenderEvents(DayPilotCalendar1.StartDate, int.Parse(hfWeek.Value) + 1);
-        DayPilotCalendar1.DataBind();
+        FillCalender();
     }
 }
